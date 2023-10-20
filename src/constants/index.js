@@ -23,6 +23,7 @@ import {
   jobit,
   tripguide,
   threejs,
+  
 } from "../assets";
 
 export const navLinks = [
@@ -173,55 +174,55 @@ const testimonials = [
   {
     testimonial:
       "Eu achava que era impossível fazer um site tão bonito quanto o nosso produto, mas Denis me provou errado.",
-    name: "Sara Lee",
-    designation: "CFO",
-    company: "HeyDoser Co",
-    image: "https://randomuser.me/api/portraits/women/4.jpg",
+    name: "CaduOliver_",
+    designation: "Estilista e CEO",
+    company: "TwoVariant",
+    image: "https://randomuser.me/api/portraits/lego/3.jpg",
   },
   {
     testimonial:
-      "I've never met a web developer who truly cares about their clients' success like Rick does.",
-    name: "Chris Brown",
-    designation: "COO",
-    company: "DEF Corp",
-    image: "https://randomuser.me/api/portraits/men/5.jpg",
+      "Once we got in touch with Denis, he responded promptly, was attentive, and created the Walram.com.br store",
+    name: "James-Lu",
+    designation: "CEO",
+    company: "Meixinelec / Walram Eletrônics",
+    image: "https://randomuser.me/api/portraits/lego/7.jpg",
   },
   {
     testimonial:
-      "After Denis optimized our website, our traffic increased by 50%. We can't thank them enough!",
-    name: "Lisa Wang",
-    designation: "CTO",
-    company: "456 Enterprises",
-    image: "https://randomuser.me/api/portraits/women/6.jpg",
+      "Depois que o Denis criou o nosso briefing, tudo fluiu. Ele realmente faz acontecer...",
+    name: "Elisa Mara",
+    designation: "Empreendedora",
+    company: "Essenciais Express",
+    image: "https://randomuser.me/api/portraits/lego/9.jpg",
   },
 ];
 
 const projects = [
   {
-    name: "Car Rent",
+    name: "Two Variant",
     description:
-      "Plataforma baseada na web que permite aos usuários pesquisar, reservar e gerenciar aluguéis de carros de vários fornecedores, fornecendo uma solução conveniente e eficiente para as necessidades de transporte.",
+      "Aplicação desenvolvida para a empresa @twovariant / twovariant.com.br. Uma loja virtual onde o usuário poderá realizar compras, acompanhar o tempo de entrega e frete, provedor de pagamentos conectado ao stripe, paypal, mercado livre e getnet.",
     tags: [
       {
-        name: "react",
+        name: "React",
         color: "blue-text-gradient",
       },
       {
-        name: "mongodb",
+        name: "Postgree",
         color: "green-text-gradient",
       },
       {
-        name: "tailwind",
+        name: "Tailwind-CSS",
         color: "pink-text-gradient",
       },
     ],
     image: carrent,
-    source_code_link: "https://github.com/bonacciniWd",
+    source_code_link: "https://twovariant.com.br",
   },
   {
-    name: "Job IT",
+    name: "Anunciarty",
     description:
-      "Aplicativo Web que permite que os usuários pesquisem vagas de emprego, visualizem faixas salariais estimadas para posições e localizem vagas disponíveis com base em sua localização atual.",
+      "Aplicação criada para a empresa de marketing @anunciarty_ , Cujo projeto inicial se deu à ideia onde pudessemos enriquecer a experiência do usuário e lhes mostrar a elevação do marketing em seu negócio. ",
     tags: [
       {
         name: "react",
@@ -237,12 +238,12 @@ const projects = [
       },
     ],
     image: jobit,
-    source_code_link: "https://github.com/",
+    source_code_link: "anunciarty.vercel.app",
   },
   {
-    name: "Trip Guide",
+    name: "Soberana Luxo",
     description:
-      "A comprehensive travel booking platform that allows users to book flights, hotels, and rental cars, and offers curated recommendations for popular destinations.",
+      "Aplicação criada em react e mongo-db, para a empresa @soberana.luxo, cujo objetivo é fomentar a ideia do consumo consciente, incentivando o aluguel para itens de uso quase que unicos, tais como joias de formaturas, casamentos e eventos.",
     tags: [
       {
         name: "nextjs",
