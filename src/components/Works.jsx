@@ -80,7 +80,7 @@ const Works = () => {
           variants={fadeIn("", "", 0.1, 1)}
           className='mt-3 text-secondary text-[17px] max-w-3xl leading-[30px]'
         >
-          Os projetos listados à baixo, são alguns exemplos de repositórios criados por mim à partir de algumas frameworks Javascript, Backbone, React, React-Native e Vue.
+          Os projetos listados à baixo são apenas alguns dos inúmeros serviços e parcerias já feitos.
            
         </motion.p>
       </div>

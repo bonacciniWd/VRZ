@@ -47,18 +47,11 @@ const About = () => {
         variants={fadeIn("", "", 0.1, 1)}
         className='mt-4 text-secondary text-[17px] max-w-3xl leading-[30px]'
       >
-        Sou um programador de software especializado com experiência em TypeScript e
-        JavaScript, e estruturas como React, Node.js, e
-        Three.js. Sou um aprendiz rápido e colaboro de perto com os clientes para
-        criar soluções eficientes, escaláveis e fáceis de utilizar que resolvam
-        problemas do mundo real. Vamos trabalhar em conjunto para dar vida às suas ideias! 
+        Olá, eu sou Wotho, um profissional apaixonado pela moda, com 34 anos de idade e formação pelo Instituto Europeu de Design. 
+        Minha jornada na indústria da moda começou com experiência em estamparia e assistência de figurino, o que me proporcionou um profundo entendimento dos detalhes por trás da criação de peças.
       </motion.p>
 
-      <div className='mt-20 flex flex-wrap gap-10'>
-        {services.map((service, index) => (
-          <ServiceCard key={service.title} index={index} {...service} />
-        ))}
-      </div>
+      
     </>
   );
 };

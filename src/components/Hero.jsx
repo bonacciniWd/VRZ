@@ -1,31 +1,83 @@
+import React, { useEffect } from "react";
 import { motion } from "framer-motion";
-
 import { styles } from "../styles";
-import { ComputersCanvas } from "./canvas";
+import oto from "../assets/wotho.jpg";
 
 const Hero = () => {
+  useEffect(() => {
+    const textElement = document.getElementById("animated-text");
+    const phrases = ["Form and Function?", "Unleash Creativity?", "Discover Whoto.art!"];
+    let phraseIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+
+    function typeText() {
+      const currentPhrase = phrases[phraseIndex];
+      const currentText = currentPhrase.substring(0, charIndex + 1);
+      textElement.textContent = currentText;
+
+      if (!isDeleting) {
+        charIndex++;
+      } else {
+        charIndex--;
+      }
+
+      if (isDeleting && charIndex === -1) {
+        isDeleting = false;
+        
+        // Aguarde 3 segundos antes de iniciar a próxima frase
+        setTimeout(() => {
+          phraseIndex = (phraseIndex + 1) % phrases.length;
+          charIndex = 0;
+          typeText();
+        }, );
+        return;
+      }
+
+      if (!isDeleting && charIndex === currentPhrase.length) {
+        isDeleting = true;
+      }
+
+      const speed = isDeleting ? 70 : 70; // Ajuste a velocidade de digitação e exclusão conforme necessário
+
+      setTimeout(typeText, speed);
+    }
+
+    typeText();
+  }, []);
+
   return (
     <section className={`relative w-full h-screen mx-auto`}>
-      <div
-        className={`absolute inset-0 top-[120px]  max-w-7xl mx-auto ${styles.paddingX} flex flex-row items-start gap-5`}
-      >
+      <div className={`absolute inset-0 top-[120px] max-w-7xl mx-auto ${styles.paddingX} flex flex-row items-start gap-5`}>
         <div className='flex flex-col justify-center items-center mt-5'>
-          <div className='w-5 h-5 rounded-full bg-[#915EFF]' />
-          <div className='w-1 sm:h-40 h-40 violet-gradient' />
+          
+
         </div>
 
         <div>
-          <h1 className={`${styles.heroHeadText} text-white`}>
-            Olá, sou <span className='text-[#32cd32]'>Denis Bonaccini</span>
+          <h1 className={`${styles.heroHeadText} text-white`} style={{ textShadow: "1px 1px 2px rgba(0, 0, 0, 0.7)", textAlign:"center", padding: "10px"}}>
+            Wotho<span className='text-[#32cd32]'>.</span><span className='text-[#ff0]'> Art</span>
           </h1>
-          <p className={`${styles.heroSubText} mt-2 text-white-100`}>
-            Eu desenvolvo objetos em 3D, Interfaces <br className='sm:block hidden' />
-            de usuário e aplicações web.
+
+          <img 
+            src={oto}  // Substitua pelo caminho da sua imagem
+            alt="Descrição da imagem"
+            style={{
+              width: "100%",  // Torna a imagem responsiva
+              maxWidth: "300px",  // Limita a largura máxima a 300px
+              height: "auto",  // Mantém a proporção original da imagem
+              borderRadius: "200px",
+              border:  "3px solid #050816",
+              display: "block"
+
+            }}
+          />
+
+          <p className={`${styles.heroSubText} mt-2 text-white-500`}>
+            <span id="animated-text" style={{ display: "inline-block", color: "#f1f1f1", textShadow: "1px 1px 2px rgba(0, 0, 0, 0.7)", fontSize:"25px", textAlign:"center", textTransform: "uppercase" }}></span>
           </p>
         </div>
       </div>
-
-      
 
       <div className='absolute xs:bottom-10 bottom-32 w-full flex justify-center items-center'>
         <a href='#about'>

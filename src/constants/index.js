@@ -116,56 +116,55 @@ const technologies = [
 ];
 
 const experiences = [
+
+   
   {
-    title: "React.js Developer",
-    company_name: "Starbucks",
+    title: "Formação",
+    company_name: "Instituto Europeu de Design",
     icon: starbucks,
-    iconBg: "#383E56",
-    date: "March 2020 - April 2021",
-    points: [
-      "Desenvolvimento e manutenção de aplicações web utilizando React.js e outras tecnologias relacionadas.",
-      "Colaborar com equipes multifuncionais, incluindo designers, gerentes de produto e outros desenvolvedores para criar produtos de alta qualidade.",
-      "Implementando design responsivo e garantindo compatibilidade entre navegadores.",
-      "Participar de revisões de código e fornecer feedback construtivo para outros desenvolvedores.",
-    ],
-    },
-  {
-    title: "React Native Developer",
-    company_name: "Tesla",
-    icon: tesla,
     iconBg: "#E6DEDD",
-    date: "Jan 2021 - Feb 2022",
+    date: "Jan 2010 - Dec 2014",
     points: [
-      "Desenvolvimento e manutenção de aplicações web utilizando React.js e outras tecnologias relacionadas.",
+      "Minha formação pelo Instituto Europeu de Design foi um mergulho profundo no mundo da criatividade e da inovação, preparando-me para desafios emocionantes no campo da moda.",
       "Colaborar com equipes multifuncionais, incluindo designers, gerentes de produto e outros desenvolvedores para criar produtos de alta qualidade.",
-      "Implementando design responsivo e garantindo compatibilidade entre navegadores.",
-      "Participar de revisões de código e fornecer feedback construtivo para outros desenvolvedores.",
+      "Minha paixão pela moda me levou a permanecer atualizado constantemente, mantendo-me curioso e sempre à procura de novos artistas, músicas e tendências.",
     ],
     },
   {
-    title: "Web Developer",
-    company_name: "Shopify",
+    title: "Estilista",
+    company_name: "TNG",
     icon: shopify,
     iconBg: "#383E56",
-    date: "Jan 2022 - Jan 2023",
+    date: "Jan 2015 - Jan 2016",
     points: [
-      "Desenvolvimento e manutenção de aplicações web utilizando React.js e outras tecnologias relacionadas.",
-      "Colaborar com equipes multifuncionais, incluindo designers, gerentes de produto e outros desenvolvedores para criar produtos de alta qualidade.",
-      "Implementando design responsivo e garantindo compatibilidade entre navegadores.",
-      "Participar de revisões de código e fornecer feedback construtivo para outros desenvolvedores.",
+      "Minha carreira deu um salto significativo quando abracei a oportunidade de me tornar estilista na aclamada marca TNG, uma experiência que me permitiu mergulhar profundamente no mundo da moda.",
+      "Nesse papel, eu não apenas criei, mas também influenciei o estilo e a direção da marca, contribuindo para sua consolidação como uma referência na indústria da moda. ",
+      "Foi uma fase de crescimento pessoal e profissional que moldou minha trajetória na moda",
     ],
   },
   {
-    title: "Full stack Developer",
-    company_name: "Meta",
+    title: "Minha 1ª Marca",
+    company_name: "MAYWHO",
     icon: meta,
     iconBg: "#E6DEDD",
-    date: "Jan 2023 - Present",
+    date: "Fev 2016 - Apr 2017",
     points: [
-      "Desenvolvimento e manutenção de aplicações web utilizando React.js e outras tecnologias relacionadas.",
-      "Colaborar com equipes multifuncionais, incluindo designers, gerentes de produto e outros desenvolvedores para criar produtos de alta qualidade.",
-      "Implementando design responsivo e garantindo compatibilidade entre navegadores.",
-      "Participar de revisões de código e fornecer feedback construtivo para outros desenvolvedores.",
+      "Nascia então a minha própria marca, a MAYWHO, um marco na minha jornada. Ao longo dos anos, além de dar vida à minha própria criação, tive o privilégio de atuar como stylist, deixando minha marca autoral em diversos projetos notáveis.",
+      "Desenvolvimento e preparação de campanhas e parcerias da MAYWHO",
+      "Destaco com orgulho um projeto publicado na renomada Vanity Teen, onde pude explorar minha visão única da moda e contribuir para a criação de um editorial de destaque na indústria.",
+    ],
+  },
+
+  {
+    title: "Estilista",
+    company_name: "Colcci",
+    icon: tesla,
+    iconBg: "#E6DEDD",
+    date: "Apr 2017 - Ago 2023",
+    points: [
+      "Minha trajetória na COLCCI representou anos de dedicação e paixão pela moda. Durante esse tempo, contribuí para o design e criação de peças memoráveis.  ",
+      "Enquanto também trabalhava com a marca CLC, minha carreira alcançou um novo patamar. ",
+      "Contudo, em um determinado momento, me deparei com uma encruzilhada que sinalizava uma nova e emocionante etapa de evolução em minha jornada profissional.",
     ],
   },
 ];
@@ -199,67 +198,67 @@ const testimonials = [
 
 const projects = [
   {
-    name: "Two Variant",
+    name: "Colcci Verão 2022",
     description:
-      "Aplicação desenvolvida para a empresa @twovariant / twovariant.com.br. Uma loja virtual onde o usuário poderá realizar compras, acompanhar o tempo de entrega e frete, provedor de pagamentos conectado ao stripe, paypal, mercado livre e getnet.",
+      "Estampas criadas por mim, usadas em coleção da colcci verão 2022, com participação da modelo Winnie Harlow.",
     tags: [
       {
-        name: "React",
+        name: "2022",
         color: "blue-text-gradient",
       },
       {
-        name: "Postgree",
+        name: "Colcci",
         color: "green-text-gradient",
       },
       {
-        name: "Tailwind-CSS",
+        name: "Winnie Harlow",
         color: "pink-text-gradient",
       },
     ],
     image: carrent,
-    source_code_link: "https://twovariant.com.br",
+    source_code_link: "https://www.behance.net/gallery/128683249/Jardim-optico",
   },
   {
-    name: "Anunciarty",
+    name: "Colcci Rock in Rio",
     description:
-      "Aplicação criada para a empresa de marketing @anunciarty_ , Cujo projeto inicial se deu à ideia onde pudessemos enriquecer a experiência do usuário e lhes mostrar a elevação do marketing em seu negócio. ",
+      "Essa coleção COLCCI + Rock in Rio combina a essência de ambas as marcas, criando um guarda-roupa que celebra a música e a moda de uma forma única e emocionante.",
     tags: [
       {
-        name: "react",
+        name: "Rock-In-Rio",
         color: "blue-text-gradient",
       },
       {
-        name: "restapi",
+        name: "Colcci",
         color: "green-text-gradient",
       },
       {
-        name: "scss",
+        name: "Música",
         color: "pink-text-gradient",
       },
     ],
     image: jobit,
-    source_code_link: "anunciarty.vercel.app",
+    source_code_link: "https://www.behance.net/gallery/182514877/Drop-Colcci-Rocknrio",
   },
   {
-    name: "Soberana Luxo",
+    name: "CLC Primavera 2024",
     description:
-      "Aplicação criada em react e mongo-db, para a empresa @soberana.luxo, cujo objetivo é fomentar a ideia do consumo consciente, incentivando o aluguel para itens de uso quase que unicos, tais como joias de formaturas, casamentos e eventos.",
+      "Primavera 2024 da CLC é uma celebração do estilo e da elegância, projetada para elevar seu guarda-roupa nesta temporada. Cada peça é uma expressão de moda contemporânea e conforto, projetada para acompanhar você em todas as aventuras da primavera.",
     tags: [
       {
-        name: "nextjs",
+        name: "ClC",
         color: "blue-text-gradient",
       },
       {
-        name: "supabase",
+        name: "2024",
         color: "green-text-gradient",
       },
       {
-        name: "css",
+        name: "Primavera",
         color: "pink-text-gradient",
       },
     ],
     image: tripguide,
-    source_code_link: "https://github.com/",
+    source_code_link: "https://www.behance.net/gallery/182522975/CLC-PRIMAVERA2024",
   },
 ];
 
