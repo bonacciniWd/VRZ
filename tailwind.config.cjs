@@ -8,6 +8,7 @@ module.exports = {
         primary: "#050816",
         secondary: "#aaa6c3",
         tertiary: "#151030",
+        card: "#001f3f",
         "black-100": "#100d25",
         "black-200": "#090325",
         "white-100": "#f3f3f3",
@@ -25,3 +26,6 @@ module.exports = {
   },
   plugins: [],
 };
+
+
+// #001f3f, #0074b9, #00a8cc, #56ccf2,

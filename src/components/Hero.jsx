@@ -55,26 +55,34 @@ const Hero = () => {
         </div>
 
         <div>
-          <h1 className={`${styles.heroHeadText} text-white`} style={{ textShadow: "1px 1px 2px rgba(0, 0, 0, 0.7)", textAlign:"center", padding: "10px"}}>
+          <h1 className={`${styles.heroHeadText} text-white`} style={{ textShadow: "2px 2px 4px rgba(0, 0, 0, 0.7)", textAlign:"center", padding: "10px"}}>
             Wotho<span className='text-[#32cd32]'>.</span><span className='text-[#ff0]'> Art</span>
           </h1>
 
           <img 
-            src={oto}  // Substitua pelo caminho da sua imagem
+            src={oto} // Substitua pelo caminho da sua imagem
             alt="Descrição da imagem"
             style={{
               width: "100%",  // Torna a imagem responsiva
               maxWidth: "300px",  // Limita a largura máxima a 300px
               height: "auto",  // Mantém a proporção original da imagem
               borderRadius: "200px",
-              border:  "3px solid #050816",
+              boxShadow: "5px 5px 5px rgba(0, 0, 0, 0.7)", 
+              border: "2px solid transparent",
+              borderImageSlice: 1,
               display: "block"
-
             }}
           />
 
+
           <p className={`${styles.heroSubText} mt-2 text-white-500`}>
-            <span id="animated-text" style={{ display: "inline-block", color: "#f1f1f1", textShadow: "1px 1px 2px rgba(0, 0, 0, 0.7)", fontSize:"25px", textAlign:"center", textTransform: "uppercase" }}></span>
+            <span id="animated-text" style={{ display: "inline-block", 
+              color: "#f1f1f1", 
+              textShadow: "1px 1px 2px rgba(0, 0, 0, 0.7)", 
+              fontSize:"25px",
+              textAlign:"center",
+                textTransform: "uppercase" }}>
+            </span>
           </p>
         </div>
       </div>
