@@ -9,7 +9,7 @@ const App = () => {
         <StarsCanvas />
         <Tech />
         
-       
+       <Hero />
       </div>
     </BrowserRouter>
   );

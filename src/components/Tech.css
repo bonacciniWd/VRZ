@@ -149,10 +149,7 @@ padding: 1%;
 	border: 3px solid #fff;
 	background-color: #000;
 }
- .Userimage:hover {
-    background-color: #d207e0b1;
-    border: 3px solid #000;
- }
+
 
 .img {
     max-width: 100%;
@@ -161,3 +158,23 @@ padding: 1%;
     
 }
 }
+
+@media (max-width: 380px) {
+    .Containertabs {
+      display:contents;
+    }
+  
+    .Userimage {
+      width: 45%; /* Ajuste este valor de acordo com a largura desejada */
+      height: auto; /* Isso garantirá que a imagem mantenha a proporção */
+      margin: 0.5%; /* Adicione margem para separar as imagens */
+      margin-top: 15px;
+    }
+    
+    .img {
+        max-width: 100%;
+        height: 100%;
+        border-radius: 15px;
+        
+    }
+  }

@@ -1,0 +1,25 @@
+.hero {
+    background-color: #33333300; /* Cor de fundo do rodapé, ajuste conforme necessário */
+    color: #fff; /* Cor do texto, ajuste conforme necessário */
+    padding: 20px 0; /* Espaçamento interno, ajuste conforme necessário */
+    text-align: center; /* Centralizar o conteúdo */
+    margin-top: 70px;
+  }
+  
+  .hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .hero img {
+    max-width: 35px; /* Ajuste o tamanho do logotipo conforme necessário */
+  }
+  
+  /* Estilize o texto de copyright conforme necessário */
+  .hero p {
+    margin-top: 10px; /* Espaçamento entre o logotipo e o texto, ajuste conforme necessário */
+    font-size: 14px; /* Tamanho da fonte do texto, ajuste conforme necessário */
+  }
+  
