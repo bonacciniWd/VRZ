@@ -7,8 +7,7 @@ const App = () => {
     <BrowserRouter>
       <div >
         <StarsCanvas />
-        <Tech />
-        
+        <Tech /> 
        <Hero />
       </div>
     </BrowserRouter>
