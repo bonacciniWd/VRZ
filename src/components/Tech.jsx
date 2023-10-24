@@ -13,17 +13,17 @@ const Tech = () => {
           <div className="Usertabs">
             <div class="button-wrapper">
               <button className="btn">
-                <a href="#" >PORTFOLIO</a>
+                <a href="https://www.behance.net/wotho" target="_blank">PORTFOLIO</a>
               </button>
             </div>
             <div class="button-wrapper">
               <button className="btn">
-                <a href="#" >LINKEDIN</a>
+                <a href="https://www.linkedin.com/in/washington-nascimento-8832b3270" target="_blank">LINKEDIN</a>
             </button>
             </div>
             <div class="button-wrapper">
               <button className="btn">
-                <a href="#" >INSTA</a>
+                <a href="https://www.instagram.com/wotho/" target="_blank">INSTA</a>
               </button>
             </div>
             <div class="button-wrapper">
