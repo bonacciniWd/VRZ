@@ -6,7 +6,9 @@ const App = () => {
   return (
     <BrowserRouter>
       <div >
+        <StarsCanvas />
         <Tech />
+        
        
       </div>
     </BrowserRouter>

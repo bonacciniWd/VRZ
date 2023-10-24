@@ -6,6 +6,7 @@ padding: 1%;
 .Container { 
 	display: flex;
 	align-items: flex;
+    margin-top: 55px;
 	max-width: 900px;
 	min-width: 450px;
 	max-height: 600px;
