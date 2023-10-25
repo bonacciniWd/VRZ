@@ -28,7 +28,7 @@ const Tech = () => {
             </div>
             <div class="button-wrapper">
               <button className="btn">
-                <a href="#">E-MAIL</a>
+                <a href="mailto:Wotho89@icloud.com">E-MAIL</a>
               </button>
             </div>
             
