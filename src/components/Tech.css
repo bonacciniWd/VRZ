@@ -226,7 +226,7 @@ padding: 1%;
       width: 45%; /* Ajuste este valor de acordo com a largura desejada */
       height: auto; /* Isso garantirá que a imagem mantenha a proporção */
       margin: 0.5%; /* Adicione margem para separar as imagens */
-      margin-top: 15px;
+      margin-top: 25px;
     }
     
     .img {
