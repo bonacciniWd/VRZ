@@ -1,0 +1,71 @@
+.console {
+  background-color: #000;
+  color: #00ff00;
+  font-family: monospace;
+  padding: 10px;
+  margin-top: 15px;
+  border: 2px solid #fff;
+  border-radius: 5px;
+  overflow: hidden;
+  max-height: 300px;
+  font-size: 16px; /* Tamanho de fonte para desktop */
+}
+
+code {
+  animation: typing 2s steps(40, end) 1s; 
+  color: #fff;
+}
+
+code::before {
+  content: "> ";
+  color: #ff0000;
+  margin-right: 10px;
+  display: inline-block;
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+/* Mídia consulta para dispositivos móveis */
+@media (max-width: 768px) {
+  .console {
+    font-size: 10px;
+    width: 300px;
+}
+}
+
+.banner-hero {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 48vw;
+  width: 100%;
+  position: relative;
+  top: 10px;
+  left: -25px;
+
+animation: animate 3s infinite ease alternate;
+}
+
+@media only screen and (max-width: 768px) {
+.banner-hero {
+  width: 200px;
+  height: 300px;
+  align-items: center;
+  margin-left: 50px;
+}
+}
+
+/* Definir a keyframes da animação */
+@keyframes animate {
+to {
+  transform: translateY(100px);
+  
+}
+}

@@ -5,9 +5,16 @@ import { About, Contact, Experience, Feedbacks, Hero, Navbar, Tech, Works, Stars
 const App = () => {
   return (
     <BrowserRouter>
+     <div className='bg-hero-pattern bg-cover bg-no-repeat bg-center'>
+          <Navbar />
+          
+        </div>
       <div >
         <StarsCanvas />
         <Tech /> 
+        <About />
+        <Works />
+       <Contact />
        <Hero />
       </div>
     </BrowserRouter>

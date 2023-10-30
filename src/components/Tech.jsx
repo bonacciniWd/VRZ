@@ -1,47 +1,88 @@
 import React from "react";
+import { styles } from "../styles";
+import { useEffect } from "react";
+import { Canvas } from "@react-three/fiber";
+import { OrbitControls, Sphere, MeshDistortMaterial } from "@react-three/drei";
 
-import "./Tech.css";
-import { SectionWrapper } from "../hoc";
-import imagem from "../assets/wotho.jpg";
+import BannerHero from "../assets/herobn.png";
+import './main.css';
 
-const Tech = () => {
+
+
+const Main = () => {
+  useEffect(() => {
+    const phrases = ["Bem vindos à VRZ Estúdio", "Criamos aplicações web e mobile", "Trazemos seu projeto à vida!"];
+    let phraseIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+    const textElement = document.getElementById("animated-text");
+
+    function typeText() {
+      const currentPhrase = phrases[phraseIndex];
+      const currentText = currentPhrase.substring(0, charIndex + 1);
+      textElement.textContent = currentText;
+
+      if (!isDeleting) {
+        charIndex++;
+      } else {
+        charIndex--;
+      }
+
+      if (isDeleting && charIndex === -1) {
+        isDeleting = false;
+
+        // Aguarde 3 segundos antes de iniciar a próxima frase
+        setTimeout(() => {
+          phraseIndex = (phraseIndex + 1) % phrases.length;
+          charIndex = 0;
+          typeText();
+        }, 200);
+        return;
+      }
+
+      if (!isDeleting && charIndex === currentPhrase.length) {
+        isDeleting = true;
+      }
+
+      const speed = isDeleting ? 120 : 210; // Ajuste a velocidade de digitação e exclusão conforme necessário
+
+      setTimeout(typeText, speed);
+    }
+
+    typeText();
+  }, []);
+
   return (
-    <div className='door'>
-      <div className="Container">
-        <div className="Containertabs">
-        <text className="Username">Wotho</text>
-          <div className="Usertabs">
-            <div class="button-wrapper">
-              <button className="btn">
-                <a href="https://www.behance.net/wotho" target="_blank">PORTFOLIO</a>
-              </button>
-            </div>
-            <div class="button-wrapper">
-              <button className="btn">
-                <a href="https://www.linkedin.com/in/washington-nascimento-8832b3270" target="_blank">LINKEDIN</a>
-            </button>
-            </div>
-            <div class="button-wrapper">
-              <button className="btn">
-                <a href="https://www.instagram.com/wotho/" target="_blank">INSTA</a>
-              </button>
-            </div>
-            <div class="button-wrapper">
-              <button className="btn">
-                <a href="mailto:Wotho89@icloud.com">E-MAIL</a>
-              </button>
-            </div>
-            
-          </div>
-          <div className="Userimage">
-            <img src={imagem} alt="wotho" className="img" />
-          </div>
+    <section className={`relative w-full h-screen mx-auto`}>
+      <div className={`absolute inset-0 top-[120px]  max-w-7xl mx-auto ${styles.paddingX} flex flex-row items-start gap-5`}>
+        <div className='flex flex-col justify-center items-center mt-5'>
+        <div className='w-5 h-5 rounded-full bg-[#915EFF]' />
+          <div className='w-1 sm:h-40 h-40 violet-gradient' />
+         
         </div>
 
+        <div>
+          <h1 className={`${styles.heroHeadText} text-white uppercase`}>
+           O que você  <span className='text-[#915EFF] uppercase' style={{ margin: '0 10px' }}>quer criar?</span>
+          </h1>
+          
+          <div className="console">
+            <pre>
+              <code id="animated-text"></code>
+            </pre>
+          </div>
 
+       
+        <div>
+          <img className="banner-hero" src={BannerHero} alt=""/>  
+        </div>           
+        </div>
       </div>
-    </div>
+
+   
+    </section>
+    
   );
 };
 
-export default SectionWrapper(Tech, "");
+export default Main;

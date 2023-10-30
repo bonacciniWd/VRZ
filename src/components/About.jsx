@@ -40,15 +40,18 @@ const About = () => {
     <>
       <motion.div variants={textVariant()}>
         <p className={styles.sectionSubText}>Introdução</p>
-        <h2 className={styles.sectionHeadText}>Mais sobre mim.</h2>
+        <h2 className={styles.sectionHeadText}>Mais sobre a VRZ</h2>
       </motion.div>
 
       <motion.p
         variants={fadeIn("", "", 0.1, 1)}
         className='mt-4 text-secondary text-[17px] max-w-3xl leading-[30px]'
       >
-        Olá, eu sou Wotho, um profissional apaixonado pela moda, com 34 anos de idade e formação pelo Instituto Europeu de Design. 
-        Minha jornada na indústria da moda começou com experiência em estamparia e assistência de figurino, o que me proporcionou um profundo entendimento dos detalhes por trás da criação de peças.
+       Somos um estúdio voltado criações de software especializado com experiência em TypeScript e
+        JavaScript, e estruturas como React, Node.js, e
+        Three.js. Buscamos um acompanhamento de perto com os clientes para
+        criar soluções eficientes, escaláveis e fáceis de utilizar que resolvam
+        problemas do mundo real. Vamos trabalhar em conjunto para dar vida às suas ideias! 
       </motion.p>
 
       
