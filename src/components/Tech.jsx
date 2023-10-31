@@ -10,7 +10,7 @@ import './main.css';
 
 const Main = () => {
   useEffect(() => {
-    const phrases = ["Bem vindos à VRZ Estúdio", "Criamos aplicações web e mobile", "Trazemos seu projeto à vida!"];
+    const phrases = ["Bem vindos à VRZ Estúdio","...", "Criamos aplicações web e mobile","...", "Trazemos seu projeto à vida!"];
     let phraseIndex = 0;
     let charIndex = 0;
     let isDeleting = false;
@@ -43,7 +43,7 @@ const Main = () => {
         isDeleting = true;
       }
   
-      const speed = isDeleting ? 120 : 210; // Ajuste a velocidade de digitação e exclusão conforme necessário
+      const speed = isDeleting ? 120 : 90; // Ajuste a velocidade de digitação e exclusão conforme necessário
   
       setTimeout(typeText, speed);
     }
