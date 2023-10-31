@@ -4,10 +4,9 @@ import { useEffect } from "react";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, Sphere, MeshDistortMaterial } from "@react-three/drei";
 
-import BannerHero from "../assets/herobn.png";
+import BannerHeroMobile from "../assets/herobn.png"; // Imagem para dispositivos móveis
+import BannerHeroDesktop from "../assets/herobn-desktop.png"; // Imagem para desktop
 import './main.css';
-
-
 
 const Main = () => {
   useEffect(() => {
@@ -16,21 +15,21 @@ const Main = () => {
     let charIndex = 0;
     let isDeleting = false;
     const textElement = document.getElementById("animated-text");
-
+  
     function typeText() {
       const currentPhrase = phrases[phraseIndex];
       const currentText = currentPhrase.substring(0, charIndex + 1);
       textElement.textContent = currentText;
-
+  
       if (!isDeleting) {
         charIndex++;
       } else {
         charIndex--;
       }
-
+  
       if (isDeleting && charIndex === -1) {
         isDeleting = false;
-
+  
         // Aguarde 3 segundos antes de iniciar a próxima frase
         setTimeout(() => {
           phraseIndex = (phraseIndex + 1) % phrases.length;
@@ -39,31 +38,31 @@ const Main = () => {
         }, 200);
         return;
       }
-
+  
       if (!isDeleting && charIndex === currentPhrase.length) {
         isDeleting = true;
       }
-
+  
       const speed = isDeleting ? 120 : 210; // Ajuste a velocidade de digitação e exclusão conforme necessário
-
+  
       setTimeout(typeText, speed);
     }
-
+  
     typeText();
   }, []);
+  
 
   return (
     <section className={`relative w-full h-screen mx-auto`}>
       <div className={`absolute inset-0 top-[120px]  max-w-7xl mx-auto ${styles.paddingX} flex flex-row items-start gap-5`}>
         <div className='flex flex-col justify-center items-center mt-5'>
-        <div className='w-5 h-5 rounded-full bg-[#915EFF]' />
-          <div className='w-1 sm:h-40 h-40 violet-gradient' />
-         
+          <div className='w-5 h-5 rounded-full bg-[#915EFF]' />
+          <div className='w-1 sm:h-60 h-80 violet-gradient' />
         </div>
 
         <div>
           <h1 className={`${styles.heroHeadText} text-white uppercase`}>
-           O que você  <span className='text-[#915EFF] uppercase' style={{ margin: '0 10px' }}>quer criar?</span>
+            O que você  <span className='text-[#915EFF] uppercase' style={{ margin: '0 10px' }}>quer criar?</span>
           </h1>
           
           <div className="console">
@@ -72,17 +71,20 @@ const Main = () => {
             </pre>
           </div>
 
-       
-        <div>
-          <img className="banner-hero" src={BannerHero} alt=""/>  
-        </div>           
+          <div>
+            {window.innerWidth > 768 ? (
+              <img className="banner-hero" src={BannerHeroDesktop} alt="Imagem para desktop" />
+            ) : (
+              <img className="banner-hero" src={BannerHeroMobile} alt="Imagem para dispositivos móveis" />
+            )}
+          </div>           
         </div>
       </div>
-
-   
     </section>
-    
   );
 };
 
 export default Main;
+
+
+

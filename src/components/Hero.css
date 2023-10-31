@@ -1,9 +1,10 @@
 .hero {
-    background-color: #33333300; /* Cor de fundo do rodapé, ajuste conforme necessário */
+    background-color: #050816; /* Cor de fundo do rodapé, ajuste conforme necessário */
     color: #fff; /* Cor do texto, ajuste conforme necessário */
     padding: 20px 0; /* Espaçamento interno, ajuste conforme necessário */
     text-align: center; /* Centralizar o conteúdo */
     margin-top: 70px;
+    border-top: solid 1px #915eff95 ;
   }
   
   .hero-content {

@@ -44,21 +44,24 @@ code::before {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 48vw;
+  height: 400px;
   width: 100%;
   position: relative;
-  top: 10px;
-  left: -25px;
+  top: 0px;
+  left: 0px;
+
 
 animation: animate 3s infinite ease alternate;
 }
 
 @media only screen and (max-width: 768px) {
 .banner-hero {
-  width: 200px;
-  height: 300px;
+  width: 300px;
+  height: 400px;
   align-items: center;
   margin-left: 50px;
+  top: 0px;
+  left: -60px;
 }
 }
 
