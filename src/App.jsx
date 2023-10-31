@@ -2,6 +2,7 @@ import { BrowserRouter } from "react-router-dom";
 
 import { About, Contact, Experience, Feedbacks, Hero, Navbar, Tech, Works, StarsCanvas } from "./components";
 import Wpp from "./components/Wpp.jsx";
+import Sliding from "./components/Sliding.jsx";
 
 const App = () => {
   return (
