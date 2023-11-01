@@ -19,7 +19,7 @@ const ExperienceCard = ({ experience }) => {
         background: "#001f3f",
         color: "#fff",
       }}
-      contentArrowStyle={{ borderRight: "7px solid  #" }}
+      contentArrowStyle={{ borderRight: "7px solid  #915EFF" }}
       date={experience.date}
       iconStyle={{ background: experience.iconBg }}
       icon={

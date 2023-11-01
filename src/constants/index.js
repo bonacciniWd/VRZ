@@ -120,7 +120,7 @@ const experiences = [
     title: "Planejamento",
     company_name: "Criação de escopos",
     icon: starbucks,
-    iconBg: "#383E56",
+    iconBg: "#915EFF",
     date: "📝🤝",
     points: [
       " A empresa se reúne com o cliente para entender suas necessidades e requisitos.",
@@ -132,7 +132,7 @@ const experiences = [
     title: "Design",
     company_name: "Estilização do projeto",
     icon: tesla,
-    iconBg: "#E6DEDD",
+    iconBg: "#915EFF",
     date: "🖌️🏗️",
     points: [
       "Os engenheiros de software projetam a arquitetura do sistema, definindo como os componentes do software se encaixam e interagem entre si.",
@@ -143,7 +143,7 @@ const experiences = [
     title: "Desenvolvimento",
     company_name: "Codificação da aplicação",
     icon: shopify,
-    iconBg: "#383E56",
+    iconBg: "#915EFF",
     date: "🧑‍💻",
     points: [
       "Os programadores escrevem o código-fonte do software com base nas especificações do projeto e no design da arquitetura.",
@@ -154,7 +154,7 @@ const experiences = [
     title: "Testes e Implantação",
     company_name: "Testes das funcionalidades e segurança  ",
     icon: meta,
-    iconBg: "#E6DEDD",
+    iconBg: "#915EFF",
     date: "🧪🚀",
     points: [
       "O software é testado como um todo para identificar e corrigir bugs e garantir que atenda aos requisitos do cliente.",
@@ -254,7 +254,7 @@ const projects = [
       },
     ],
     image: tripguide,
-    source_code_link: "https://github.com/",
+    source_code_link: "https://github.com/bonacciniWd/",
   },
 ];
 
