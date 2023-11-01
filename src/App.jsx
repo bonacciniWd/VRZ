@@ -15,9 +15,11 @@ const App = () => {
         <StarsCanvas />
         <Tech /> 
         <About />
+        <Sliding />
         <Experience />
         <Works />
        <Contact />
+       
        <Hero />
       </div>
       <Wpp />

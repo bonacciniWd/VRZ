@@ -1,63 +1,25 @@
-/* Estilos base */
-.overflow {
-    overflow: hidden;
-  }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+  scroll-behavior: smooth;
+  color-scheme: dark;
+}
+.video-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: auto; /* Toma toda a altura da tela */
 
-  /* Adicione classes para ocultar painéis não ativos */
-.panels__side--left-inactive {
-    display: none;
-  }
-  
-  .panels__side--right-inactive {
-    display: none;
-  }
-  
-  
-  .panels {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 300px;
-    font-family: Arial;
-  }
-  
-  .panels__side {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #fff;
-    font-size: 16px;
-    width: 50%;
-    height: 300px;
-    border-radius: 12px;
-    box-shadow: 0px 2px 0px 0px rgba(50, 50, 50, 0.5);
-    position: relative;
-    transition: all 0.3s ease-in;
-  }
-  
-  /* Gradient background para os lados */
-  .panels__side:nth-child(odd) {
-    background: linear-gradient(45deg, #2d35eb 0%, #fdbb2d 100%);
-  }
-  
-  .panels__side:nth-child(even) {
-    background: linear-gradient(45deg, #2d35eb 0%, #22c1c3 100%);
-  }
-  
-  .panels__side--inner {
-    text-align: center;
-    padding: 20px;
-  }
-  
-  /* Estilos para mobile */
-  @media (max-width: 768px) {
-    .panels {
-      flex-direction: column;
-    }
-  
-    .panels__side {
-      width: 100%;
-      height: auto;
-    }
-  }
-  
+}
+.video {
+  width: 200px;
+height: 200px;
+padding: 10 10px;
+border-radius: 50%;
+border: solid 8px rgba(28, 26, 28, 0.881);
+padding: 6px;
+background-color: rgba(137, 43, 226, 0.79);
+box-shadow: 0px 0px 180px rgba(145, 11, 178, 0.926); 
+}
