@@ -42,7 +42,7 @@ const Navbar = () => {
             window.scrollTo(0, 0);
           }}
         >
-          <img src={logo} alt='logo' className='w-12 h-12 object-contain' style={{ borderRadius: "50px", padding: "3px", opacity:"0.4"}} />
+          <img src={logo} alt='logo' className='w-12 h-12 object-contain' style={{ borderRadius: "50px", padding: "3px", opacity:"1"}} />
           <p className='text-white text-[18px] font-bold cursor-pointer flex '>
             DEV STUDIO || &nbsp; 
             <span className='sm:block hidden'> MKT STUDIO</span>
