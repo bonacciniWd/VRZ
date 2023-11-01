@@ -19,7 +19,6 @@ const App = () => {
         <Experience />
         <Works />
        <Contact />
-       
        <Hero />
       </div>
       <Wpp />
