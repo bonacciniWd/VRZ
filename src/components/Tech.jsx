@@ -71,13 +71,7 @@ const Main = () => {
             </pre>
           </div>
 
-          <div>
-            {window.innerWidth > 768 ? (
-              <img className="banner-hero" src={BannerHeroDesktop} alt="Imagem para desktop" />
-            ) : (
-              <img className="banner-hero" src={BannerHeroMobile} alt="Imagem para dispositivos móveis" />
-            )}
-          </div>           
+             
         </div>
       </div>
     </section>

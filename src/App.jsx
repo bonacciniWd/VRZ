@@ -4,6 +4,7 @@ import { About, Contact, Experience, Feedbacks, Hero, Navbar, Tech, Works, Stars
 import Wpp from "./components/Wpp.jsx";
 import Sliding from "./components/Sliding.jsx";
 import { Analytics } from '@vercel/analytics/react';
+import Davero from "./components/Davero.jsx";
 
 const App = () => {
   return (
@@ -15,6 +16,7 @@ const App = () => {
       <div >
         <StarsCanvas />
         <Tech /> 
+        <Davero />
         <About />
         <Sliding />
         <Experience />
