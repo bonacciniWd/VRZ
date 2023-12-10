@@ -4,7 +4,6 @@ import { useEffect } from "react";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, Sphere, MeshDistortMaterial } from "@react-three/drei";
 
-import BannerHeroMobile from "../assets/herobn.png"; // Imagem para dispositivos móveis
 import BannerHeroDesktop from "../assets/herobn-desktop.png"; // Imagem para desktop
 import './main.css';
 
@@ -71,8 +70,15 @@ const Main = () => {
             </pre>
           </div>
 
-             
+          <div>
+            
+            <img className="banner-hero" src={BannerHeroDesktop} alt="Imagem para desktop" />
+           </div>
+           
         </div>
+
+        
+
       </div>
     </section>
   );

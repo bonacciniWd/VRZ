@@ -45,7 +45,7 @@ code::before {
   justify-content: center;
   align-items: center;
   height: 400px;
-  width: 100%;
+  width: 400px;
   position: relative;
   top: 0px;
   left: 0px;
@@ -56,11 +56,11 @@ animation: animate 3s infinite ease alternate;
 
 @media only screen and (max-width: 768px) {
 .banner-hero {
-  width: 300px;
-  height: 400px;
+  width: auto;
+  height: 300px;
   align-items: center;
   margin-left: 50px;
-  top: 0px;
+  top: 10px;
   left: -60px;
 }
 }
@@ -68,7 +68,7 @@ animation: animate 3s infinite ease alternate;
 /* Definir a keyframes da animação */
 @keyframes animate {
 to {
-  transform: translateY(100px);
+  transform: translateY(50px);
   
 }
 }
