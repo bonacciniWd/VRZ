@@ -43,7 +43,7 @@ const Main = () => {
         isDeleting = true;
       }
   
-      const speed = isDeleting ? 120 : 90; // Ajuste a velocidade de digitação e exclusão conforme necessário
+      const speed = isDeleting ? 90 : 70; // Ajuste a velocidade de digitação e exclusão conforme necessário
   
       setTimeout(typeText, speed);
     }
