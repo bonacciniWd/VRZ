@@ -12,8 +12,8 @@ import './Popup.css';
 
 const Popup = () => {
   const [chatWindowOpen, setChatWindowOpen] = useState(true);
+  const [messages, setMessages] = useState([]);
   const [userName, setUserName] = useState(null);
-  const [userMessages, setUserMessages] = useState([]);
   const initialMessageDisplayed = useRef(false);
 
   const handleToggle = () => {
@@ -24,7 +24,7 @@ const Popup = () => {
     if (!initialMessageDisplayed.current) {
       addResponseMessage('Bem-vindo ao atendimento da VRZ-Studio, eu sou Arch 🤖, uma inteligência artificial e estou aqui para facilitar o seu atendimento. Você também pode me perguntar coisas do tipo:\n᠉ *Ajuda* \n ᠉ *Desenvolvimento* \n ᠉ *Preços* \n᠉ *Serviços* \n\n Você também pode perguntar: \n᠉ *Conte uma piada* \n᠉ *O que você faz* \n᠉ *Sentido da vida*\n');
       initialMessageDisplayed.current = true;
-    } else if (userName) {
+    } else if (!userName) {
       // Pergunta pelo nome do usuário na segunda interação
       addResponseMessage('Antes de começarmos, poderia me dizer o seu nome?');
     } else {
@@ -34,11 +34,10 @@ const Popup = () => {
   }, [initialMessageDisplayed, userName]);
 
   useEffect(() => {
-    if (userMessages.length > 0) {
-      // Adiciona as mensagens do usuário ao chat
-      setUserMessages((prevUserMessages) => [...prevUserMessages, ...userMessages]);
+    if (messages.length > 0) {
+      addResponseMessage(messages[messages.length - 1]);
     }
-  }, [userMessages]);
+  }, [messages]);
 
   const handleNewUserMessage = (newMessage) => {
     if (!userName) {
@@ -47,10 +46,8 @@ const Popup = () => {
     } else {
       // Se já tiver o nome do usuário, processa como uma mensagem regular
       handleUserMessage(newMessage, (responseMessage) => {
-        // Adiciona a nova mensagem do usuário ao estado userMessages
-        setUserMessages((prevUserMessages) => [...prevUserMessages, newMessage]);
-        // Adiciona a nova mensagem de resposta ao chat
-        addResponseMessage(responseMessage);
+        // Adiciona a nova mensagem ao estado messages
+        setMessages((prevMessages) => [...prevMessages, responseMessage]);
       }, addLinkSnippet, userName);
     }
   };
