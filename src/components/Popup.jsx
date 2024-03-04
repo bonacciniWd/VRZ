@@ -13,7 +13,7 @@ import './Popup.css';
 const Popup = () => {
   const [chatWindowOpen, setChatWindowOpen] = useState(true);
   const [messages, setMessages] = useState([]);
-  const [userName, setUserName] = useState([]);
+  const [userName, setUserName] = useState(null);
   const initialMessageDisplayed = useRef(false);
 
   const handleToggle = () => {
@@ -21,7 +21,7 @@ const Popup = () => {
   };
 
   useEffect(() => {
-    if (!initialMessageDisplayed.current) {
+    if (initialMessageDisplayed.current) {
       addResponseMessage('Bem-vindo ao atendimento da VRZ-Studio, eu sou Arch 🤖, uma inteligência artificial e estou aqui para facilitar o seu atendimento. Você também pode me perguntar coisas do tipo:\n᠉ *Ajuda* \n ᠉ *Desenvolvimento* \n ᠉ *Preços* \n᠉ *Serviços* \n\n Você também pode perguntar: \n᠉ *Conte uma piada* \n᠉ *O que você faz* \n᠉ *Sentido da vida*\n');
       initialMessageDisplayed.current = true;
     } else if (!userName) {
@@ -72,7 +72,7 @@ const Popup = () => {
         profileClientAvatar={user}
         titleAvatar={rc}
         chatId
-        sendButtonAlt
+
         emojis
         showBadge
         toggleMsgLoader
