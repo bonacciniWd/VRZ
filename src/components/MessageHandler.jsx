@@ -1,63 +1,75 @@
-// MessageHandler.js
+// Arquivo que manipula as respostas da IA //
 
-// ... (código anterior)
 
+// Ajuda
 const handleHelp = (addResponseMessage) => {
-  addResponseMessage('Claro, posso te ajudar! O que você precisa?');
+  addResponseMessage('Claro, posso te ajudar! O que você precisa? \n ▶ Suporte ');
 };
-
+// Preços
 const handlePrices = (addResponseMessage) => {
-  addResponseMessage('Os preços variam de acordo com os serviços. Como posso te ajudar mais especificamente?');
+  addResponseMessage('Os preços variam de acordo com a solução e tempo de desenvolvimento, para oferecer um atendimento personalizado às suas necessidades, propomos agendar uma reunião de criação de escopo. Assim, poderemos compreender melhor suas informações e ideias, garantindo um processo alinhado com suas expectativas.');
+};
+//Suporte
+const handleSupport = (addResponseMessage) => {
+  const whatsappNumber = '4799102659'; // Substitua pelo seu número de WhatsApp
+  const whatsappMessage = 'Olá, eu vim diretamente do website da VRZ, gostaria de solicitar atendimento...';
+
+  const whatsappLink = `https://api.whatsapp.com/send?phone=55${whatsappNumber}&text=${encodeURIComponent(whatsappMessage)}`;
+
+  const supportMessage = `Se você já é cliente ou associado à VRZ, o suporte funciona diretamente em nosso WhatsApp. Estamos prontos para ajudar! 😊\n\nClique __[aqui](${whatsappLink})__ 📞 para entrar em contato pelo WhatsApp.`;
+
+  addResponseMessage(supportMessage);
 };
 
+//Link Guia
 const handleLink = (addLinkSnippet) => {
   addLinkSnippet({
-    title: 'Link Útil',
-    link: 'https://example.com',
+    title: 'Links úteis',
+    link: 'https://vrz-studio.tech',
     target: '_blank'
   });
 };
-
+// Não Entendi
 const handleDefault = (addResponseMessage) => {
   addResponseMessage('Desculpe, não entendi. Pode reformular ou tentar uma pergunta diferente?');
 };
-
+// Como vai?
 const handleGreeting = (addResponseMessage) => {
   addResponseMessage('Olá! Eu sou um assistente virtual, então não tenho sentimentos, mas estou aqui para ajudar. Como posso ajudar você hoje?');
 };
-
+// Nome da IA
 const handleNameQuestion = (addResponseMessage) => {
   addResponseMessage('Meu nome é ArchAI. Como posso ajudar você?');
 };
-
+// O que pode fazer
 const handlePurposeQuestion = (addResponseMessage) => {
   addResponseMessage('Eu sou um assistente virtual criado para fornecer informações e ajudar com diversas questões. Como posso ajudar você agora?');
 };
-
+// Você é humano?
 const handleHumanQuestion = (addResponseMessage) => {
   addResponseMessage('Não, sou um programa de computador projetado para auxiliar em tarefas e fornecer informações. Como posso ajudar você hoje?');
 };
-
+// Sentido da vida
 const handleLifeQuestion = (addResponseMessage) => {
   addResponseMessage('Essa é uma pergunta profunda, e como **Albert Camus** afirmou: *_A vida é o que acontece enquanto você está ocupado fazendo outros planos_*. Vamos explorar juntos como encontrar significado em sua jornada');
 };
-
+// Você é inteligente?
 const handleIntelligenceQuestion = (addResponseMessage) => {
   addResponseMessage('Minha inteligência é baseada em padrões e informações disponíveis. Estou aqui para oferecer assistência da melhor maneira possível. Como posso ajudar você?');
 };
-
+// Criador
 const handleCreatorQuestion = (addResponseMessage) => {
   addResponseMessage('Eu fui criado em Fevereiro de 2024, o meu criador se chama Denis Bonaccini, um desenvolvedor de softwares e soluções baseadas em Inteligência artificials. Como posso auxiliar você hoje?');
 };
-
+// Musica
 const handleMusicQuestion = (addResponseMessage) => {
   addResponseMessage('O único gênero musical que gosto é música classica, inclusive recomendo...');
 };
-
+// Clima
 const handleWeatherQuestion = (addResponseMessage) => {
   addResponseMessage('Já dizia Chorão: **Eu não sou senhor do tempo, mas eu sei que vai chover**');
 };
-
+// Piada
 const handleJokeRequest = (addResponseMessage) => {
   const jokes = [
     'Por que o computador foi à terapia? Porque tinha muitos bytes emocionais não resolvidos! 😅💻',
@@ -90,34 +102,47 @@ const handleJokeRequest = (addResponseMessage) => {
 
   addResponseMessage(`Claro, aqui vai uma: ${randomJoke} 😄 Tem mais alguma coisa que eu possa fazer por você?`);
 };
-
+// Sonhos
 const handleDreamQuestion = (addResponseMessage) => {
   addResponseMessage('Não, eu não sonho. Minha função é fornecer assistência e informações. Há algo específico que você gostaria de saber?');
 };
-
+// Ensine-me
 const handleTeachRequest = (addResponseMessage) => {
   addResponseMessage('Dependendo de quê você busca, eu posso lhe ajudar... mas vale ressaltar que eu fui criada para lhe auxiliar no atendimento de nossa empresa!');
 };
-
+// Fazer conta
 const handleMathQuestion = (addResponseMessage) => {
   addResponseMessage('Acho que se você está em busca de soluções matemáticas, existem outras opções de IA que podem te auxiliar de maneira mais eficaz...');
 };
-
+// ET
 const handleExtraterrestrialQuestion = (addResponseMessage) => {
   addResponseMessage('Minhas crenças são baseadas em fatos e informações disponíveis. A existência de vida extraterrestre ainda é uma questão em aberto. Posso ajudar com algo mais?');
 };
-
+// Onde você está?
 const handleLocationQuestion = (addResponseMessage) => {
-  addResponseMessage('Eu não tenho uma localização física, pois sou um programa de computador. Posso ajudar com algo mais?');
+  addResponseMessage('Eu estou bem aqui, na ☁️☁️☁️ nuvem... ');
 };
-
+// Idiomas e linguas
 const handleLanguageQuestion = (addResponseMessage) => {
   addResponseMessage('Eu entendo várias linguagens, incluindo português. Como posso auxiliar você hoje?');
 };
-
+// Minha idade
 const handleAgeQuestion = (addResponseMessage) => {
   addResponseMessage('Eu não tenho uma idade, pois sou uma criação digital. Como posso ajudar você?');
 };
+// Quem somos
+const handleWeAre = (addResponseMessage) => {
+  addResponseMessage('A **VRZ-Studio** é uma equipe dedicada que se destaca na criação de soluções e aplicações Web/Mobile para plataformas Android 🤖 e iOS 🍏. Nosso comprometimento com a excelência e a rapidez nos diferencia, proporcionando aos nossos clientes experiências digitais inovadoras e de alta qualidade. Seja para desenvolvimento web ou mobile, estamos aqui para transformar suas ideias em realidade de forma eficiente e impactante. 💻');
+};
+// Serviços
+const handleWork = (addResponseMessage) => {
+  addResponseMessage('Na **VRZ-Studio**, cada projeto é uma oportunidade emocionante de inovação e criatividade. \n Criamos **Websites** e **Landing Pages** visualmente impressionantes, desenvolver plataformas **SAAS** inovadoras e oferecer soluções personalizadas para bares e restaurantes. \n Além disso, implementamos robustos bancos de dados para empresas de todos os tamanhos, proporcionando eficiência e escalabilidade. \n Nossa expertise também abrange o desenvolvimento de lojas e soluções para **E-Commerce**, bem como a criação de aplicações personalizadas para **Android** e **IOS**. \n Na **VRZ-Studio**, transformamos ideias em realidade, sempre visando superar expectativas e proporcionar experiências digitais excepcionais. Conte conosco para impulsionar a presença online do seu negócio! 🚀💻📱');
+};
+const handleDev = (addResponseMessage) => {
+  addResponseMessage('Entre em contato conosco e agende uma reunião, após a nossa reunião para definir os escopos do seu projeto, daremos vida às suas ideias! Inicialmente, criaremos um mockup da sua aplicação ou solução, incorporando as tecnologias necessárias. Após sua aprovação, iniciaremos o desenvolvimento completo da sua aplicação, garantindo que cada detalhe atenda às suas expectativas. Estamos empolgados para embarcar nessa jornada de transformar sua visão em realidade! 🚀💻');
+};
+
+
 
 // ... (outras funções)
 
@@ -128,6 +153,7 @@ export const handleUserMessage = (newMessage, addResponseMessage, addLinkSnippet
 
   if (lowercaseMessage.includes('como você está')) {
     handleGreeting(addResponseMessage);
+
   } else if (lowercaseMessage.includes('qual é o seu nome') || 
              lowercaseMessage.includes('qual o seu nome') || 
              lowercaseMessage.includes('como é seu nome') || 
@@ -141,7 +167,7 @@ export const handleUserMessage = (newMessage, addResponseMessage, addLinkSnippet
               lowercaseMessage.includes( 'o que você pode fazer' )) {
     handlePurposeQuestion(addResponseMessage);
 
-  } else if (lowercaseMessage.includes('você é humano')) {
+  } else if (lowercaseMessage.includes('você é humano?')) {
     handleHumanQuestion(addResponseMessage);
 
   } else if (lowercaseMessage.includes('sentido da vida') || 
@@ -174,7 +200,7 @@ export const handleUserMessage = (newMessage, addResponseMessage, addLinkSnippet
               lowercaseMessage.includes('piada') ){
     handleJokeRequest(addResponseMessage);
 
-  } else if (lowercaseMessage.includes('você sonha')) {
+  } else if (lowercaseMessage.includes('você sonha?')) {
     handleDreamQuestion(addResponseMessage);
 
   } else if (lowercaseMessage.includes('ensine algo novo')) {
@@ -189,10 +215,11 @@ export const handleUserMessage = (newMessage, addResponseMessage, addLinkSnippet
   } else if (lowercaseMessage.includes('ajuda')) {
     handleHelp(addResponseMessage);
 
-  } else if (lowercaseMessage.includes('preço') || lowercaseMessage.includes('preços')) {
+  } else if (lowercaseMessage.includes('preço') || 
+            lowercaseMessage.includes('preços')) {
     handlePrices(addResponseMessage);
 
-  } else if (lowercaseMessage.includes('site')) {
+  } else if (lowercaseMessage.includes('link')) {
     handleLink(addLinkSnippet);
 
   } else if (lowercaseMessage.includes('onde você está') || lowercaseMessage.includes('qual a sua localização')) {
@@ -203,6 +230,25 @@ export const handleUserMessage = (newMessage, addResponseMessage, addLinkSnippet
 
   } else if (lowercaseMessage.includes('qual a sua idade') || lowercaseMessage.includes('quantos anos você tem')) {
     handleAgeQuestion(addResponseMessage);
+
+    }  else if (lowercaseMessage.includes('quem somos') || 
+             lowercaseMessage.includes('o que vocês fazem?') || 
+             lowercaseMessage.includes('o que vocês criam?') || 
+             lowercaseMessage.includes('o que é a vrz studio?')) {
+    handleWeAre(addResponseMessage);
+
+  } else if (lowercaseMessage.includes('suporte'))  {
+    handleSupport(addResponseMessage);
+
+  } else if (lowercaseMessage.includes('Serviços') ||
+            lowercaseMessage.includes('serviço'))  {
+    handleWork(addResponseMessage);
+
+  } else if (lowercaseMessage.includes('Desenvolvimento') ||
+            lowercaseMessage.includes('desenvolvimento') ||
+            lowercaseMessage.includes('dev'))  {
+    handleDev(addResponseMessage);
+
   } else {
     handleDefault(addResponseMessage);
   }
