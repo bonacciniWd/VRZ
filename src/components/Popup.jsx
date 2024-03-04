@@ -35,7 +35,7 @@ const Popup = () => {
 
   useEffect(() => {
     if (messages.length > 0) {
-      addResponseMessage(messages[messages.length - 1]);
+      addResponseMessage(messages[messages.length - 2]);
     }
   }, [messages]);
 
