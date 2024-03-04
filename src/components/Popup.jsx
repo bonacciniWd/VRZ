@@ -13,7 +13,7 @@ import './Popup.css';
 const Popup = () => {
   const [chatWindowOpen, setChatWindowOpen] = useState(true);
   const [messages, setMessages] = useState([]);
-  const [userName, setUserName] = useState(null);
+  const [userName, setUserName] = useState([]);
   const initialMessageDisplayed = useRef(false);
 
   const handleToggle = () => {
