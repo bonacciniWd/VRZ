@@ -22,12 +22,15 @@ code::before {
   margin-right: 10px;
   display: inline-block;
 }
-
-img.banner-hero {
-  max-width: 100%;
-  margin-left: 150px;
+@media only screen and (min-width: 769px) {
+  img.banner-hero {
+    max-width: 100%;
+    justify-content: center;
+    align-items: center;
+    display: block;
+    margin-left: 150px;
 }
-
+}
 @keyframes typing {
   from {
     width: 0;
@@ -43,8 +46,14 @@ img.banner-hero {
     font-size: 10px;
     width: 300px;
 }
-}
+img.banner-hero {
+  max-width: 100%;
+  justify-content: center;
+  align-items: center;
+  display: block;
 
+}
+}
 .banner-hero {
   display: flex;
   justify-content: center;
@@ -73,7 +82,7 @@ animation: animate 3s infinite ease alternate;
 /* Definir a keyframes da animação */
 @keyframes animate {
 to {
-  transform: translateY(50px);
+  transform: translateY(80px);
   
 }
 }

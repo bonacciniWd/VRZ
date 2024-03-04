@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, Sphere, MeshDistortMaterial } from "@react-three/drei";
 
-import BannerHeroDesktop from "../assets/herobn-desktop.png"; // Imagem para desktop
+import BannerHeroDesktop from "../assets/back-hero-bn.png"; // Imagem para desktop
 import './main.css';
 
 const Main = () => {
