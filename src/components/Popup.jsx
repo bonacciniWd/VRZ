@@ -12,8 +12,8 @@ import './Popup.css';
 
 const Popup = () => {
   const [chatWindowOpen, setChatWindowOpen] = useState(true);
-  const [messages, setMessages] = useState([]);
   const [userName, setUserName] = useState(null);
+  const [userMessages, setUserMessages] = useState([]);
   const initialMessageDisplayed = useRef(false);
 
   const handleToggle = () => {
@@ -34,10 +34,11 @@ const Popup = () => {
   }, [initialMessageDisplayed, userName]);
 
   useEffect(() => {
-    if (messages.length > 0) {
-      addResponseMessage(messages[messages.length - 2]);
+    if (userMessages.length > 0) {
+      // Adiciona as mensagens do usuário ao chat
+      setUserMessages((prevUserMessages) => [...prevUserMessages, ...userMessages]);
     }
-  }, [messages]);
+  }, [userMessages]);
 
   const handleNewUserMessage = (newMessage) => {
     if (!userName) {
@@ -46,8 +47,10 @@ const Popup = () => {
     } else {
       // Se já tiver o nome do usuário, processa como uma mensagem regular
       handleUserMessage(newMessage, (responseMessage) => {
-        // Adiciona a nova mensagem ao estado messages
-        setMessages((prevMessages) => [...prevMessages, responseMessage]);
+        // Adiciona a nova mensagem do usuário ao estado userMessages
+        setUserMessages((prevUserMessages) => [...prevUserMessages, newMessage]);
+        // Adiciona a nova mensagem de resposta ao chat
+        addResponseMessage(responseMessage);
       }, addLinkSnippet, userName);
     }
   };
