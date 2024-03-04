@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
-import { Widget, addResponseMessage, addLinkSnippet } from 'react-chat-widget';
+import { Widget, addResponseMessage, addUserMessage, addLinkSnippet } from 'react-chat-widget';
 import { handleUserMessage } from './MessageHandler';
 
 import 'react-chat-widget/lib/styles.css';
@@ -9,6 +9,8 @@ import rc from '../assets/rc.png';
 import Ai from '../assets/Ai.png';
 
 import './Popup.css';
+
+
 
 const Popup = () => {
   const [chatWindowOpen, setChatWindowOpen] = useState(true);
@@ -31,13 +33,16 @@ const Popup = () => {
       // Exibe mensagem personalizada com o nome do usuário
       addResponseMessage(`Olá ${userName}, O que você precisa?`);
     }
-  }, [initialMessageDisplayed]);
+  }, [initialMessageDisplayed, userName]);
 
   useEffect(() => {
     if (messages.length > 0) {
-      addResponseMessage(messages[messages.length - 1]);
+      handleUserMessage(messages[messages.length - 1].message, (responseMessage) => {
+        // Adiciona a nova mensagem ao estado messages
+        setMessages((prevMessages) => [...prevMessages, responseMessage]);
+      }, addLinkSnippet, userName);
     }
-  }, [messages]);
+  }, [messages, userName]);
 
   const handleNewUserMessage = (newMessage) => {
     if (!userName) {
@@ -51,7 +56,6 @@ const Popup = () => {
       }, addLinkSnippet, userName);
     }
   };
-  
 
   return (
     <div>
