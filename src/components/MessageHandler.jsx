@@ -1,9 +1,11 @@
 // Arquivo que manipula as respostas da IA //
 
+import { addResponseMessage } from "react-chat-widget";
+
 
 // Ajuda
 const handleHelp = (addResponseMessage) => {
-  addResponseMessage('Claro, posso te ajudar! O que você precisa? \n ▶ Suporte ');
+  addResponseMessage('Claro, posso te ajudar! O que você precisa? \n ▶ Suporte \n ▶ FAQ');
 };
 // Serviços
 const handleWork = (addResponseMessage) => {
@@ -27,6 +29,14 @@ const handleSupport = (addResponseMessage) => {
   const supportMessage = `Se você já é cliente ou associado à VRZ, o suporte funciona diretamente em nosso WhatsApp. Estamos prontos para ajudar! 😊\n\nClique __[aqui](${whatsappLink})__ 📞 para entrar em contato pelo WhatsApp.`;
 
   addResponseMessage(supportMessage);
+};
+// FAQ
+const handleFaq = (addResponseMessage) => {
+  addResponseMessage('Aqui você encontra respostas sobre perguntas frequentes: \n ▶ Serviços \n ▶ Processos \n ▶ Tecnologias \n ▶ Média de tempo \n ▶ Custos \n ▶ Pós-lançamento \n ▶ Primeiros passos \n ▶ Modelos');
+};
+// Processos
+const handleProcess = (addResponseMessage) => {
+  addResponseMessage('Nosso processo de desenvolvimento é orientado à metodologias ágeis, garantindo colaboração, flexibilidade e entrega incremental. Começamos com uma análise detalhada dos requisitos, seguido pelo design, implementação, teste e implantação.');
 };
 //Link Guia
 const handleLink = (addLinkSnippet) => {
@@ -159,7 +169,7 @@ const handleAiCuriosities = (addResponseMessage) => {
   const randomCuriosity = AiCuriosities [randomIndex];
 
   addResponseMessage(`Claro, aqui vai uma: ${randomCuriosity} 😄 Tem mais alguma coisa que eu possa fazer por você?`);
-};
+}
 // Javascript Curiosidades
 const handleJsCuriosity = (addResponseMessage) => {
   const jsCuriosities = [
@@ -186,6 +196,113 @@ const handleJsCuriosity = (addResponseMessage) => {
 
   addResponseMessage(`Claro, aqui vai uma: ${randomJSCuriosities}\n 😄 Tem mais alguma coisa que eu possa fazer por você?`);
 }
+// Livros Curiosidades
+const handleBookCuriosities = (addResponseMessage) => {
+const bookCuriosities = [
+  'O livro mais vendido de todos os tempos é a Bíblia, com mais de 5 bilhões de cópias impressas.',
+  'A trilogia "O Senhor dos Anéis", de J.R.R. Tolkien, levou cerca de 12 anos para ser escrita.',
+  'O autor Franz Kafka solicitou que todos os seus manuscritos fossem destruídos após sua morte, mas seu amigo desconsiderou esse pedido, permitindo que suas obras fossem conhecidas.',
+  'O livro "Dom Quixote", de Miguel de Cervantes, é frequentemente considerado o primeiro romance moderno.',
+  'A série "Harry Potter", de J.K. Rowling, é a série de livros mais traduzida, sendo disponível em mais de 80 idiomas.',
+  'A obra "Romeu e Julieta", de William Shakespeare, é uma das peças mais encenadas em todo o mundo.',
+  'O livro "Cem Anos de Solidão", de Gabriel García Márquez, é um dos principais exemplos do movimento literário chamado realismo mágico.',
+  '"Frankenstein", de Mary Shelley, é considerado um dos primeiros romances de ficção científica.',
+  'O escritor Agatha Christie é conhecido como a "Rainha do Crime" e seus livros já venderam mais de 2 bilhões de cópias.',
+  'A maior biblioteca do mundo é a Biblioteca do Congresso dos Estados Unidos, contendo mais de 38 milhões de livros.',
+  'A palavra "Bibliosmia" refere-se ao amor pelo cheiro de livros.',
+  'O menor livro já publicado é chamado "Teeny Ted from Turnip Town", e mede apenas 0,07 x 0,10 milímetros.',
+  'A mais longa sentença já escrita em um livro contém 823 palavras e pertence ao livro "Os Irmãos Karamazov", de Fiódor Dostoiévski.',
+  'O autor Mark Twain nasceu em 1835, quando o cometa Halley estava visível na Terra. Ele previu que morreria na próxima aparição do cometa em 1910, e assim aconteceu.',
+  'O livro "Fahrenheit 451", de Ray Bradbury, recebeu esse nome porque é a temperatura em que o papel queima.',
+  'A autora J.K. Rowling usou um pseudônimo, Robert Galbraith, ao escrever o livro "O Chamado do Cuco".',
+  'A Biblioteca de Alexandria, uma das maiores bibliotecas do mundo antigo, acreditava-se ter mais de meio milhão de rolos de papiro.',
+  'O escritor brasileiro Paulo Coelho é o autor vivo mais traduzido do mundo.',
+  // Adicione mais curiosidades conforme necessário...
+];
+const randomIndex = Math.floor(Math.random() *  bookCuriosities.length);
+const randomBookCuriosities = bookCuriosities [randomIndex];
+
+addResponseMessage(`Claro, aqui vai uma: ${randomBookCuriosities}\n 😄 Tem mais alguma coisa que eu possa fazer por você?`);
+}
+// Curiosidades gerais
+const handleGeneralCuriosity = (addResponseMessage) => {
+const generalCuriosity = [
+  'Os seres humanos compartilham cerca de 50% de seu DNA com bananas.',
+  'O som mais alto produzido por um animal é feito pela baleia-azul, e pode ser ouvido a até 800 quilômetros de distância.',
+  'Há mais estrelas no universo observável do que grãos de areia em todas as praias da Terra.',
+  'A Antártida é o local mais seco, ventoso e frio da Terra, mas é também o local com a maior média de altitude.',
+  'Apenas cerca de 5% dos oceanos do mundo foram explorados pelos seres humanos.',
+  'O cheiro da chuva é chamado de "petricor". Ele é causado por óleos liberados por plantas durante períodos secos, que são absorvidos pelo solo e liberados quando chove.',
+  'A velocidade da luz é aproximadamente 299.792.458 metros por segundo.',
+  'As formigas são capazes de tirar selfies. Cientistas já usaram pequenas câmeras para rastrear o movimento de formigas e entender melhor seu comportamento social.',
+  'Os golfinhos têm nomes uns para os outros, e eles respondem quando chamados pelo nome.',
+  'O DNA humano pode ser esticado até 2 metros de comprimento, mas normalmente é enrolado em cada célula.',
+  'Um único raio pode liberar calor cinco vezes mais quente que a superfície do sol.',
+  'O isopor é 98% ar.',
+  'Existem mais átomos em um copo de água do que copos de água no oceano.',
+  'A energia média consumida por uma lâmpada de 100 watts durante um ano custa menos de 10 centavos de dólar.',
+  'Os bebês têm cerca de 300 ossos ao nascer, mas à medida que crescem, alguns deles se fundem, resultando em cerca de 206 ossos no corpo adulto.',
+  'A lua se afasta da Terra a uma taxa de cerca de 3,8 centímetros por ano.',
+  'O Google processa mais de 40.000 pesquisas a cada segundo, totalizando mais de 3,5 bilhões por dia.',
+  'O sol libera mais energia em um segundo do que toda a energia consumida pela humanidade desde o início da civilização.',
+  // Adicione mais curiosidades conforme necessário...
+];
+const randomIndex = Math.floor(Math.random() *  generalCuriosity.length);
+const randomGeneralCuriosity = generalCuriosity [randomIndex];
+
+addResponseMessage(`Claro, aqui vai uma: ${randomGeneralCuriosity}\n 😄 Tem mais alguma coisa que eu possa fazer por você?`);
+
+}
+// Frases inglês
+const handleFrasesIngles = (addResponseMessage) => {
+  const frasesIngles = [
+    'The only way to do great work is to love what you do. - Steve Jobs',
+  'In three words I can sum up everything I’ve learned about life: it goes on. - Robert Frost',
+  'Success is not final, failure is not fatal: It is the courage to continue that counts. - Winston Churchill',
+  'You only live once, but if you do it right, once is enough. - Mae West',
+  'Do not wait to strike till the iron is hot, but make it hot by striking. - William Butler Yeats',
+  'The only limit to our realization of tomorrow will be our doubts of today. - Franklin D. Roosevelt',
+  'The best way to predict the future is to create it. - Peter Drucker',
+  'Nothing in the world can take the place of Persistence. Talent will not; nothing is more common than unsuccessful men with talent. Genius will not; unrewarded genius is almost a proverb. The slogan: Press On has solved and always will solve the problems of the human race. - Calvin Coolidge',
+  'Do not go where the path may lead, go instead where there is no path and leave a trail. - Ralph Waldo Emerson',
+  'The greatest glory in living lies not in never falling, but in rising every time we fall. - Nelson Mandela',
+  'Success usually comes to those who are too busy to be looking for it. - Henry David Thoreau',
+  'It does not matter how slowly you go as long as you do not stop. - Confucius',
+  'Strive not to be a success, but rather to be of value. - Albert Einstein',
+  'The purpose of our lives is to be happy. - Dalai Lama',
+  'Get busy living or get busy dying. - Stephen King',
+  'Life is really simple, but we insist on making it complicated. - Confucius',
+  'Life is what happens when you’re busy making other plans. - John Lennon',
+  'The only limit to our realization of tomorrow will be our doubts of today. - Franklin D. Roosevelt',
+  'The only way to do great work is to love what you do. - Steve Jobs',
+  'In three words I can sum up everything I’ve learned about life: it goes on. - Robert Frost',
+  'Believe you can and you’re halfway there. - Theodore Roosevelt',
+  'The best way to predict the future is to create it. - Peter Drucker',
+  'Success is not final, failure is not fatal: It is the courage to continue that counts. - Winston Churchill',
+  'Do not wait for leaders; do it alone, person to person. - Mother Teresa',
+  'Life is really simple, but we insist on making it complicated. - Confucius',
+  'The purpose of our lives is to be happy. - Dalai Lama',
+  'Don’t count the days, make the days count. - Muhammad Ali',
+  'Everything you’ve ever wanted is on the other side of fear. - George Addair',
+  'Happiness is not something ready-made. It comes from your own actions. - Dalai Lama',
+  'Be not afraid of life. Believe that life is worth living, and your belief will help create the fact. - William James',
+  'Success is stumbling from failure to failure with no loss of enthusiasm. - Winston Churchill',
+  'The future belongs to those who believe in the beauty of their dreams. - Eleanor Roosevelt',
+  'Happiness is not by chance, but by choice. - Jim Rohn',
+  'The only impossible journey is the one you never begin. - Tony Robbins',
+  'It is never too late to be what you might have been. - George Eliot',
+  'The only way to do great work is to love what you do. - Steve Jobs',
+    // Adicione mais curiosidades conforme necessário...
+  ];
+  const randomIndex = Math.floor(Math.random() *  frasesIngles.length);
+  const randomFrasesIngles = frasesIngles [randomIndex];
+  
+  addResponseMessage(`Claro, aqui vai uma: ${randomFrasesIngles}\n 😄 Tem mais alguma coisa que eu possa fazer por você?`);
+  
+  }
+
+
+
 
 // Handler de retorno das mensagens 
 export const handleUserMessage = (newMessage, addResponseMessage, addLinkSnippet) => {
@@ -251,7 +368,11 @@ export const handleUserMessage = (newMessage, addResponseMessage, addLinkSnippet
   } else if (lowercaseMessage.includes('quanto é')) {
     handleMathQuestion(addResponseMessage);
 
-  } else if (lowercaseMessage.includes('acredita em vida extraterrestre')) {
+  } else if (lowercaseMessage.includes('acredita em vida extraterrestre') ||
+              lowercaseMessage.includes('et')||
+              lowercaseMessage.includes('alienigenas') ||
+              lowercaseMessage.includes('alien') ||
+              lowercaseMessage.includes('disco voador')) {
     handleExtraterrestrialQuestion(addResponseMessage);
 
   } else if (lowercaseMessage.includes('ajuda')) {
@@ -297,17 +418,58 @@ export const handleUserMessage = (newMessage, addResponseMessage, addLinkSnippet
       lowercaseMessage.includes('IA')) {
       handleAiCuriosities(addResponseMessage);
 
-    }  else if (lowercaseMessage.includes('curiosidades') || 
-    lowercaseMessage.includes('inteligencia artificial') || 
-    lowercaseMessage.includes('curiosidade') || 
-    lowercaseMessage.includes('IA')) {
-    handleJsCuriosity(addResponseMessage);
-
   }  else if (lowercaseMessage.includes('Javascript') || 
   lowercaseMessage.includes('javascript') || 
   lowercaseMessage.includes('curiosidade sobre programação') || 
   lowercaseMessage.includes('JS')) {
   handleJsCuriosity(addResponseMessage);
+
+  }  else if (lowercaseMessage.includes('FAQ') || 
+  lowercaseMessage.includes('perguntas frequentes') || 
+  lowercaseMessage.includes('duvidas') || 
+  lowercaseMessage.includes('faq') || 
+  lowercaseMessage.includes('me tira uma duvida')) {
+  handleFaq(addResponseMessage);
+
+  }  else if (lowercaseMessage.includes('Processos') || 
+  lowercaseMessage.includes('processo') || 
+  lowercaseMessage.includes('processos') || 
+  lowercaseMessage.includes('etapas')) {
+  handleProcess(addResponseMessage);
+
+  }  else if (lowercaseMessage.includes('Curiosidades') || 
+  lowercaseMessage.includes('Curiosidades gerais') || 
+  lowercaseMessage.includes('curiosidades gerais') || 
+  lowercaseMessage.includes('alguma curiosidade') || 
+  lowercaseMessage.includes('me conte algo') || 
+  lowercaseMessage.includes('algo que eu não sei') || 
+  lowercaseMessage.includes('me diga algo') || 
+  lowercaseMessage.includes('quero descobrir algo novo')) {
+  handleGeneralCuriosity(addResponseMessage);
+
+  }  else if (lowercaseMessage.includes('Frase de livro') || 
+  lowercaseMessage.includes('frase de um livro') || 
+  lowercaseMessage.includes('passagem de um livro') || 
+  lowercaseMessage.includes('livro') || 
+  lowercaseMessage.includes('frases de livro') || 
+  lowercaseMessage.includes('frases livro') || 
+  lowercaseMessage.includes('livro frases') || 
+  lowercaseMessage.includes('livro') || 
+  lowercaseMessage.includes('outra mais') || 
+  lowercaseMessage.includes('citação de um livro')) {
+  handleBookCuriosities(addResponseMessage);
+
+  }  else if (lowercaseMessage.includes('me diga algo em inglês') || 
+  lowercaseMessage.includes('me diga algo em ingles') || 
+  lowercaseMessage.includes('você fala inglês?') || 
+  lowercaseMessage.includes('voce fala ingles') || 
+  lowercaseMessage.includes('fala inglês') || 
+  lowercaseMessage.includes('fala ingles') || 
+  lowercaseMessage.includes('frase em ingles') || 
+  lowercaseMessage.includes('frase em inglês') || 
+  lowercaseMessage.includes('voce sabe ingles?') || 
+  lowercaseMessage.includes('sabe ingles')) {
+  handleFrasesIngles(addResponseMessage);
 
   } else {
     handleDefault(addResponseMessage);
