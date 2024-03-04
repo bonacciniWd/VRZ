@@ -21,7 +21,7 @@ const Popup = () => {
 
   useEffect(() => {
     if (!initialMessageDisplayed.current) {
-      addResponseMessage('Bem-vindo ao atendimento da VRZ-Studio, eu sou Arch 🤖, uma inteligência artificial e estou aqui para facilitar o seu atendimento. Você também pode me perguntar coisas do tipo:\n▶ _Ajuda_\n ▶ _Desenvolvimento_ \n ▶ _Preços_\n▶ _Serviços_\n▶ _Conte uma piada_\n▶ _O que você faz_\n▶ _Sentido da vida_\n');
+      addResponseMessage('Bem-vindo ao atendimento da VRZ-Studio, eu sou Arch 🤖, uma inteligência artificial e estou aqui para facilitar o seu atendimento. Você também pode me perguntar coisas do tipo:\n᠉ *Ajuda* \n ᠉ *Desenvolvimento* \n ᠉ *Preços* \n᠉ *Serviços* \n\n Você também pode perguntar: \n᠉ *Conte uma piada* \n᠉ *O que você faz* \n᠉ *Sentido da vida*\n');
       initialMessageDisplayed.current = true;
     }
   }, [initialMessageDisplayed]);

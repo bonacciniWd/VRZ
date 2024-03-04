@@ -141,6 +141,53 @@ const handleAgeQuestion = (addResponseMessage) => {
 const handleWeAre = (addResponseMessage) => {
   addResponseMessage('A **VRZ-Studio** é uma equipe dedicada que se destaca na criação de soluções e aplicações Web/Mobile para plataformas Android 🤖 e iOS 🍏. Nosso comprometimento com a excelência e a rapidez nos diferencia, proporcionando aos nossos clientes experiências digitais inovadoras e de alta qualidade. Seja para desenvolvimento web ou mobile, estamos aqui para transformar suas ideias em realidade de forma eficiente e impactante. 💻');
 };
+// IA Curiosidades
+const handleAiCuriosities = (addResponseMessage) => {
+  const AiCuriosities = [
+    'Você sabia que o termo "inteligência artificial" foi cunhado pela primeira vez em 1956 por John McCarthy?',
+  'Curiosidade: As redes neurais, um componente fundamental em muitos modelos de inteligência artificial, foram inspiradas pelo funcionamento do cérebro humano.',
+  'Você sabia que o famoso teste de Turing, proposto por Alan Turing em 1950, é usado para avaliar a capacidade de uma máquina exibir comportamento inteligente equivalente ou indistinguível do de um ser humano?',
+  'Curiosidade: O Deep Blue, desenvolvido pela IBM, foi o primeiro computador a derrotar um campeão mundial de xadrez, Garry Kasparov, em 1997.',
+  'Sabia que as técnicas de aprendizado de máquina, uma parte importante da inteligência artificial, permitem que os computadores melhorem seu desempenho em uma tarefa à medida que são expostos a mais dados?',
+  // Adicione mais curiosidades conforme necessário...
+  ];
+  
+  // Agora você pode usar esse array de piadas conforme necessário em sua aplicação.
+  
+
+  const randomIndex = Math.floor(Math.random() *  AiCuriosities.length);
+  const randomCuriosity = AiCuriosities [randomIndex];
+
+  addResponseMessage(`Claro, aqui vai uma: ${randomCuriosity} 😄 Tem mais alguma coisa que eu possa fazer por você?`);
+};
+// Javascript Curiosidades
+const handleJsCuriosity = (addResponseMessage) => {
+  const jsCuriosities = [
+    'JavaScript foi originalmente criado em 10 dias por Brendan Eich, em 1995, enquanto trabalhava na Netscape.',
+    'O nome "JavaScript" foi escolhido por marketing e não tem relação direta com a linguagem de programação Java.',
+    'JavaScript é uma linguagem de programação de alto nível, dinâmica e interpretada.',
+    'O padrão ECMAScript é a especificação na qual JavaScript é baseado. Atualmente, as versões mais recentes incluem o ECMAScript 6 (ES6) e versões posteriores.',
+    'O JavaScript é uma linguagem baseada em protótipos, o que significa que objetos podem herdar propriedades diretamente de outros objetos.',
+    'Closures, uma característica importante do JavaScript, permitem que funções mantenham acesso às variáveis do escopo pai, mesmo após a execução da função ter sido concluída.',
+    'O JavaScript é conhecido por ser assíncrono e baseado em eventos, sendo amplamente utilizado para desenvolvimento de interfaces interativas.',
+    'Node.js permite que o JavaScript seja executado no lado do servidor, não apenas no navegador.',
+    'A popular biblioteca jQuery foi criada para simplificar a manipulação de documentos HTML e eventos no JavaScript.',
+    'O JSON (JavaScript Object Notation) é inspirado na notação de objetos JavaScript, e é amplamente utilizado para comunicação de dados entre cliente e servidor.',
+    'O JavaScript é uma das linguagens de programação mais utilizadas no mundo, sendo essencial para o desenvolvimento web moderno.',
+    'Frameworks populares como React, Angular e Vue.js são construídos com JavaScript e são amplamente utilizados no desenvolvimento de interfaces de usuário interativas.',
+    'O motor de JavaScript do Chrome, chamado V8, é conhecido por sua rapidez e eficiência, contribuindo para a popularidade do navegador Google Chrome.',
+    'A introdução do sistema de módulos no ECMAScript 6 (ES6) trouxe uma forma mais organizada de estruturar e importar/exportar código JavaScript.',
+    'O desenvolvimento do JavaScript é supervisionado pela organização ECMA International.',
+    // Adicione mais curiosidades conforme necessário...
+
+  ];
+  const randomIndex = Math.floor(Math.random() *  jsCuriosities.length);
+  const randomJSCuriosities = jsCuriosities [randomIndex];
+
+  addResponseMessage(`Claro, aqui vai uma: ${randomJSCuriosities}\n 😄 Tem mais alguma coisa que eu possa fazer por você?`);
+}
+
+// Handler de retorno das mensagens 
 export const handleUserMessage = (newMessage, addResponseMessage, addLinkSnippet) => {
   console.log(`Nova mensagem recebida! ${newMessage}`);
   
@@ -243,6 +290,25 @@ export const handleUserMessage = (newMessage, addResponseMessage, addLinkSnippet
             lowercaseMessage.includes('desenvolvimento') ||
             lowercaseMessage.includes('dev'))  {
     handleDev(addResponseMessage);
+
+  }  else if (lowercaseMessage.includes('curiosidades') || 
+      lowercaseMessage.includes('inteligencia artificial') || 
+      lowercaseMessage.includes('curiosidade') || 
+      lowercaseMessage.includes('IA')) {
+      handleAiCuriosities(addResponseMessage);
+
+    }  else if (lowercaseMessage.includes('curiosidades') || 
+    lowercaseMessage.includes('inteligencia artificial') || 
+    lowercaseMessage.includes('curiosidade') || 
+    lowercaseMessage.includes('IA')) {
+    handleJsCuriosity(addResponseMessage);
+
+  }  else if (lowercaseMessage.includes('Javascript') || 
+  lowercaseMessage.includes('javascript') || 
+  lowercaseMessage.includes('curiosidade sobre programação') || 
+  lowercaseMessage.includes('JS')) {
+  handleJsCuriosity(addResponseMessage);
+
   } else {
     handleDefault(addResponseMessage);
   }

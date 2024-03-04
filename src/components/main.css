@@ -23,6 +23,11 @@ code::before {
   display: inline-block;
 }
 
+img.banner-hero {
+  max-width: 100%;
+  margin-left: 150px;
+}
+
 @keyframes typing {
   from {
     width: 0;
