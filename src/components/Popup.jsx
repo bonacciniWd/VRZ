@@ -30,6 +30,14 @@ const Popup = () => {
     } else {
       // Exibe mensagem personalizada com o nome do usuário
       addResponseMessage(`Olá ${userName}, O que você precisa?`);
+
+      // Se houver uma segunda mensagem, envie-a automaticamente
+      if (messages.length > 1) {
+        handleUserMessage(messages[1], (responseMessage) => {
+          // Adiciona a nova mensagem ao estado messages
+          setMessages((prevMessages) => [...prevMessages, responseMessage]);
+        }, addLinkSnippet, userName);
+      }
     }
   }, [initialMessageDisplayed, userName]);
 
