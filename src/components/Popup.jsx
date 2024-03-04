@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
-import { Widget, addResponseMessage, addUserMessage, addLinkSnippet } from 'react-chat-widget';
+import { Widget, addResponseMessage, addLinkSnippet } from 'react-chat-widget';
 import { handleUserMessage } from './MessageHandler';
 
 import 'react-chat-widget/lib/styles.css';
@@ -9,8 +9,6 @@ import rc from '../assets/rc.png';
 import Ai from '../assets/Ai.png';
 
 import './Popup.css';
-
-
 
 const Popup = () => {
   const [chatWindowOpen, setChatWindowOpen] = useState(true);
@@ -37,12 +35,9 @@ const Popup = () => {
 
   useEffect(() => {
     if (messages.length > 0) {
-      handleUserMessage(messages[messages.length - 1].message, (responseMessage) => {
-        // Adiciona a nova mensagem ao estado messages
-        setMessages((prevMessages) => [...prevMessages, responseMessage]);
-      }, addLinkSnippet, userName);
+      addResponseMessage(messages[messages.length - 1]);
     }
-  }, [messages, userName]);
+  }, [messages]);
 
   const handleNewUserMessage = (newMessage) => {
     if (!userName) {
