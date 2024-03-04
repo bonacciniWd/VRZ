@@ -31,7 +31,7 @@ const Popup = () => {
       // Exibe mensagem personalizada com o nome do usuário
       addResponseMessage(`Olá ${userName}, O que você precisa?`);
     }
-  }, [initialMessageDisplayed, userName]);
+  }, [initialMessageDisplayed]);
 
   useEffect(() => {
     if (messages.length > 0) {
@@ -51,6 +51,7 @@ const Popup = () => {
       }, addLinkSnippet, userName);
     }
   };
+  
 
   return (
     <div>
