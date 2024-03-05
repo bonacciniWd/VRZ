@@ -124,3 +124,8 @@ img.rcw-close-launcher {
     border-radius: 5px;
     background-color: #11ef2bd2;
    } 
+
+   img.rcw-avatar {
+    width: 50px;
+    height: 50px;
+}
