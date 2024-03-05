@@ -120,13 +120,16 @@ img.rcw-close-launcher {
     }
 
     .rcw-snippet{
-        background-color: rgb(230, 226, 220);
+        background-color: rgba(60, 57, 52, 0.199);
         border: 0.7px solid #00000064;
         border-radius: 5px;
         padding: 10px 5px;
         resize: none;
+        color: #ffffff;
+        text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5) !important; 
+        font-size: 18px;
         text-align: center;
-        font-weight: bold;
+        font-weight: 700;
         margin-left: 6px;
         margin-right: 6px;
         width: calc(150% - 75px);

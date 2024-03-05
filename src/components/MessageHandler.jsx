@@ -383,8 +383,8 @@ export const handleUserMessage = (newMessage, addResponseMessage, addLinkSnippet
     handlePrices(addResponseMessage);
 
   } else if (lowercaseMessage.includes('link') ||
-            lowercaseMessage.includes('Projeto Arch') ||
-            lowercaseMessage.includes('Arch') ||
+            lowercaseMessage.includes('projeto Arch') ||
+            lowercaseMessage.includes('arch') ||
             lowercaseMessage.includes('o que é arch') ||
             lowercaseMessage.includes('o que significa arch?')) {
     handleLink(addLinkSnippet);
