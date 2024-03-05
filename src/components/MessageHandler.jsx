@@ -41,8 +41,8 @@ const handleProcess = (addResponseMessage) => {
 //Link Guia
 const handleLink = (addLinkSnippet) => {
   addLinkSnippet({
-    title: 'Links úteis',
-    link: 'https://vrz-studio.tech',
+    title: '🤖 Arch-AI',
+    link: 'https://arch-ai.vercel.app',
     target: '_blank'
   });
 };
@@ -382,7 +382,11 @@ export const handleUserMessage = (newMessage, addResponseMessage, addLinkSnippet
             lowercaseMessage.includes('preços')) {
     handlePrices(addResponseMessage);
 
-  } else if (lowercaseMessage.includes('link')) {
+  } else if (lowercaseMessage.includes('link') ||
+            lowercaseMessage.includes('Projeto Arch') ||
+            lowercaseMessage.includes('Arch') ||
+            lowercaseMessage.includes('o que é arch') ||
+            lowercaseMessage.includes('o que significa arch?')) {
     handleLink(addLinkSnippet);
 
   } else if (lowercaseMessage.includes('onde você está') || lowercaseMessage.includes('qual a sua localização')) {

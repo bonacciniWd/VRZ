@@ -29,7 +29,7 @@
 
 .rcw-conversation-container .rcw-header {
     background: linear-gradient(to left, darkblue, #000, #5407b2) !important;
-    border: 1px solid #1111108d; 
+    border: 1px solid #11111009; 
 }
 
 .rcw-message-text{
@@ -119,10 +119,24 @@ img.rcw-close-launcher {
         fill: blue !important;
     }
 
+    .rcw-snippet{
+        background-color: rgb(230, 226, 220);
+        border: 0.7px solid #00000064;
+        border-radius: 5px;
+        padding: 10px 5px;
+        resize: none;
+        text-align: center;
+        font-weight: bold;
+        margin-left: 6px;
+        margin-right: 6px;
+        width: calc(150% - 75px);
+    }
    .rcw-snippet-details {
     border: solid 1px #5407b2;
     border-radius: 5px;
-    background-color: #11ef2bd2;
+    padding: 5px;
+    background-color: #5f11efd2;
+    color: #dbdedbf8;
    } 
 
    img.rcw-avatar {
