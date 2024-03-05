@@ -33,7 +33,7 @@ code::before {
 }
 @keyframes animate {
   to {
-    transform: translateY(90px);
+    transform: translateY(100px);
     
   }
   }
