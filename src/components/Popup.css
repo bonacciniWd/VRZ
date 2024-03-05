@@ -69,8 +69,8 @@ img.avatar {
 }
 
 button.rcw-launcher {
-    background-color: #5407b2;
-    box-shadow: 0 1px 5px 2px #e1d9e8 !important;
+    background:  linear-gradient(to top, rgba(127, 13, 215, 0.1), rgba(127, 13, 215, 0.44), #6d04ed) !important;
+    box-shadow: none !important;
     
 }
 
