@@ -302,7 +302,7 @@ const handleFrasesIngles = (addResponseMessage) => {
   }
 
 
-
+//Novos Handlers
 
 // Handler de retorno das mensagens 
 export const handleUserMessage = (newMessage, addResponseMessage, addLinkSnippet) => {
