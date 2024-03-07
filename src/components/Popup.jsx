@@ -5,8 +5,8 @@ import { handleUserMessage } from './MessageHandler';
 import 'react-chat-widget/lib/styles.css';
 
 import user from '../assets/user.png';
-import rc from '../assets/rc.png';
-import Ai from '../assets/ai.png';
+import rc from '../assets/ai.svg';
+import Ai from '../assets/rc.svg';
 
 import './Popup.css';
 
@@ -29,7 +29,7 @@ const Popup = () => {
       addResponseMessage(`Seja bem-vindo ao nosso atendimento inteligente, poderia me dizer o seu nome?`);
     } else {
       // Exibe mensagem personalizada com o nome do usuário
-      addResponseMessage(`Olá ${userName}!! \n\n Bem-vindo ao atendimento da VRZ-Studio, eu sou Arch 🤖, uma inteligência artificial e estou aqui para facilitar o seu atendimento. Você também pode me perguntar coisas do tipo:\n᠉ *Ajuda* \n ᠉ *Desenvolvimento* \n ᠉ *Preços* \n᠉ *Serviços* \n\n Você também pode perguntar: \n᠉ *Conte uma piada* \n᠉ *O que você faz* \n᠉ *Sentido da vida*\n\n Saiba mais sobre IA, digite: \n ᠉ **Arch**`);
+      addResponseMessage(`Olá ${userName}!! \n\n Bem-vindo ao atendimento da VRZ-Studio, eu sou Arch 🤖, uma inteligência artificial e estou aqui para facilitar o seu atendimento. Você também pode me perguntar coisas do tipo:\n\n᠉ *Ajuda* \n ᠉ *Desenvolvimento* \n ᠉ *Preços* \n᠉ *Serviços* \n\n Você também pode perguntar: \n᠉ *Conte uma piada* \n᠉ *O que você faz* \n᠉ *Sentido da vida*\n\n Saiba mais sobre IA, digite: \n ᠉ **Arch**`);
 
       // Se houver uma segunda mensagem, envie-a automaticamente
       if (messages.length > 1) {
