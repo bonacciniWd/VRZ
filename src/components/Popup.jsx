@@ -11,21 +11,6 @@ import Ai from '../assets/rc.svg';
 import './Popup.css';
 
 const Popup = () => {
-
-  const [loaderActive, setLoaderActive] = useState(false);
-  const handleTypingEffect = () => {
-    setLoaderActive(true); // Ativa o loader antes de adicionar a mensagem
-    const typingInterval = setInterval(() => {
-      setTyping((prev) => !prev);
-    }, 500);
-
-    setTimeout(() => {
-      clearInterval(typingInterval);
-      setTyping(false);
-      setLoaderActive(false); // Desativa o loader após o efeito de digitação
-    }, 3000);
-  };
-
   const [chatWindowOpen, setChatWindowOpen] = useState(true);
   const [messages, setMessages] = useState([]);
   const [userName, setUserName] = useState(null);
@@ -42,32 +27,35 @@ const Popup = () => {
     } else if (!userName) {
       // Pergunta pelo nome do usuário na segunda interação
       addResponseMessage(`Seja bem-vindo ao nosso atendimento inteligente, poderia me dizer o seu nome?`);
-      handleTypingEffect(); // Inicia o efeito de digitação com o loader
-
     } else {
       // Exibe mensagem personalizada com o nome do usuário
       addResponseMessage(`Olá ${userName}!! \n\n Bem-vindo ao atendimento da VRZ-Studio, eu sou Arch 🤖, uma inteligência artificial e estou aqui para facilitar o seu atendimento. Você também pode me perguntar coisas do tipo:\n\n᠉ *Ajuda* \n ᠉ *Desenvolvimento* \n ᠉ *Preços* \n᠉ *Serviços* \n\n Você também pode perguntar: \n᠉ *Conte uma piada* \n᠉ *O que você faz* \n᠉ *Sentido da vida*\n\n Saiba mais sobre IA, digite: \n ᠉ **Arch**`);
-      handleTypingEffect(); // Inicia o efeito de digitação com o loader
 
-      // ... (seu código existente)
+      // Se houver uma segunda mensagem, envie-a automaticamente
+      if (messages.length > 1) {
+        handleUserMessage(messages[1], (responseMessage) => {
+          // Adiciona a nova mensagem ao estado messages
+          setMessages((prevMessages) => [...prevMessages, responseMessage]);
+        }, addLinkSnippet, userName);
+      }
     }
   }, [initialMessageDisplayed, userName]);
 
   useEffect(() => {
     if (messages.length > 0) {
-      setMessages((prevMessages) => [...prevMessages, messages[messages.length - 1]]);
+      addResponseMessage(messages[messages.length - 1]);
     }
   }, [messages]);
 
   const handleNewUserMessage = (newMessage) => {
     if (!userName) {
+      // Se ainda não tiver o nome do usuário, define o nome
       setUserName(newMessage);
     } else {
-      setLoaderActive(true); // Ativa o loader antes de processar a mensagem do usuário
-
+      // Se já tiver o nome do usuário, processa como uma mensagem regular
       handleUserMessage(newMessage, (responseMessage) => {
+        // Adiciona a nova mensagem ao estado messages
         setMessages((prevMessages) => [...prevMessages, responseMessage]);
-        setLoaderActive(false); // Desativa o loader após a mensagem do usuário ser processada
       }, addLinkSnippet, userName);
     }
   };
@@ -86,9 +74,8 @@ const Popup = () => {
         chatId
         emojis
         showBadge
-        toggleMsgLoader={loaderActive}
+        toggleMsgLoader
       />
-      <div className={`loader ${loaderActive ? 'active' : ''}`}></div>
     </div>
   );
 };
