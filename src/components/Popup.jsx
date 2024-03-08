@@ -2,8 +2,10 @@ import React, { useEffect, useState, useRef } from 'react';
 import { Widget, addResponseMessage, addLinkSnippet } from 'react-chat-widget';
 import { handleUserMessage } from './MessageHandler';
 
+
 import 'react-chat-widget/lib/styles.css';
 
+import launcherOpen from '../assets/rc.svg';
 import user from '../assets/user.png';
 import rc from '../assets/ai.svg';
 import Ai from '../assets/rc.svg';
@@ -74,7 +76,7 @@ const Popup = () => {
         chatId
         emojis
         showBadge
-        toggleMsgLoader
+        launcherOpenImg={launcherOpen}
       />
     </div>
   );

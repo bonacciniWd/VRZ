@@ -1,99 +1,5 @@
 /* Popup.css */
 
-/* Adicione/modifique estilos conforme necessário */
-
-/* Defina a visibilidade inicial do loader como oculta */
-.loader {
-    justify-content:flex-start;
-    margin-left: 5%;
-  }
-  
-  /* Ative a visibilidade do loader quando estiver ativo */
-  .loader.active {
-    display: flex;
-  }
-  
-  /* Personalize estilos para o container do loader */
-  .loader-container {
-    background-color: #f4f7f9;
-    border-radius: 10px;
-    padding: 15px;
-    max-width: 215px;
-    text-align: left;
-  }
-  
-  /* Personalize estilos para os pontos do loader */
-  .loader-dots {
-    display: inline-block;
-    height: 4px;
-    width: 4px;
-    border-radius: 50%;
-    background: grey;
-    margin-right: 2px;
-    -webkit-animation: bounce .5s ease infinite alternate;
-    animation: bounce .5s ease infinite alternate;
-  }
-  
-  /* Ajuste os estilos da animação de salto */
-  @-webkit-keyframes bounce {
-    0% {
-      transform: translateY(0);
-    }
-    to {
-      transform: translateY(5px);
-    }
-  }
-  
-  @keyframes bounce {
-    0% {
-      transform: translateY(0);
-    }
-    to {
-      transform: translateY(5px);
-    }
-  }
-  
-  /* Adicione atraso de animação para os pontos do loader */
-  .loader-dots:first-child {
-    -webkit-animation-delay: .2s;
-    animation-delay: .2s;
-  }
-  
-  .loader-dots:nth-child(2) {
-    -webkit-animation-delay: .3s;
-    animation-delay: .3s;
-  }
-  
-  .loader-dots:nth-child(3) {
-    -webkit-animation-delay: .4s;
-    animation-delay: .4s;
-  }
-  
-  /* Personalize estilos para o container de mensagens */
-  .rcw-messages-container {
-    background-color: #fff;
-    height: 50vh;
-    max-height: 410px;
-    overflow-y: scroll;
-    padding-top: 10px;
-    -webkit-overflow-scrolling: touch;
-  }
-  
-  /* Personalize estilos para o container de mensagens em tela cheia */
-  .rcw-full-screen .rcw-messages-container {
-    height: 100%;
-    max-height: none;
-  }
-  
-  /* Ajuste para telas menores (responsivo) */
-  @media screen and (max-width: 800px) {
-    .rcw-messages-container {
-      height: 100%;
-      max-height: none;
-    }
-  }
-  
-
 @media screen and (max-width: 800px) {
 
 .rcw-widget-container {
@@ -169,9 +75,25 @@ button.rcw-launcher {
 }
 
 img.rcw-open-launcher {
-   display:inline-flex;
-   
-}
+    display: inline-flex;
+    width: 54px;
+    margin-right: 8px;
+    margin-bottom: 5px;
+    animation: pulse 1.5s infinite; /* 1.5s de duração, repetição infinita */
+  }
+  
+  /* Defina a animação de pulsação */
+  @keyframes pulse {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.1); /* Escala maior durante a metade da animação */
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
 
 img.rcw-close-launcher {
     display:inline-flex;
