@@ -13,10 +13,12 @@ import { SectionWrapper } from "../hoc";
 import { textVariant } from "../utils/motion";
 
 const ExperienceCard = ({ experience }) => {
+
+  const linearGradientBackground = "linear-gradient(to top, #000, #5407b2, #5206b1, darkblue)";
   return (
     <VerticalTimelineElement
       contentStyle={{
-        background: "#001f3f",
+        background: linearGradientBackground, 
         color: "#fff",
       }}
       contentArrowStyle={{ borderRight: "7px solid  #915EFF" }}

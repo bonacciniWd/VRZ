@@ -16,6 +16,8 @@ const ProjectCard = ({
   image,
   source_code_link,
 }) => {
+
+  const linearGradientBackground = "linear-gradient(to bottom, darkblue, #000, #5407a1)";
   return (
     <motion.div variants={fadeIn("up", "spring", index * 0.5, 0.75)}>
       <Tilt
@@ -24,7 +26,8 @@ const ProjectCard = ({
           scale: 1,
           speed: 450,
         }}
-        className='bg-card p-5 rounded-2xl sm:w-[360px] w-full'//
+        className='p-5 rounded-2xl sm:w-[360px] w-full'//
+        style={{ background: linearGradientBackground }}
       >
         <div className='relative w-full h-[230px]'>
           <img

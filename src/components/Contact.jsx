@@ -8,6 +8,9 @@ import { SectionWrapper } from "../hoc";
 import { slideIn } from "../utils/motion";
 
 const Contact = () => {
+
+  const linearGradientBackground = "linear-gradient(to bottom, darkblue, #000, #000, #5407a1)";
+
   const formRef = useRef();
   const [form, setForm] = useState({
     name: "",
@@ -77,7 +80,8 @@ const Contact = () => {
      
       <motion.div
         variants={slideIn("left", "tween", 0.2, 1)}
-        className='flex-[0.75] bg-black-100 p-8 rounded-2xl'
+        className='flex-[0.75] p-8 rounded-2xl'
+        style={{ background: linearGradientBackground }}
       >
         <p className={styles.sectionSubText}>Entre em contato</p>
         <h3 className={styles.sectionHeadText}>Seus dados</h3>
