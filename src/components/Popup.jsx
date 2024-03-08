@@ -14,49 +14,47 @@ const Popup = () => {
   const [chatWindowOpen, setChatWindowOpen] = useState(true);
   const [messages, setMessages] = useState([]);
   const [userName, setUserName] = useState(null);
-  const [typing, setTyping] = useState(false); // Novo estado para controlar o efeito de digitação
   const initialMessageDisplayed = useRef(false);
 
   const handleToggle = () => {
     setChatWindowOpen((prev) => !prev);
   };
 
-  const handleTypingEffect = () => {
-    // Função para simular o efeito de digitação
-    setTyping(true);
-    setTimeout(() => setTyping(false), 3000); // Desliga o efeito de digitação após 3 segundos
-  };
-
   useEffect(() => {
     if (initialMessageDisplayed.current) {
       addResponseMessage('Bem-vindo ao atendimento da VRZ-Studio, eu sou Arch 🤖, uma inteligência artificial e estou aqui para facilitar o seu atendimento. Você também pode me perguntar coisas do tipo:\n᠉ *Ajuda* \n ᠉ *Desenvolvimento* \n ᠉ *Preços* \n᠉ *Serviços* \n\n Você também pode perguntar: \n᠉ *Conte uma piada* \n᠉ *O que você faz* \n᠉ *Sentido da vida*\n');
       initialMessageDisplayed.current = true;
-      handleTypingEffect();
     } else if (!userName) {
+      // Pergunta pelo nome do usuário na segunda interação
       addResponseMessage(`Seja bem-vindo ao nosso atendimento inteligente, poderia me dizer o seu nome?`);
-      handleTypingEffect();
     } else {
+      // Exibe mensagem personalizada com o nome do usuário
       addResponseMessage(`Olá ${userName}!! \n\n Bem-vindo ao atendimento da VRZ-Studio, eu sou Arch 🤖, uma inteligência artificial e estou aqui para facilitar o seu atendimento. Você também pode me perguntar coisas do tipo:\n\n᠉ *Ajuda* \n ᠉ *Desenvolvimento* \n ᠉ *Preços* \n᠉ *Serviços* \n\n Você também pode perguntar: \n᠉ *Conte uma piada* \n᠉ *O que você faz* \n᠉ *Sentido da vida*\n\n Saiba mais sobre IA, digite: \n ᠉ **Arch**`);
-      handleTypingEffect();
+
+      // Se houver uma segunda mensagem, envie-a automaticamente
       if (messages.length > 1) {
         handleUserMessage(messages[1], (responseMessage) => {
+          // Adiciona a nova mensagem ao estado messages
           setMessages((prevMessages) => [...prevMessages, responseMessage]);
         }, addLinkSnippet, userName);
       }
     }
-  }, [initialMessageDisplayed, userName, messages]);
+  }, [initialMessageDisplayed, userName]);
 
   useEffect(() => {
     if (messages.length > 0) {
-      setMessages((prevMessages) => [...prevMessages, messages[messages.length - 1]]);
+      addResponseMessage(messages[messages.length - 1]);
     }
   }, [messages]);
 
   const handleNewUserMessage = (newMessage) => {
     if (!userName) {
+      // Se ainda não tiver o nome do usuário, define o nome
       setUserName(newMessage);
     } else {
+      // Se já tiver o nome do usuário, processa como uma mensagem regular
       handleUserMessage(newMessage, (responseMessage) => {
+        // Adiciona a nova mensagem ao estado messages
         setMessages((prevMessages) => [...prevMessages, responseMessage]);
       }, addLinkSnippet, userName);
     }
@@ -77,7 +75,6 @@ const Popup = () => {
         emojis
         showBadge
         toggleMsgLoader
-        typing={typing}
       />
     </div>
   );
