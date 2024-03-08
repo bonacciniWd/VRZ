@@ -4,7 +4,6 @@
 
 /* Defina a visibilidade inicial do loader como oculta */
 .loader {
-    display:flex;
     justify-content:flex-start;
     margin-left: 5%;
   }
