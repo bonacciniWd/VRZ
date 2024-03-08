@@ -2,6 +2,8 @@ import React from "react";
 import Tilt from "react-tilt";
 import { motion } from "framer-motion";
 
+
+
 import { styles } from "../styles";
 import { github } from "../assets";
 import { SectionWrapper } from "../hoc";
@@ -17,9 +19,10 @@ const ProjectCard = ({
   source_code_link,
 }) => {
 
-  const linearGradientBackground = "linear-gradient(to bottom, darkblue, #000, #5407a1)";
+  const linearGradientBackground = "linear-gradient(to bottom, #000, darkblue, #5407a1)";
   return (
     <motion.div variants={fadeIn("up", "spring", index * 0.5, 0.75)}>
+      
       <Tilt
         options={{
           max: 45,

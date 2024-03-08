@@ -1,6 +1,7 @@
 import React from "react";
 import Tilt from "react-tilt";
 import { motion } from "framer-motion";
+import { StarsCanvas } from "./canvas";
 
 import { styles } from "../styles";
 import { services } from "../constants";
@@ -38,6 +39,7 @@ const ServiceCard = ({ index, title, icon }) => (
 const About = () => {
   return (
     <>
+    
       <motion.div variants={textVariant()}>
         <p className={styles.sectionSubText}>Introdução</p>
         <h2 className={styles.sectionHeadText}>Mais sobre a VRZ</h2>
@@ -54,7 +56,7 @@ const About = () => {
         problemas do mundo real. Vamos trabalhar em conjunto para dar vida às suas ideias! 
       </motion.p>
 
-      
+      <StarsCanvas />
     </>
   );
 };

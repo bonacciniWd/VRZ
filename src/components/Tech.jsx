@@ -8,6 +8,9 @@ import BannerHeroDesktop from "../assets/back-hero-bn.png"; // Imagem para deskt
 import './main.css';
 
 const Main = () => {
+
+  
+
   useEffect(() => {
     const phrases = ["Bem vindos à VRZ Estúdio","...", "Criamos aplicações web e mobile","...", "Trazemos seu projeto à vida!"];
     let phraseIndex = 0;
@@ -61,7 +64,7 @@ const Main = () => {
 
         <div>
           <h1 className={`${styles.heroHeadText} text-white uppercase`}>
-            O que você  <span className='text-[#915EFF] uppercase' style={{ margin: '0 10px' }}>quer criar?</span>
+            O que você  <span className='uppercase' style={{ margin: '0 10px' }}>quer criar?</span>
           </h1>
           
           <div className="console">

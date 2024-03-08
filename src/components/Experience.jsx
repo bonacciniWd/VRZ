@@ -5,17 +5,21 @@ import {
 } from "react-vertical-timeline-component";
 import { motion } from "framer-motion";
 
+
+
 import "react-vertical-timeline-component/style.min.css";
 
 import { styles } from "../styles";
 import { experiences } from "../constants";
 import { SectionWrapper } from "../hoc";
 import { textVariant } from "../utils/motion";
+import { Stars } from "@react-three/drei";
 
 const ExperienceCard = ({ experience }) => {
 
   const linearGradientBackground = "linear-gradient(to top, #000, #5407b2, #5206b1, darkblue)";
   return (
+    <>
     <VerticalTimelineElement
       contentStyle={{
         background: linearGradientBackground, 
@@ -55,7 +59,10 @@ const ExperienceCard = ({ experience }) => {
         ))}
       </ul>
     </VerticalTimelineElement>
+
+    </>
   );
+  
 };
 
 const Experience = () => {
