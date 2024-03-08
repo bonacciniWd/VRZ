@@ -43,6 +43,7 @@ const handleLink = (addLinkSnippet) => {
   addLinkSnippet({
     title: '🤖 Arch-AI',
     link: 'https://arch-ai.vercel.app',
+    text: 'pop-up',
     target: '_blank'
   });
 };
