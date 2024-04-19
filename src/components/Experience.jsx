@@ -17,7 +17,7 @@ import { Stars } from "@react-three/drei";
 
 const ExperienceCard = ({ experience }) => {
 
-  const linearGradientBackground = "linear-gradient(to top, #000, #5407b2, #5206b1, darkblue)";
+  const linearGradientBackground = "linear-gradient(to bottom, #000, #1c0450, darkblue)";
   return (
     <>
     <VerticalTimelineElement
