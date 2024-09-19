@@ -15,14 +15,12 @@ const App = () => {
         <StarsCanvas />
         <Tech />
         <About />
-        <SectionSeparator />
       </div>
-      <div className='bg-gradient'>
         <Experience />
+        <SectionSeparator />
         <Works />
         <Contact />
         <Hero />
-      </div>
       <Popup />
       <Analytics />
     </BrowserRouter>

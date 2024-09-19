@@ -5,25 +5,24 @@ import {
 } from "react-vertical-timeline-component";
 import { motion } from "framer-motion";
 
-
-
 import "react-vertical-timeline-component/style.min.css";
 
 import { styles } from "../styles";
 import { experiences } from "../constants";
 import { SectionWrapper } from "../hoc";
 import { textVariant } from "../utils/motion";
-import { Stars } from "@react-three/drei";
 
 const ExperienceCard = ({ experience }) => {
+  const linearGradientBackground = "linear-gradient(135deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3))";
 
-  const linearGradientBackground = "linear-gradient(to bottom, #f5f5f5, #e0e0e0, #bdbdbd)";
   return (
-    <>
     <VerticalTimelineElement
       contentStyle={{
         background: linearGradientBackground, 
         color: "#fff",
+       
+        backgroundSize: "400% 400%",
+        animation: "gradientMove 15s ease infinite"
       }}
       contentArrowStyle={{ borderRight: "18px solid #5f11efd2" }}
       date={experience.date}
@@ -39,9 +38,9 @@ const ExperienceCard = ({ experience }) => {
       }
     >
       <div>
-        <h3 className='text-card text-[24px] font-bold'>{experience.title}</h3>
+        <h3 className='text-white text-[24px] font-bold'>{experience.title}</h3>
         <p
-          className='text-purple-700 text-[16px] font-semibold'
+          className='text-lime-500 text-[16px] font-semibold'
           style={{ margin: 0 }}
         >
           {experience.company_name}
@@ -52,17 +51,14 @@ const ExperienceCard = ({ experience }) => {
         {experience.points.map((point, index) => (
           <li
             key={`experience-point-${index}`}
-            className='text-slate-700 text-[14px] pl-1 tracking-wider'
+            className='text-white text-[14px] pl-1 tracking-wider'
           >
             {point}
           </li>
         ))}
       </ul>
     </VerticalTimelineElement>
-
-    </>
   );
-  
 };
 
 const Experience = () => {
@@ -70,10 +66,10 @@ const Experience = () => {
     <>
       <motion.div variants={textVariant()}>
         <p className={`${styles.sectionSubText} text-center`}>
-         Nosso processo
+          Nosso processo
         </p>
         <h2 className={`${styles.sectionHeadText} text-center`}>
-         COMO A VRZ TRABALHA?
+          COMO A VRZ TRABALHA?
         </h2>
       </motion.div>
 

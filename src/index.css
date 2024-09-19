@@ -13,10 +13,13 @@
   color-scheme: dark;
 }
 
-.bg-gradient {
-  background: url('./assets/bn.png') no-repeat center center fixed;
-  background-size: cover;
-  background-color: #000; /* ou outra cor desejada para o fundo */
+.stars-canvas {
+  position: fixed; /* Certifica que o canvas não role com a página */
+  top: 0;
+  left: 0;
+  width: 100vw; /* 100% da largura da janela */
+  height: 100vh; /* 100% da altura da janela */
+  z-index: -1; /* Coloca atrás de outros componentes */
 }
 
 .section-separator {
