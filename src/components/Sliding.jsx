@@ -11,8 +11,8 @@ const Sliding = () => {
   }
   return (
     
-    <div className="video-container">
-      <video autoPlay loop muted className='video'>
+    <div className="video-container mb-10">
+      <video autoPlay loop muted disablePictureInPicture className='video'>
         <source src={videoSource} type="video/mp4" />
         Seu navegador não suporta vídeos HTML5.
       </video>

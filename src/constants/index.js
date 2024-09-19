@@ -117,53 +117,72 @@ const technologies = [
 
 const experiences = [
   {
-    title: "Planejamento",
-    company_name: "Criação de escopos",
-    icon: starbucks,
-    iconBg: "#915EFF",
+    title: "Descoberta e Planejamento",
+    company_name: "Consultoria e Levantamento de Requisitos",
+    icon: tesla, // ícone específico de planejamento
+    iconBg: "#3B82F6",
     date: "📝🤝",
     points: [
-      " A empresa se reúne com o cliente para entender suas necessidades e requisitos.",
-      " Isso inclui definir o escopo do projeto, objetivos e funcionalidades desejadas.",
-      " Avaliação da viabilidade técnica e econômica do projeto para determinar se é realizável dentro do prazo e orçamento definidos.",
-    ],
-    },
-  {
-    title: "Design",
-    company_name: "Estilização do projeto",
-    icon: tesla,
-    iconBg: "#915EFF",
-    date: "🖌️🏗️",
-    points: [
-      "Os engenheiros de software projetam a arquitetura do sistema, definindo como os componentes do software se encaixam e interagem entre si.",
-      "Designers de interface criam a aparência e a usabilidade do software, garantindo que atenda às necessidades dos usuários.",
-    ],
-    },
-  {
-    title: "Desenvolvimento",
-    company_name: "Codificação da aplicação",
-    icon: shopify,
-    iconBg: "#915EFF",
-    date: "🧑‍💻",
-    points: [
-      "Os programadores escrevem o código-fonte do software com base nas especificações do projeto e no design da arquitetura.",
-      "Cada componente do software é testado individualmente para garantir que funcione corretamente.",
+      "Reuniões iniciais com o cliente para entender profundamente o negócio, necessidades e expectativas.",
+      "Definição clara dos requisitos funcionais e não funcionais do sistema.",
+      "Análise de viabilidade técnica, escopo do projeto, prazos e orçamento.",
+      "Criação de um plano detalhado do projeto e cronograma.",
     ],
   },
   {
-    title: "Testes e Implantação",
-    company_name: "Testes das funcionalidades e segurança  ",
-    icon: meta,
-    iconBg: "#915EFF",
-    date: "🧪🚀",
+    title: "Arquitetura e Design de Soluções",
+    company_name: "Arquitetura do Sistema e UX/UI Design",
+    icon: tesla, // ícone específico de arquitetura
+    iconBg: "#10B981",
+    date: "🖌️🏗️",
     points: [
-      "O software é testado como um todo para identificar e corrigir bugs e garantir que atenda aos requisitos do cliente.",
-      "O software é implantado em ambiente de produção para que os usuários finais possam começar a usá-lo.",
-      "A empresa oferece suporte contínuo, atualizações e correções de bugs após o lançamento.",
-      "Participar de revisões de código e fornecer feedback construtivo para novas ideias para seu projeto",
+      "Criação da arquitetura de software, definindo a estrutura e os componentes principais.",
+      "Escolha de tecnologias e ferramentas mais adequadas para o projeto (banco de dados, frameworks, APIs).",
+      "Designers de UX/UI criam wireframes e protótipos, focando na experiência do usuário.",
+      "Validação de design com o cliente para garantir que o visual e a usabilidade estão alinhados com as expectativas.",
+    ],
+  },
+  {
+    title: "Desenvolvimento e Integração",
+    company_name: "Codificação e Implementação",
+    icon: shopify, // ícone específico de desenvolvimento
+    iconBg: "#F59E0B",
+    date: "💻👨‍💻",
+    points: [
+      "Desenvolvimento dos módulos e funcionalidades seguindo as especificações definidas.",
+      "Integração com APIs externas e serviços de terceiros, quando aplicável.",
+      "Revisão e versionamento de código com ferramentas como Git, garantindo colaboração eficiente.",
+      "Testes unitários e integração contínua (CI/CD) para assegurar a qualidade do código.",
+    ],
+  },
+  {
+    title: "Testes e Qualidade",
+    company_name: "Garantia de Qualidade e Testes",
+    icon: tesla, // ícone específico de testes
+    iconBg: "#EF4444",
+    date: "🧪🛠️",
+    points: [
+      "Testes funcionais, de usabilidade, e de desempenho para identificar possíveis bugs.",
+      "Testes de segurança, garantindo proteção de dados e conformidade com LGPD (ou outra legislação aplicável).",
+      "Testes automatizados para garantir cobertura eficiente e redução de erros manuais.",
+      "Correção de falhas e refinamento da aplicação antes da entrega final.",
+    ],
+  },
+  {
+    title: "Implantação e Suporte Contínuo",
+    company_name: "Entrega e Pós-lançamento",
+    icon: tesla, // ícone específico de implantação
+    iconBg: "#8B5CF6",
+    date: "🚀🔧",
+    points: [
+      "Implantação do sistema em ambiente de produção, realizando os ajustes necessários.",
+      "Monitoramento pós-implantação para garantir desempenho e resolver problemas rapidamente.",
+      "Treinamento dos usuários finais, quando aplicável, para garantir o uso eficiente do software.",
+      "Suporte contínuo, manutenção, melhorias e atualizações para garantir a longevidade do sistema.",
     ],
   },
 ];
+
 
 const testimonials = [
   {

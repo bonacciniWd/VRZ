@@ -13,6 +13,33 @@
   color-scheme: dark;
 }
 
+.bg-gradient {
+  background: url('./assets/bn.png') no-repeat center center fixed;
+  background-size: cover;
+  background-color: #000; /* ou outra cor desejada para o fundo */
+}
+
+.section-separator {
+  height: 7px; /* Altura do separador */
+  background: linear-gradient(270deg, #c0c0c0, #000000, #c0c0c0);
+  background-size: 300% 300%;
+  animation: gradientAnimation 4s ease infinite; /* Duração do movimento */
+  margin: 0px 0; /* Margem superior e inferior */
+}
+
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+
 .hash-span {
   margin-top: -100px;
   padding-bottom: 100px;

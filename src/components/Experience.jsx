@@ -17,7 +17,7 @@ import { Stars } from "@react-three/drei";
 
 const ExperienceCard = ({ experience }) => {
 
-  const linearGradientBackground = "linear-gradient(to bottom, #000, #1c0450, darkblue)";
+  const linearGradientBackground = "linear-gradient(to bottom, #f5f5f5, #e0e0e0, #bdbdbd)";
   return (
     <>
     <VerticalTimelineElement
@@ -25,7 +25,7 @@ const ExperienceCard = ({ experience }) => {
         background: linearGradientBackground, 
         color: "#fff",
       }}
-      contentArrowStyle={{ borderRight: "7px solid  #915EFF" }}
+      contentArrowStyle={{ borderRight: "18px solid #5f11efd2" }}
       date={experience.date}
       iconStyle={{ background: experience.iconBg }}
       icon={
@@ -39,9 +39,9 @@ const ExperienceCard = ({ experience }) => {
       }
     >
       <div>
-        <h3 className='text-white text-[24px] font-bold'>{experience.title}</h3>
+        <h3 className='text-card text-[24px] font-bold'>{experience.title}</h3>
         <p
-          className='text-secondary text-[16px] font-semibold'
+          className='text-purple-700 text-[16px] font-semibold'
           style={{ margin: 0 }}
         >
           {experience.company_name}
@@ -52,7 +52,7 @@ const ExperienceCard = ({ experience }) => {
         {experience.points.map((point, index) => (
           <li
             key={`experience-point-${index}`}
-            className='text-white-100 text-[14px] pl-1 tracking-wider'
+            className='text-slate-700 text-[14px] pl-1 tracking-wider'
           >
             {point}
           </li>

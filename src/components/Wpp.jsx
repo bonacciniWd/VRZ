@@ -1,6 +1,6 @@
 // Wpp.jsx
 import React from 'react';
-import './Wpp.css';
+
 import wpplogo from '../assets/tech/wpplogo.png';
 
 function Wpp() {
