@@ -30,7 +30,7 @@ const Navbar = () => {
       className={`${
         styles.paddingX
       } w-[80%] flex items-center py-5 fixed top-[30px] left-1/2 transform -translate-x-1/2 z-20 ${
-        scrolled ? "bg-primary border-none" : "bg-transparent"
+        scrolled ? "bg-primary" : "bg-transparent border-none"
       } rounded-full bg-opacity-80 shadow-lg border-x-2 border-indigo-700`}
     >
       <div className='w-full flex justify-between items-center max-w-7xl mx-auto'>
@@ -48,7 +48,7 @@ const Navbar = () => {
             className='w-12 h-12 object-contain'
             style={{ borderRadius: "50px", padding: "3px", opacity: "1" }}
           />
-          <p className='text-white text-[18px] font-bold cursor-pointer flex'>
+          <p className='text-slate-200 text-[18px] font-bold cursor-pointer flex'>
             DEV STUDIO || &nbsp;
             <span className='sm:block hidden'> MKT STUDIO</span>
           </p>
