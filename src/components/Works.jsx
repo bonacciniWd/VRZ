@@ -23,7 +23,8 @@ const ProjectCard = ({
     <motion.div
       variants={fadeIn("up", "spring", index * 0.5, 0.75)}
       onClick={() => window.open(source_code_link, "_blank")} // Clica e vai para o link
-      className='cursor-pointer' // Adiciona um cursor pointer para melhorar a UX
+      className='cursor-pointer'
+       // Adiciona um cursor pointer para melhorar a UX
     >
       <Tilt
         options={{
@@ -31,7 +32,7 @@ const ProjectCard = ({
           scale: 1,
           speed: 450,
         }}
-        className='p-5 rounded-2xl sm:w-[360px] w-full'
+        className='p-5 rounded-2xl border-2 border-indigo-700 sm:w-[360px] w-full'
         style={{ background: linearGradientBackground }} // Aplicar o fundo transparente aqui
       >
         <div className='relative w-full h-[230px]'>
@@ -78,7 +79,7 @@ const ProjectCard = ({
 const Works = () => {
   return (
     <>
-      <motion.div variants={textVariant()}>
+      <motion.div  variants={textVariant()}>
         <p className={`${styles.sectionSubText} `}>Nosso Trabalho</p>
         <h2 className={`${styles.sectionHeadText}`}>Projetos</h2>
       </motion.div>
@@ -86,7 +87,7 @@ const Works = () => {
       <div className='w-full flex'>
         <motion.p
           variants={fadeIn("", "", 0.1, 1)}
-          className='mt-3 text-secondary text-[17px] max-w-3xl leading-[30px]'
+          className='mt-3 text-slate-300 text-[17px] max-w-3xl leading-[30px]'
         >
           Os projetos listados à baixo são apenas alguns dos inúmeros serviços e parcerias já feitos.
         </motion.p>

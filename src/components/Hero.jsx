@@ -1,14 +1,13 @@
 import React from 'react';
 import dw from "../assets/WB.png";
 
-import "./Hero.css";
+
 
 function Hero() {
   return (
-    <footer className="hero">
-      <div className="hero-content">
-        <img src={dw} alt="Logo da VRZ Studio" href="https://bonaccini.vercel.app/" target="_blank"/>
-        <p>&copy; VRZ Studio</p>
+    <footer className="text-center">
+      <div className="mb-16">
+        <p>VRZ Studio 2024 &copy;</p>
       </div>
     </footer>
   );

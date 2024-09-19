@@ -20,11 +20,10 @@ const ExperienceCard = ({ experience }) => {
       contentStyle={{
         background: linearGradientBackground, 
         color: "#fff",
-       
-        backgroundSize: "400% 400%",
-        animation: "gradientMove 15s ease infinite"
+        border: "1px solid #5f11efd2",
+        borderRadius: "4%",
       }}
-      contentArrowStyle={{ borderRight: "18px solid #5f11efd2" }}
+      contentArrowStyle={{ borderRight: "18px solid #84cc16" }}
       date={experience.date}
       iconStyle={{ background: experience.iconBg }}
       icon={
@@ -38,7 +37,7 @@ const ExperienceCard = ({ experience }) => {
       }
     >
       <div>
-        <h3 className='text-white text-[24px] font-bold'>{experience.title}</h3>
+        <h3 className='text-slate-100 text-[24px] font-bold text-center mb-4'>{experience.title}</h3>
         <p
           className='text-lime-500 text-[16px] font-semibold'
           style={{ margin: 0 }}
@@ -51,7 +50,7 @@ const ExperienceCard = ({ experience }) => {
         {experience.points.map((point, index) => (
           <li
             key={`experience-point-${index}`}
-            className='text-white text-[14px] pl-1 tracking-wider'
+            className='text-slate-300 text-[14px] pl-1 tracking-wider'
           >
             {point}
           </li>
