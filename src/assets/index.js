@@ -35,7 +35,7 @@ import tripguide from "./tripguide.png";
 
 import brazilFlag from "./brazil.png";
 import usaFlag from "./usa.png";
-import italyFlag from "./it.png";
+import italyFlag from "./italy.png";
 import franceFlag from "./france.png";
 import spainFlag from "./sp.png"
 
