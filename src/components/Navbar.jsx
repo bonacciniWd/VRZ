@@ -2,13 +2,13 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 import { styles } from "../styles";
-import { navLinks } from "../constants";
-import { logo, menu, close } from "../assets";
+import { logo, brazilFlag, italyFlag, franceFlag, spainFlag, usaFlag } from "../assets";
 
 const Navbar = () => {
   const [active, setActive] = useState("");
   const [toggle, setToggle] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [selectedLanguage, setSelectedLanguage] = useState(brazilFlag);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -20,9 +20,10 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const handleLinkClick = (navTitle) => {
-    setActive(navTitle);
-    setToggle(false); // Fecha o menu ao clicar em um item
+  const handleLanguageSelect = (flag) => {
+    setSelectedLanguage(flag);
+    setToggle(false); // Fecha o popup ao selecionar um idioma
+    // Aqui você pode adicionar a lógica para mudar o idioma
   };
 
   return (
@@ -43,8 +44,8 @@ const Navbar = () => {
           <img
             src={logo}
             alt='logo'
-            className='w-12 h-12 object-contain'
-            style={{ borderRadius: "50px", padding: "3px", opacity: "1" }}
+            className={`w-12 h-12 object-contain ${active === "logo" ? "border-2 border-indigo-800 rounded-full" : ""}`}
+            style={{ padding: "3px", opacity: "1" }}
           />
           <p className='text-slate-200 text-[18px] font-bold cursor-pointer flex'>
             DEV STUDIO || &nbsp;
@@ -53,47 +54,63 @@ const Navbar = () => {
         </Link>
 
         <ul className='list-none hidden sm:flex flex-row gap-10'>
-          {navLinks.map((nav) => (
-            <li
-              key={nav.id}
-              className={`${
-                active === nav.title ? "text-white" : "text-secondary"
-              } hover:text-white text-[18px] font-medium cursor-pointer`}
-              onClick={() => handleLinkClick(nav.title)}
-            >
-              <a href={`#${nav.id}`}>{nav.title}</a>
-            </li>
-          ))}
+          <li onClick={() => handleLanguageSelect(brazilFlag)} className="flex items-center">
+            <img src={brazilFlag} alt='Brazil Flag' className='w-10 h-10' />
+            <span className='ml-2 text-slate-200'>Português</span>
+          </li>
+          <li onClick={() => handleLanguageSelect(italyFlag)} className="flex items-center">
+            <img src={italyFlag} alt='Italy Flag' className='w-10 h-10' />
+            <span className='ml-2 text-slate-200'>Italiano</span>
+          </li>
+          <li onClick={() => handleLanguageSelect(franceFlag)} className="flex items-center">
+            <img src={franceFlag} alt='France Flag' className='w-10 h-10' />
+            <span className='ml-2 text-slate-200'>Français</span>
+          </li>
+          <li onClick={() => handleLanguageSelect(spainFlag)} className="flex items-center">
+            <img src={spainFlag} alt='Spain Flag' className='w-10 h-10' />
+            <span className='ml-2 text-slate-200'>Español</span>
+          </li>
+          <li onClick={() => handleLanguageSelect(usaFlag)} className="flex items-center">
+            <img src={usaFlag} alt='USA Flag' className='w-10 h-10' />
+            <span className='ml-2 text-slate-200'>English</span>
+          </li>
         </ul>
 
         <div className='sm:hidden flex flex-1 justify-end items-center'>
           <img
-            src={toggle ? close : menu}
-            alt='menu'
-            className='w-[28px] h-[28px] object-contain cursor-pointer'
+            src={selectedLanguage}
+            alt='language flag'
+            className='w-10 py-1 border-2 border-indigo-700 rounded-full bg-slate-700 h-10 object-contain cursor-pointer'
             onClick={() => setToggle(!toggle)}
           />
 
-          {/* Menu Popup para dispositivos móveis */}
+          {/* Menu Popup para idiomas em mobile */}
           <div
             className={`${
               toggle ? "flex" : "hidden"
-            } p-6 black-gradient absolute top-20 right-0 mx-4 my-2 min-w-[140px] z-10 rounded-xl`}
+            } p-6 bg-slate-800 bg-opacity-80 border-2 mt-4 border-indigo-700 absolute top-20 right-0 mx-4 my-2 min-w-[140px] z-10 rounded-xl`}
           >
             <ul className='list-none flex justify-end items-start flex-1 flex-col gap-4'>
-              {navLinks.map((nav) => (
-                <li
-                  key={nav.id}
-                  className={`font-poppins font-medium cursor-pointer text-[16px] ${
-                    active === nav.title ? "text-white" : "text-secondary"
-                  }`}
-                  onClick={() => handleLinkClick(nav.title)} // Ajuste aqui para chamar a função
-                >
-                  <a href={`#${nav.id}`} onClick={() => handleLinkClick(nav.title)}>
-                    {nav.title}
-                  </a>
-                </li>
-              ))}
+              <li onClick={() => handleLanguageSelect(brazilFlag)} className="flex items-center">
+                <img src={brazilFlag} alt='Brazil Flag' className='w-8 h-8' />
+                <span className='ml-2 text-slate-200'>Português</span>
+              </li>
+              <li onClick={() => handleLanguageSelect(italyFlag)} className="flex items-center">
+                <img src={italyFlag} alt='Italy Flag' className='w-8 h-8' />
+                <span className='ml-2 text-slate-200'>Italiano</span>
+              </li>
+              <li onClick={() => handleLanguageSelect(franceFlag)} className="flex items-center">
+                <img src={franceFlag} alt='France Flag' className='w-8 h-8' />
+                <span className='ml-2 text-slate-200'>Français</span>
+              </li>
+              <li onClick={() => handleLanguageSelect(spainFlag)} className="flex items-center">
+                <img src={spainFlag} alt='Spain Flag' className='w-8 h-8' />
+                <span className='ml-2 text-slate-200'>Español</span>
+              </li>
+              <li onClick={() => handleLanguageSelect(usaFlag)} className="flex items-center">
+                <img src={usaFlag} alt='USA Flag' className='w-8 h-8' />
+                <span className='ml-2 text-slate-200'>English</span>
+              </li>
             </ul>
           </div>
         </div>
@@ -103,3 +120,5 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
+
