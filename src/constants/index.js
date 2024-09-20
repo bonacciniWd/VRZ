@@ -6,6 +6,7 @@ import {
   javascript,
   typescript,
   html,
+  lp,
   css,
   reactjs,
   redux,
@@ -15,6 +16,7 @@ import {
   git,
   figma,
   docker,
+  app,
   meta,
   starbucks,
   tesla,
@@ -23,6 +25,7 @@ import {
   jobit,
   tripguide,
   threejs,
+  delivery,
   
 } from "../assets";
 
@@ -43,20 +46,34 @@ export const navLinks = [
 
 const services = [
   {
-    title: "Desenvolvedor Web",
+    title: "Delivery e totens de atendimento",
+    description: "Sistemas otimizados para delivery e restaurantes, incluindo totens de atendimento e também gestão de comandas e saídas de produtos",
+    icon: delivery,
+  },
+  {
+    title: "CRM Personalizado",
+    description: "Solução customizada para gestão de clientes. Gerencie e acompanhe todos os processos de sua empresa em um só lugar...",
     icon: web,
   },
   {
-    title: "Dev React, React-Native",
+    title: "E-Commerce",
+    description: "Plataforma completa de e-commerce para vendas online, oferecendo uma experiência intuitiva e segura para os clientes. Conta com um sistema integrado de gerenciamento, permitindo o acompanhamento detalhado de pedidos e pagamentos em tempo real.",
     icon: mobile,
   },
   {
-    title: "Dev Banco de dados",
+    title: "Gateway de Pagamentos",
+    description: "Cansado de ficar refém dos provedores de pagamentos? Taxas abusivas, lentidão em recebimento de repasses? Que tal ter seu próprio gateway? Aceite todas as bandeiras de cartões, boletos e PIX* (Válido somente no Brasil*).",
     icon: backend,
   },
   {
-    title: "Criador de conteúdo",
-    icon: creator,
+    title: "Aplicativos IOS e Android",
+    description: "Desenvolvimento de apps para iOS e Android. Tem uma ideia de aplicativo, mas não sabe por onde e nem como começar? A gente te ajuda com isso. (App de loja, App de agendamento de serviços, Delivery, Hospedagem, Aluguel de carros e etc..)  ",
+    icon: app,
+  },
+  {
+    title: "Página Institucional e Portfólio Profissional",
+    description: "Desenvolvimento de portfólios profissionais e pessoais. A VRZ Studio utiliza as mais avançadas tecnologias do mercado, combinando eficiência, design sofisticado e um toque de exclusividade para elevar o seu perfil.",
+    icon: lp,
   },
 ];
 

@@ -1,11 +1,14 @@
 import logo from "./logo.svg";
-import backend from "./backend.png";
-import creator from "./creator.png";
-import mobile from "./mobile.png";
-import web from "./web.png";
+import backend from "./creator.jpeg";
+import creator from "./creator.jpeg";
+import mobile from "./mobile.jpeg";
+import web from "./crm.jpeg";
 import github from "./github.png";
 import menu from "./menu.svg";
 import close from "./close.svg";
+import app from "./app.jpg";
+import delivery from "./delivery.png";
+import lp from "./lp.png";
 
 import css from "./tech/css.png";
 import docker from "./tech/docker.png";
@@ -38,8 +41,11 @@ export {
   web,
   github,
   menu,
+  lp,
+  app,
   close,
   css,
+  delivery,
   docker,
   figma,
   git,

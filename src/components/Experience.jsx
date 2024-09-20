@@ -13,7 +13,7 @@ import { SectionWrapper } from "../hoc";
 import { textVariant } from "../utils/motion";
 
 const ExperienceCard = ({ experience }) => {
-  const linearGradientBackground = "linear-gradient(135deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3))";
+  const linearGradientBackground = "linear-gradient(135deg, rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.8))";
 
   return (
     <VerticalTimelineElement

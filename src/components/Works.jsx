@@ -17,7 +17,7 @@ const ProjectCard = ({
   source_code_link,
 }) => {
   // Novo gradiente minimalista com transparência
-  const linearGradientBackground = "linear-gradient(135deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4))";
+  const linearGradientBackground = "linear-gradient(135deg, rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.8))";
 
   return (
     <motion.div
