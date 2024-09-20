@@ -77,7 +77,7 @@ const handleIntelligenceQuestion = (addResponseMessage) => {
 };
 // Criador
 const handleCreatorQuestion = (addResponseMessage) => {
-  addResponseMessage('Eu fui criado em Fevereiro de 2024, o meu criador se chama Denis Bonaccini, um desenvolvedor de softwares e soluções baseadas em Inteligência artificials. Como posso auxiliar você hoje?');
+  addResponseMessage('Eu fui criado em Fevereiro de 2024, o meu criador se chama Denis Bonaccini, um desenvolvedor de softwares e soluções baseadas em Inteligência artificials. Desde minha criação, eu recebi diversas atualizações, a ultima foi esta semana, me sinto como novo...');
 };
 // Musica
 const handleMusicQuestion = (addResponseMessage) => {
