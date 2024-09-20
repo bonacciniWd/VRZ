@@ -56,23 +56,18 @@ const Navbar = () => {
         <ul className='list-none hidden sm:flex flex-row gap-10'>
           <li onClick={() => handleLanguageSelect(brazilFlag)} className="flex items-center">
             <img src={brazilFlag} alt='Brazil Flag' className='w-10 h-10' />
-            <span className='ml-2 text-slate-200'>Português</span>
           </li>
           <li onClick={() => handleLanguageSelect(italyFlag)} className="flex items-center">
             <img src={italyFlag} alt='Italy Flag' className='w-10 h-10' />
-            <span className='ml-2 text-slate-200'>Italiano</span>
           </li>
           <li onClick={() => handleLanguageSelect(franceFlag)} className="flex items-center">
             <img src={franceFlag} alt='France Flag' className='w-10 h-10' />
-            <span className='ml-2 text-slate-200'>Français</span>
           </li>
           <li onClick={() => handleLanguageSelect(spainFlag)} className="flex items-center">
             <img src={spainFlag} alt='Spain Flag' className='w-10 h-10' />
-            <span className='ml-2 text-slate-200'>Español</span>
           </li>
           <li onClick={() => handleLanguageSelect(usaFlag)} className="flex items-center">
             <img src={usaFlag} alt='USA Flag' className='w-10 h-10' />
-            <span className='ml-2 text-slate-200'>English</span>
           </li>
         </ul>
 
@@ -120,5 +115,3 @@ const Navbar = () => {
 };
 
 export default Navbar;
-
-
