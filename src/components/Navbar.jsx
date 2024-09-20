@@ -13,24 +13,22 @@ const Navbar = () => {
   useEffect(() => {
     const handleScroll = () => {
       const scrollTop = window.scrollY;
-      if (scrollTop > 100) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
-      }
+      setScrolled(scrollTop > 100);
     };
 
     window.addEventListener("scroll", handleScroll);
-
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const handleLinkClick = (navTitle) => {
+    setActive(navTitle);
+    setToggle(false); // Fecha o menu ao clicar em um item
+  };
+
   return (
     <nav
-      className={`${
-        styles.paddingX
-      } w-[80%] flex items-center py-5 fixed top-[30px] left-1/2 transform -translate-x-1/2 z-20 ${
-        scrolled ? "bg-primary" : "bg-transparent border-none"
+      className={`${styles.paddingX} w-[80%] flex items-center py-5 fixed top-[30px] left-1/2 transform -translate-x-1/2 z-50 ${
+        scrolled ? "bg-primary" : "bg-transparent"
       } rounded-full bg-opacity-80 shadow-lg border-x-2 border-indigo-700`}
     >
       <div className='w-full flex justify-between items-center max-w-7xl mx-auto'>
@@ -61,7 +59,7 @@ const Navbar = () => {
               className={`${
                 active === nav.title ? "text-white" : "text-secondary"
               } hover:text-white text-[18px] font-medium cursor-pointer`}
-              onClick={() => setActive(nav.title)}
+              onClick={() => handleLinkClick(nav.title)}
             >
               <a href={`#${nav.id}`}>{nav.title}</a>
             </li>
@@ -72,13 +70,14 @@ const Navbar = () => {
           <img
             src={toggle ? close : menu}
             alt='menu'
-            className='w-[28px] h-[28px] object-contain'
+            className='w-[28px] h-[28px] object-contain cursor-pointer'
             onClick={() => setToggle(!toggle)}
           />
 
+          {/* Menu Popup para dispositivos móveis */}
           <div
             className={`${
-              !toggle ? "hidden" : "flex"
+              toggle ? "flex" : "hidden"
             } p-6 black-gradient absolute top-20 right-0 mx-4 my-2 min-w-[140px] z-10 rounded-xl`}
           >
             <ul className='list-none flex justify-end items-start flex-1 flex-col gap-4'>
@@ -88,12 +87,11 @@ const Navbar = () => {
                   className={`font-poppins font-medium cursor-pointer text-[16px] ${
                     active === nav.title ? "text-white" : "text-secondary"
                   }`}
-                  onClick={() => {
-                    setToggle(!toggle);
-                    setActive(nav.title);
-                  }}
+                  onClick={() => handleLinkClick(nav.title)} // Ajuste aqui para chamar a função
                 >
-                  <a href={`#${nav.id}`}>{nav.title}</a>
+                  <a href={`#${nav.id}`} onClick={() => handleLinkClick(nav.title)}>
+                    {nav.title}
+                  </a>
                 </li>
               ))}
             </ul>

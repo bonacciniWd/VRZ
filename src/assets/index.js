@@ -33,22 +33,9 @@ import carrent from "./carrent.png";
 import jobit from "./jobit.png";
 import tripguide from "./tripguide.png";
 
-import brazilFlag from "./brazil.png";
-import usaFlag from "./usa.png";
-import italyFlag from "./italy.png";
-import franceFlag from "./france.png";
-import spainFlag from "./sp.png"
 
-
-
-   
 
 export {
-  italyFlag,
-  franceFlag,
-  spainFlag,
-  brazilFlag,
-  usaFlag,
   logo,
   backend,
   creator,
