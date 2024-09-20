@@ -48,25 +48,25 @@ const Navbar = () => {
             style={{ padding: "3px", opacity: "1" }}
           />
           <p className='text-slate-200 text-[18px] font-bold cursor-pointer flex'>
-            DEV STUDIO || &nbsp;
+            DEV STUDIO &nbsp;
             <span className='sm:block hidden'> MKT STUDIO</span>
           </p>
         </Link>
 
         <ul className='list-none hidden sm:flex flex-row gap-10'>
-          <li onClick={() => handleLanguageSelect(brazilFlag)} className="flex items-center">
+          <li onClick={() => handleLanguageSelect(brazilFlag)} className={`flex items-center ${selectedLanguage === brazilFlag ? "border-4 border-indigo-800 rounded-full p-1" : ""}`}>
             <img src={brazilFlag} alt='Brazil Flag' className='w-10 h-10' />
           </li>
-          <li onClick={() => handleLanguageSelect(italyFlag)} className="flex items-center">
+          <li onClick={() => handleLanguageSelect(italyFlag)} className={`flex items-center ${selectedLanguage === italyFlag ? "border-4 border-indigo-800 rounded-full p-1" : ""}`}>
             <img src={italyFlag} alt='Italy Flag' className='w-10 h-10' />
           </li>
-          <li onClick={() => handleLanguageSelect(franceFlag)} className="flex items-center">
+          <li onClick={() => handleLanguageSelect(franceFlag)} className={`flex items-center ${selectedLanguage === franceFlag ? "border-4 border-indigo-800 rounded-full p-1" : ""}`}>
             <img src={franceFlag} alt='France Flag' className='w-10 h-10' />
           </li>
-          <li onClick={() => handleLanguageSelect(spainFlag)} className="flex items-center">
+          <li onClick={() => handleLanguageSelect(spainFlag)} className={`flex items-center ${selectedLanguage === spainFlag ? "border-4 border-indigo-800 rounded-full p-1" : ""}`}>
             <img src={spainFlag} alt='Spain Flag' className='w-10 h-10' />
           </li>
-          <li onClick={() => handleLanguageSelect(usaFlag)} className="flex items-center">
+          <li onClick={() => handleLanguageSelect(usaFlag)} className={`flex items-center ${selectedLanguage === usaFlag ? "border-4 border-indigo-800 rounded-full p-1" : ""}`}>
             <img src={usaFlag} alt='USA Flag' className='w-10 h-10' />
           </li>
         </ul>
@@ -75,7 +75,7 @@ const Navbar = () => {
           <img
             src={selectedLanguage}
             alt='language flag'
-            className='w-10 py-1 border-2 border-indigo-700 rounded-full bg-slate-700 h-10 object-contain cursor-pointer'
+            className='w-12 h-12 py-1 border-2 border-indigo-700 rounded-full bg-slate-700 object-contain cursor-pointer'
             onClick={() => setToggle(!toggle)}
           />
 
