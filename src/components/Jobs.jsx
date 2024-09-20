@@ -20,7 +20,7 @@ const Jobs = () => {
                 className="w-[90%] h-auto  border-indigo-700 rounded-lg my-auto mb-4 transition-transform duration-300 ease-in-out transform hover:scale-110"
               />
               <h3 className="text-2xl font-semibold mb-2 text-white">{service.title}</h3>
-              <p className="text-slate-300 text-sm">{service.description}</p>
+              <p className="text-slate-300 text-sm mx-6">{service.description}</p>
             </motion.div>
           ))}
         </div>

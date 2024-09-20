@@ -23,7 +23,7 @@ const ExperienceCard = ({ experience }) => {
         border: "1px solid #5f11efd2",
         borderRadius: "4%",
       }}
-      contentArrowStyle={{ borderRight: "18px solid #84cc16" }}
+      contentArrowStyle={{ borderRight: "18px solid #4338CA " }}
       date={experience.date}
       iconStyle={{ background: experience.iconBg }}
       icon={
@@ -63,14 +63,14 @@ const ExperienceCard = ({ experience }) => {
 const Experience = () => {
   return (
     <>
-      <motion.div variants={textVariant()}>
         <p className={`${styles.sectionSubText} text-center`}>
           Nosso processo
         </p>
         <h2 className={`${styles.sectionHeadText} text-center`}>
           COMO A VRZ TRABALHA?
         </h2>
-      </motion.div>
+      
+
 
       <div className='mt-20 flex flex-col'>
         <VerticalTimeline>

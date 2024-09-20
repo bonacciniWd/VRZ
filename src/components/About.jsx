@@ -49,11 +49,7 @@ const About = () => {
         variants={fadeIn("", "", 0.1, 1)}
         className='mt-4  text-secondary text-[17px] max-w-3xl leading-[30px]'
       >
-       Somos um estúdio voltado criações de software especializado com experiência em TypeScript e
-        JavaScript, e estruturas como React, Node.js, e
-        Three.js. Buscamos um acompanhamento de perto com os clientes para
-        criar soluções eficientes, escaláveis e fáceis de utilizar que resolvam
-        problemas do mundo real. Vamos trabalhar em conjunto para dar vida às suas ideias! 
+       Somos uma software house especializada em soluções tecnológicas sob medida, com expertise em TypeScript, JavaScript e frameworks como React, Node.js e Three.js. Trabalhamos de forma colaborativa com nossos clientes, criando sistemas eficientes, escaláveis e intuitivos que resolvem desafios reais. Vamos transformar suas ideias em soluções inovadoras.
       </motion.p>
 
       <StarsCanvas />
