@@ -2,26 +2,19 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 import { styles } from "../styles";
-import { navLinks } from "../constants";
-import { logo, menu, close } from "../assets";
+import { logo, brazilFlag, usaFlag, italyFlag, franceFlag, spainFlag } from "../assets";
 
 const Navbar = () => {
-  const [active, setActive] = useState("");
-  const [toggle, setToggle] = useState(false);
+  const [langToggle, setLangToggle] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
       const scrollTop = window.scrollY;
-      if (scrollTop > 100) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
-      }
+      setScrolled(scrollTop > 100);
     };
 
     window.addEventListener("scroll", handleScroll);
-
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -37,16 +30,13 @@ const Navbar = () => {
         <Link
           to='/'
           className='flex items-center gap-2'
-          onClick={() => {
-            setActive("");
-            window.scrollTo(0, 0);
-          }}
+          onClick={() => window.scrollTo(0, 0)}
         >
           <img
             src={logo}
             alt='logo'
             className='w-12 h-12 object-contain'
-            style={{ borderRadius: "50px", padding: "3px", opacity: "1" }}
+            style={{ borderRadius: "50px", padding: "1px", opacity: "1" }}
           />
           <p className='text-slate-200 text-[18px] font-bold cursor-pointer flex'>
             DEV STUDIO || &nbsp;
@@ -54,50 +44,34 @@ const Navbar = () => {
           </p>
         </Link>
 
-        <ul className='list-none hidden sm:flex flex-row gap-10'>
-          {navLinks.map((nav) => (
-            <li
-              key={nav.id}
-              className={`${
-                active === nav.title ? "text-white" : "text-secondary"
-              } hover:text-white text-[18px] font-medium cursor-pointer`}
-              onClick={() => setActive(nav.title)}
-            >
-              <a href={`#${nav.id}`}>{nav.title}</a>
+        {/* Botão da bandeira do Brasil */}
+        <button
+          className='flex items-center justify-center w-12 h-12 rounded-full bg-indigo-700 bg-opacity-50'
+          onClick={() => setLangToggle(!langToggle)}
+        >
+          <img src={brazilFlag} alt='Bandeira do Brasil' className='w-10 h-10' />
+        </button>
+
+        {/* Popup de seleção de idiomas */}
+        <div
+          className={`${
+            !langToggle ? "hidden" : "flex"
+          } p-6 bg-slate-900 bg-opacity-90 absolute top-20 right-0 mx-4 my-2 min-w-[140px] z-10 rounded-xl`}
+        >
+          <ul className='list-none flex flex-col gap-4'>
+            <li className='font-poppins font-medium cursor-pointer text-[16px] flex items-center'>
+              <img src={usaFlag} alt='Bandeira dos EUA' className='w-6 h-6 inline mr-2' /> Estados Unidos
             </li>
-          ))}
-        </ul>
-
-        <div className='sm:hidden flex flex-1 justify-end items-center'>
-          <img
-            src={toggle ? close : menu}
-            alt='menu'
-            className='w-[28px] h-[28px] object-contain'
-            onClick={() => setToggle(!toggle)}
-          />
-
-          <div
-            className={`${
-              !toggle ? "hidden" : "flex"
-            } p-6 black-gradient absolute top-20 right-0 mx-4 my-2 min-w-[140px] z-10 rounded-xl`}
-          >
-            <ul className='list-none flex justify-end items-start flex-1 flex-col gap-4'>
-              {navLinks.map((nav) => (
-                <li
-                  key={nav.id}
-                  className={`font-poppins font-medium cursor-pointer text-[16px] ${
-                    active === nav.title ? "text-white" : "text-secondary"
-                  }`}
-                  onClick={() => {
-                    setToggle(!toggle);
-                    setActive(nav.title);
-                  }}
-                >
-                  <a href={`#${nav.id}`}>{nav.title}</a>
-                </li>
-              ))}
-            </ul>
-          </div>
+            <li className='font-poppins font-medium cursor-pointer text-[16px] flex items-center'>
+              <img src={italyFlag} alt='Bandeira da Itália' className='w-6 h-6 inline mr-2' /> Itália
+            </li>
+            <li className='font-poppins font-medium cursor-pointer text-[16px] flex items-center'>
+              <img src={franceFlag} alt='Bandeira da França' className='w-6 h-6 inline mr-2' /> França
+            </li>
+            <li className='font-poppins font-medium cursor-pointer text-[16px] flex items-center'>
+              <img src={spainFlag} alt='Bandeira da Espanha' className='w-6 h-6 inline mr-2' /> Espanha
+            </li>
+          </ul>
         </div>
       </div>
     </nav>

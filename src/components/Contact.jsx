@@ -9,8 +9,9 @@ import { slideIn } from "../utils/motion";
 
 const Contact = () => {
 
-  const linearGradientBackground = "linear-gradient(to bottom, darkblue, #000, #000, #5407a1)";
+  const linearGradientBackground = "linear-gradient(135deg, rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.8))";
 
+  
   const formRef = useRef();
   const [form, setForm] = useState({
     name: "",
@@ -50,7 +51,7 @@ const Contact = () => {
       .then(
         () => {
           setLoading(false);
-          alert("Obrigado pelo contato, Entrarei em contato em breve...");
+          alert("Obrigado pelo contato, Entraremos em contato em breve...");
 
           setForm({
             name: "",
@@ -82,7 +83,7 @@ const Contact = () => {
      
       <motion.div
         variants={slideIn("left", "tween", 0.2, 1)}
-         className='flex-[0.75] p-8 rounded-2xl border-2 border-indigo-700 bg-transparent'
+         className='flex-[0.75] p-8 rounded-2xl border-2 border-indigo-700 bg-slate-900 bg-opacity-70'
       >
         <p className={styles.sectionSubText}>Entre em contato</p>
         <h3 className={styles.sectionHeadText}>Seus dados</h3>
