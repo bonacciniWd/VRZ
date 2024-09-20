@@ -7,6 +7,7 @@ import { logo, brazilFlag, usaFlag, italyFlag, franceFlag, spainFlag } from "../
 const Navbar = () => {
   const [langToggle, setLangToggle] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [currentFlag, setCurrentFlag] = useState(brazilFlag);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -17,6 +18,11 @@ const Navbar = () => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const handleLanguageChange = (flag) => {
+    setCurrentFlag(flag);
+    setLangToggle(false); // Fecha o popup após selecionar um idioma
+  };
 
   return (
     <nav
@@ -36,7 +42,7 @@ const Navbar = () => {
             src={logo}
             alt='logo'
             className='w-12 h-12 object-contain'
-            style={{ borderRadius: "50px", padding: "1px", opacity: "1" }}
+            style={{ borderRadius: "50px", padding: "3px", opacity: "1" }}
           />
           <p className='text-slate-200 text-[18px] font-bold cursor-pointer flex'>
             DEV STUDIO || &nbsp;
@@ -44,32 +50,44 @@ const Navbar = () => {
           </p>
         </Link>
 
-        {/* Botão da bandeira do Brasil */}
+        {/* Botão da bandeira atual */}
         <button
-          className='flex items-center justify-center w-12 h-12 rounded-full bg-indigo-700 bg-opacity-50'
+          className='flex items-center justify-center w-12 h-12 rounded-full bg-slate-900 border-2 border-indigo-700'
           onClick={() => setLangToggle(!langToggle)}
         >
-          <img src={brazilFlag} alt='Bandeira do Brasil' className='w-10 h-10' />
+          <img src={currentFlag} alt='Bandeira do Brasil' className='w-8 h-8 object-contain' />
         </button>
 
         {/* Popup de seleção de idiomas */}
         <div
           className={`${
             !langToggle ? "hidden" : "flex"
-          } p-6 bg-slate-900 bg-opacity-90 absolute top-20 right-0 mx-4 my-2 min-w-[140px] z-10 rounded-xl`}
+          } p-6 bg-slate-900 border-2 border-indigo-700 bg-opacity-90 absolute top-20 right-0 mx-4 my-2 min-w-[140px] z-10 rounded-xl`}
         >
           <ul className='list-none flex flex-col gap-4'>
-            <li className='font-poppins font-medium cursor-pointer text-[16px] flex items-center'>
-              <img src={usaFlag} alt='Bandeira dos EUA' className='w-6 h-6 inline mr-2' /> Estados Unidos
+            <li
+              className='font-poppins font-medium cursor-pointer text-[16px] flex items-center'
+              onClick={() => handleLanguageChange(usaFlag)}
+            >
+              <img src={usaFlag} alt='Bandeira dos EUA' className='w-6 h-6 inline' /> Estados Unidos
             </li>
-            <li className='font-poppins font-medium cursor-pointer text-[16px] flex items-center'>
-              <img src={italyFlag} alt='Bandeira da Itália' className='w-6 h-6 inline mr-2' /> Itália
+            <li
+              className='font-poppins font-medium cursor-pointer text-[16px] flex items-center'
+              onClick={() => handleLanguageChange(italyFlag)}
+            >
+              <img src={italyFlag} alt='Bandeira da Itália' className='w-6 h-6 inline' /> Itália
             </li>
-            <li className='font-poppins font-medium cursor-pointer text-[16px] flex items-center'>
-              <img src={franceFlag} alt='Bandeira da França' className='w-6 h-6 inline mr-2' /> França
+            <li
+              className='font-poppins font-medium cursor-pointer text-[16px] flex items-center'
+              onClick={() => handleLanguageChange(franceFlag)}
+            >
+              <img src={franceFlag} alt='Bandeira da França' className='w-6 h-6 inline' /> França
             </li>
-            <li className='font-poppins font-medium cursor-pointer text-[16px] flex items-center'>
-              <img src={spainFlag} alt='Bandeira da Espanha' className='w-6 h-6 inline mr-2' /> Espanha
+            <li
+              className='font-poppins font-medium cursor-pointer text-[16px] flex items-center'
+              onClick={() => handleLanguageChange(spainFlag)}
+            >
+              <img src={spainFlag} alt='Bandeira da Espanha' className='w-6 h-6 inline' /> Espanha
             </li>
           </ul>
         </div>
