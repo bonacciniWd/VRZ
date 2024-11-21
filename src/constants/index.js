@@ -137,7 +137,7 @@ const experiences = [
     title: "Descoberta e Planejamento",
     company_name: "Consultoria e Levantamento de Requisitos",
     icon: tesla, // ícone específico de planejamento
-    iconBg: "#3B82F6",
+    iconBg: "#0c0A4b",
     date: "📝🤝",
     points: [
       "Reuniões iniciais com o cliente para entender profundamente o negócio, necessidades e expectativas.",
@@ -232,7 +232,7 @@ const projects = [
   {
     name: "Two Variant",
     description:
-      "Aplicação desenvolvida para a empresa @twovariant / twovariant.com.br. Uma loja virtual onde o usuário poderá realizar compras, acompanhar o tempo de entrega e frete, provedor de pagamentos conectado ao stripe, paypal, mercado livre e getnet.",
+      "Aplicação desenvolvida para a empresa @twovariant / twovariant.com.br. Uma loja virtual onde o usuário poderá realizar compras, acompanhar o tempo de entrega e frete, provedor de pagamentos próprio.",
     tags: [
       {
         name: "React",
@@ -248,12 +248,12 @@ const projects = [
       },
     ],
     image: carrent,
-    source_code_link: "https://twovariant.com.br",
+    source_code_link: "https://twovariant.com",
   },
   {
-    name: "Anunciarty",
+    name: "Borlenz Design",
     description:
-      "Aplicação criada para a empresa de marketing @anunciarty_ , Cujo projeto inicial se deu à ideia onde pudessemos enriquecer a experiência do usuário e lhes mostrar a elevação do marketing em seu negócio. ",
+      "Aplicação criada para a empresa de Design @borlenzdesign, Cujo projeto inicial se deu à ideia onde pudessemos enriquecer a experiência do usuário e lhes mostrar a elevação do design em seu negócio. ",
     tags: [
       {
         name: "react",
@@ -269,12 +269,12 @@ const projects = [
       },
     ],
     image: jobit,
-    source_code_link: "anunciarty.vercel.app",
+    source_code_link: "https://borlenz.vercel.app",
   },
   {
-    name: "Soberana Luxo",
+    name: "Skyterra Mídia",
     description:
-      "Aplicação criada em react e mongo-db, para a empresa @soberana.luxo, cujo objetivo é fomentar a ideia do consumo consciente, incentivando o aluguel para itens de uso quase que unicos, tais como joias de formaturas, casamentos e eventos.",
+      "Aplicação criada em react e mongo-db, para a empresa @skyterramidia, cujo objetivo é oferecer serviços de produção aúdio visual em todo o Brasil, sejam eles em terra ou aéreos.",
     tags: [
       {
         name: "nextjs",
@@ -290,7 +290,7 @@ const projects = [
       },
     ],
     image: tripguide,
-    source_code_link: "https://github.com/bonacciniWd/",
+    source_code_link: "https://skyterramidia.com.br",
   },
 ];
 

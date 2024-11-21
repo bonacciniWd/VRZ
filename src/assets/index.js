@@ -30,8 +30,8 @@ import starbucks from "./company/shopify.gif";
 import tesla from "./company/tesla.gif";
 
 import carrent from "./carrent.png";
-import jobit from "./jobit.png";
-import tripguide from "./tripguide.png";
+import jobit from "./jobit.jpg";
+import tripguide from "./tripguide.jpg";
 
 import brazilFlag from "./brazil.png";
 import usaFlag from "./usa.png";
