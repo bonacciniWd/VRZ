@@ -12,7 +12,7 @@ const Jobs = () => {
               key={index}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="bg-slate-900 p-6 rounded-lg border-2 border-indigo-700 shadow-lg flex flex-col items-center transition-transform duration-300 ease-in-out"
+              className="bg-azul-vr/40 p-6 rounded-lg shadow-white-100/60 shadow-inner border-b-2 border-verde-vr/80 flex flex-col items-center transition-transform duration-300 ease-in-out"
             >
               <img
                 src={service.icon}

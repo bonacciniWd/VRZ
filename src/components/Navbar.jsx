@@ -29,8 +29,8 @@ const Navbar = () => {
   return (
     <nav
       className={`${styles.paddingX} w-[80%] flex items-center py-5 fixed top-[30px] left-1/2 transform -translate-x-1/2 z-50 ${
-        scrolled ? "bg-primary" : "bg-transparent border-none"
-      } rounded-full bg-opacity-80 shadow-lg border-x-2 border-indigo-700`}
+        scrolled ? "bg-azul-vr/40" : "bg-transparent border-none"
+      } rounded-full bg-opacity-80 shadow-white-100/50 shadow-inner`}
     >
       <div className='w-full flex justify-between items-center max-w-7xl mx-auto'>
         <Link
@@ -44,13 +44,10 @@ const Navbar = () => {
           <img
             src={logo}
             alt='logo'
-            className={`w-12 h-12 object-contain ${active === "logo" ? "border-2 border-indigo-800 rounded-full" : ""}`}
-            style={{ padding: "3px", opacity: "1" }}
+            className={`w-32 h-12 object-contain ${active === "logo" ? "border-2 border-azul-vr rounded-full" : ""}`}
+            style={{ padding: "1px", opacity: "1" }}
           />
-          <p className='text-slate-200 text-[18px] font-bold cursor-pointer flex'>
-            DEV STUDIO &nbsp;
-            <span className='sm:block hidden'> MKT STUDIO</span>
-          </p>
+          
         </Link>
 
         <ul className='list-none hidden sm:flex flex-row gap-10'>
@@ -75,7 +72,7 @@ const Navbar = () => {
           <img
             src={selectedLanguage}
             alt='language flag'
-            className='w-12 h-12 py-1 border-2 border-indigo-700 rounded-full bg-slate-700 object-contain cursor-pointer'
+            className='w-12 h-12 py-1 border-2 border-azul-vr rounded-full bg-slate-700 object-contain cursor-pointer'
             onClick={() => setToggle(!toggle)}
           />
 

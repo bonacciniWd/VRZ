@@ -12,7 +12,7 @@ const Main = () => {
   
 
   useEffect(() => {
-    const phrases = ["Bem vindos à VRZ Estúdio","...", "Criamos aplicações web e mobile","...", "Trazemos seu projeto à vida!"];
+    const phrases = ["Bem vindos à VRZ Studio...","...", "Criamos aplicações web e mobile","...", "Trazemos seu projeto à vida!"];
     let phraseIndex = 0;
     let charIndex = 0;
     let isDeleting = false;
@@ -45,7 +45,7 @@ const Main = () => {
         isDeleting = true;
       }
   
-      const speed = isDeleting ? 90 : 70; // Ajuste a velocidade de digitação e exclusão conforme necessário
+      const speed = isDeleting ? 30 : 60; // Ajuste a velocidade de digitação e exclusão conforme necessário
   
       setTimeout(typeText, speed);
     }
@@ -58,8 +58,8 @@ const Main = () => {
     <section className={`relative w-full h-screen mx-auto`}>
       <div className={`absolute inset-0 top-[120px]  max-w-7xl mx-auto ${styles.paddingX} flex flex-row items-start gap-5`}>
         <div className='flex flex-col justify-center items-center mt-5'>
-          <div className='w-5 h-5 rounded-full bg-[#915EFF]' />
-          <div className='w-1 sm:h-60 h-80 violet-gradient' />
+          <div className='w-5 h-5 rounded-full bg-azul-vr shadow-inner shadow-white-100' />
+          <div className='w-1 sm:h-60 h-80 violet-gradient shadow-white-100' />
         </div>
 
         <div>
@@ -67,7 +67,7 @@ const Main = () => {
             O que você  <span className='uppercase' style={{ margin: '0 10px' }}>quer criar?</span>
           </h1>
           
-          <div className="console">
+          <div className="console mt-4 shadow-white-100 shadow-inner">
             <pre>
               <code id="animated-text"></code>
             </pre>
