@@ -22,13 +22,13 @@ function Footer() {
         <img
           src={framePath}
           alt="Animação da logo VRZ"
-          className="w-[200px] sm:w-[300px] md:w-[360px] lg:w-[400px]"
+          className="w-[200px] sm:w-[200px] md:w-[200px] lg:w-[200px]"
         />
       </div>
 
       {/* Texto do Rodapé */}
       <div className="mb-10">
-        <p>VRZ Studio 2024 &copy;</p>
+        <p>We're shaping a new world! <br/>2025 &copy;</p>
       </div>
     </footer>
   );
