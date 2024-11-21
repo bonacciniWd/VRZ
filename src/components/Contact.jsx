@@ -83,7 +83,7 @@ const Contact = () => {
      
       <motion.div
         variants={slideIn("left", "tween", 0.2, 1)}
-         className='flex-[0.75] p-8 rounded-2xl border-2 border-indigo-700 bg-slate-900 bg-opacity-70'
+         className='flex-[0.75] p-8 rounded-2xl shadow-inner shadow-white-100 bg-azul-vr/30 bg-opacity-70'
       >
         <p className={styles.sectionSubText}>Entre em contato</p>
         <h3 className={styles.sectionHeadText}>Seus dados</h3>
@@ -101,7 +101,7 @@ const Contact = () => {
               value={form.name}
               onChange={handleChange}
               placeholder="Nome completo"
-              className='bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg border-2 border-indigo-700 font-medium'
+              className='bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg border-[1px] border-white-100/60 font-medium'
             />
           </label>
           <label className='flex flex-col'>
@@ -112,7 +112,7 @@ const Contact = () => {
               value={form.email}
               onChange={handleChange}
               placeholder="Seu melhor e-mail"
-              className='bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg border-2 border-indigo-700 font-medium'
+              className='bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg border-[1px] border-white-100/60 font-medium'
             />
           </label>
           <label className='flex flex-col'>
@@ -123,13 +123,13 @@ const Contact = () => {
               value={form.message}
               onChange={handleChange}
               placeholder='Por favor, forneça a maior quantidade de dados possíveis para que possa lhe ajudar de maneira mais eficiente...'
-              className='bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg border-2 border-indigo-700 font-medium'
+              className='bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg border-[1px] border-white-100/60 font-medium'
             />
           </label>
 
           <button
             type='submit'
-            className='bg-tertiary py-3 px-8 rounded-xl border-2 border-indigo-700 w-fit text-white font-bold shadow-md shadow-primary'
+            className='bg-tertiary py-3 px-8 rounded-xl border-2 border-verde-vr w-fit text-white font-bold shadow-md shadow-primary'
           >
             {loading ? "Enviando..." : "Enviar"}
           </button>
