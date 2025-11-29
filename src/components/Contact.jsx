@@ -5,6 +5,7 @@ import { useLanguage } from "../app/LanguageContext";
 import { translations } from "../app/translations";
 
 import { styles } from "../styles";
+import "./Contact.css";
 import ContactExperience from "./ContactExperience";
 import { SectionWrapper } from "../hoc";
 import { slideIn } from "../utils/motion";
@@ -78,7 +79,7 @@ const Contact = () => {
         className={`xl:mt-12 mb-10 flex xl:flex-row flex-col-reverse gap-10 overflow-hidden`}
       >
          <div className="flex-1">
-              <div className="bg-[#cd7b2e00] w-full h-[60vh] md:h-full hover:cursor-grab rounded-3xl overflow-hidden">
+              <div className="contact-animated-border w-full h-[60vh] md:h-full hover:cursor-grab rounded-3xl overflow-hidden flex items-center justify-center">
                 <ContactExperience />
               </div>
           </div>

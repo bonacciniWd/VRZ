@@ -40,7 +40,7 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`${styles.paddingX} w-[80%] h-16 md:h-20 flex items-center py-5 fixed top-[30px] left-1/2 transform -translate-x-1/2 z-50 ${
+      className={`${styles.paddingX} w-[80%] h-16 md:h-20 flex items-center py-5 fixed top-[20px] left-1/2 transform -translate-x-1/2 z-50 ${
         scrolled ? "bg-azul-vr/40" : "bg-transparent border-none"
       } rounded-full bg-opacity-80 shadow-white-100/50 shadow-inner`}
     >
@@ -87,7 +87,7 @@ const Navbar = () => {
           <div
             className={`${
               toggle ? "flex" : "hidden"
-            } p-6 bg-slate-800 bg-opacity-80 border-2 mt-4 border-indigo-700 absolute top-20 right-0 mx-4 my-2 min-w-[140px] z-10 rounded-xl`}
+            } p-6 bg-slate-800 bg-opacity-80 border-2 mt-4 border-verde-vr absolute top-20 right-0 mx-4 my-2 min-w-[140px] z-10 rounded-xl`}
           >
             <ul className='list-none flex justify-end items-start flex-1 flex-col gap-4'>
               {Object.entries(flagMap).map(([code, flag]) => (
