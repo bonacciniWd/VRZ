@@ -40,7 +40,7 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`${styles.paddingX} w-[80%] flex items-center py-5 fixed top-[30px] left-1/2 transform -translate-x-1/2 z-50 ${
+      className={`${styles.paddingX} w-[80%] h-16 md:h-20 flex items-center py-5 fixed top-[30px] left-1/2 transform -translate-x-1/2 z-50 ${
         scrolled ? "bg-azul-vr/40" : "bg-transparent border-none"
       } rounded-full bg-opacity-80 shadow-white-100/50 shadow-inner`}
     >
@@ -56,7 +56,7 @@ const Navbar = () => {
           <img
             src={logo}
             alt='logo'
-            className={`w-32 h-12 object-contain ${active === "logo" ? "border-2 border-azul-vr rounded-full" : ""}`}
+            className={`w-28 h-10 object-contain ${active === "logo" ? "border-2 border-azul-vr rounded-full" : ""}`}
             style={{ padding: "1px", opacity: "1" }}
           />
           
@@ -79,7 +79,7 @@ const Navbar = () => {
           <img
             src={flagMap[language]}
             alt='language flag'
-            className='w-12 h-12 py-1 border-2 border-azul-vr rounded-full bg-slate-700 object-contain cursor-pointer'
+            className='w-12 h-12 py-1 border-2 border-verde-vr rounded-full bg-slate-700 object-contain cursor-pointer'
             onClick={() => setToggle(!toggle)}
           />
 
