@@ -1,15 +1,18 @@
 import React, { useEffect, useState } from "react";
+import { useLanguage } from "../app/LanguageContext";
+import { translations } from "../app/translations";
 
 function Footer() {
   const [frameIndex, setFrameIndex] = useState(0);
-  const totalFrames = 210; // Total de frames na animação
-  const frameRate = 30; // Intervalo entre frames (em ms)
+  const totalFrames = 210;
+  const frameRate = 30;
+  const { language } = useLanguage();
+  const footerTexts = translations[language]?.footer || translations["pt"].footer;
 
   useEffect(() => {
     const interval = setInterval(() => {
       setFrameIndex((prevIndex) => (prevIndex + 1) % totalFrames);
     }, frameRate);
-
     return () => clearInterval(interval);
   }, []);
 
@@ -17,7 +20,6 @@ function Footer() {
 
   return (
     <footer className="text-center relative">
-      {/* Animação da Logo */}
       <div className="relative flex justify-center items-center mb-4">
         <img
           src={framePath}
@@ -25,10 +27,8 @@ function Footer() {
           className="w-[200px] sm:w-[200px] md:w-[200px] lg:w-[200px]"
         />
       </div>
-
-      {/* Texto do Rodapé */}
       <div className="mb-10">
-        <p>We're shaping a new world! <br/>2025 &copy;</p>
+        <p>{footerTexts.text} <br/>2025 &copy;</p>
       </div>
     </footer>
   );

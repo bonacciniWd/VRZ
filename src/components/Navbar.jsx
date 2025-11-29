@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useLanguage } from "../app/LanguageContext";
 import { Link } from "react-router-dom";
 
 import { styles } from "../styles";
@@ -8,7 +9,15 @@ const Navbar = () => {
   const [active, setActive] = useState("");
   const [toggle, setToggle] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [selectedLanguage, setSelectedLanguage] = useState(brazilFlag);
+  const { language, setLanguage } = useLanguage();
+  // Flags associadas aos idiomas
+  const flagMap = {
+    pt: brazilFlag,
+    it: italyFlag,
+    fr: franceFlag,
+    es: spainFlag,
+    en: usaFlag,
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -21,9 +30,12 @@ const Navbar = () => {
   }, []);
 
   const handleLanguageSelect = (flag) => {
-    setSelectedLanguage(flag);
+    // Encontra o código do idioma pelo flag
+    const langCode = Object.keys(flagMap).find(key => flagMap[key] === flag);
+    if (langCode) {
+      setLanguage(langCode);
+    }
     setToggle(false); // Fecha o popup ao selecionar um idioma
-    // Aqui você pode adicionar a lógica para mudar o idioma
   };
 
   return (
@@ -51,26 +63,21 @@ const Navbar = () => {
         </Link>
 
         <ul className='list-none hidden sm:flex flex-row gap-10'>
-          <li onClick={() => handleLanguageSelect(brazilFlag)} className={`flex items-center ${selectedLanguage === brazilFlag ? "border-4 border-indigo-800 rounded-full p-1" : ""}`}>
-            <img src={brazilFlag} alt='Brazil Flag' className='w-10 h-10' />
-          </li>
-          <li onClick={() => handleLanguageSelect(italyFlag)} className={`flex items-center ${selectedLanguage === italyFlag ? "border-4 border-indigo-800 rounded-full p-1" : ""}`}>
-            <img src={italyFlag} alt='Italy Flag' className='w-10 h-10' />
-          </li>
-          <li onClick={() => handleLanguageSelect(franceFlag)} className={`flex items-center ${selectedLanguage === franceFlag ? "border-4 border-indigo-800 rounded-full p-1" : ""}`}>
-            <img src={franceFlag} alt='France Flag' className='w-10 h-10' />
-          </li>
-          <li onClick={() => handleLanguageSelect(spainFlag)} className={`flex items-center ${selectedLanguage === spainFlag ? "border-4 border-indigo-800 rounded-full p-1" : ""}`}>
-            <img src={spainFlag} alt='Spain Flag' className='w-10 h-10' />
-          </li>
-          <li onClick={() => handleLanguageSelect(usaFlag)} className={`flex items-center ${selectedLanguage === usaFlag ? "border-4 border-indigo-800 rounded-full p-1" : ""}`}>
-            <img src={usaFlag} alt='USA Flag' className='w-10 h-10' />
-          </li>
+          {Object.entries(flagMap).map(([code, flag]) => (
+            <li
+              key={code}
+              onClick={() => handleLanguageSelect(flag)}
+              className={`flex items-center cursor-pointer ${language === code ? "border-4 border-indigo-800 rounded-full p-1" : ""}`}
+              style={{ zIndex: 100 }}
+            >
+              <img src={flag} alt={`${code} Flag`} className='w-10 h-10' />
+            </li>
+          ))}
         </ul>
 
         <div className='sm:hidden flex flex-1 justify-end items-center'>
           <img
-            src={selectedLanguage}
+            src={flagMap[language]}
             alt='language flag'
             className='w-12 h-12 py-1 border-2 border-azul-vr rounded-full bg-slate-700 object-contain cursor-pointer'
             onClick={() => setToggle(!toggle)}
@@ -83,26 +90,18 @@ const Navbar = () => {
             } p-6 bg-slate-800 bg-opacity-80 border-2 mt-4 border-indigo-700 absolute top-20 right-0 mx-4 my-2 min-w-[140px] z-10 rounded-xl`}
           >
             <ul className='list-none flex justify-end items-start flex-1 flex-col gap-4'>
-              <li onClick={() => handleLanguageSelect(brazilFlag)} className="flex items-center">
-                <img src={brazilFlag} alt='Brazil Flag' className='w-8 h-8' />
-                <span className='ml-2 text-slate-200'>Português</span>
-              </li>
-              <li onClick={() => handleLanguageSelect(italyFlag)} className="flex items-center">
-                <img src={italyFlag} alt='Italy Flag' className='w-8 h-8' />
-                <span className='ml-2 text-slate-200'>Italiano</span>
-              </li>
-              <li onClick={() => handleLanguageSelect(franceFlag)} className="flex items-center">
-                <img src={franceFlag} alt='France Flag' className='w-8 h-8' />
-                <span className='ml-2 text-slate-200'>Français</span>
-              </li>
-              <li onClick={() => handleLanguageSelect(spainFlag)} className="flex items-center">
-                <img src={spainFlag} alt='Spain Flag' className='w-8 h-8' />
-                <span className='ml-2 text-slate-200'>Español</span>
-              </li>
-              <li onClick={() => handleLanguageSelect(usaFlag)} className="flex items-center">
-                <img src={usaFlag} alt='USA Flag' className='w-8 h-8' />
-                <span className='ml-2 text-slate-200'>English</span>
-              </li>
+              {Object.entries(flagMap).map(([code, flag]) => (
+                <li key={code} onClick={() => handleLanguageSelect(flag)} className="flex items-center">
+                  <img src={flag} alt={`${code} Flag`} className='w-8 h-8' />
+                  <span className='ml-2 text-slate-200'>
+                    {code === "pt" ? "Português" :
+                     code === "it" ? "Italiano" :
+                     code === "fr" ? "Français" :
+                     code === "es" ? "Español" :
+                     "English"}
+                  </span>
+                </li>
+              ))}
             </ul>
           </div>
         </div>

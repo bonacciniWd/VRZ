@@ -1,6 +1,8 @@
 import React from "react";
 import Tilt from "react-tilt";
 import { motion } from "framer-motion";
+import { useLanguage } from "../app/LanguageContext";
+import { translations } from "../app/translations";
 
 import { styles } from "../styles";
 import { github } from "../assets";
@@ -16,15 +18,13 @@ const ProjectCard = ({
   image,
   source_code_link,
 }) => {
-  // Novo gradiente minimalista com transparência
+  const { language } = useLanguage();
   const linearGradientBackground = "linear-gradient(135deg, rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.8))";
-
   return (
     <motion.div
       variants={fadeIn("up", "spring", index * 0.5, 0.75)}
-      onClick={() => window.open(source_code_link, "_blank")} // Clica e vai para o link
+      onClick={() => window.open(source_code_link, "_blank")}
       className='cursor-pointer'
-       // Adiciona um cursor pointer para melhorar a UX
     >
       <Tilt
         options={{
@@ -37,10 +37,9 @@ const ProjectCard = ({
         <div className='relative w-full h-[230px]'>
           <img
             src={image}
-            alt='project_image'
+            alt={name[language]}
             className='w-full h-full object-cover rounded-2xl border-2 border-slate-700'
           />
-
           <div className='absolute inset-0 flex justify-end m-3 card-img_hover'>
             <div
               onClick={() => window.open(source_code_link, "_blank")}
@@ -54,10 +53,9 @@ const ProjectCard = ({
             </div>
           </div>
         </div>
-
         <div className='mt-5'>
-          <h3 className='text-white font-bold text-[24px]'>{name}</h3>
-          <p className='mt-2 text-slate-300 text-[14px]'>{description}</p>
+          <h3 className='text-white font-bold text-[24px]'>{name[language]}</h3>
+          <p className='mt-2 text-slate-300 text-[14px]'>{description[language]}</p>
         </div>
       </Tilt>
     </motion.div>
@@ -65,11 +63,13 @@ const ProjectCard = ({
 };
 
 const Works = () => {
+  const { language } = useLanguage();
+  const worksTexts = translations[language]?.works || translations["pt"].works;
   return (
     <>
       <motion.div  variants={textVariant()}>
-        <p className={`${styles.sectionSubText} `}>Nosso Trabalho</p>
-        <h2 className={`${styles.sectionHeadText}`}>Projetos</h2>
+        <p className={`${styles.sectionSubText} `}>{worksTexts.title}</p>
+        <h2 className={`${styles.sectionHeadText}`}>{worksTexts.title}</h2>
       </motion.div>
 
       <div className='w-full flex'>
@@ -77,7 +77,7 @@ const Works = () => {
           variants={fadeIn("", "", 0.1, 1)}
           className='mt-3 text-slate-300 text-[17px] max-w-3xl leading-[30px]'
         >
-          Os projetos listados à baixo são apenas alguns dos inúmeros serviços e parcerias já feitos.
+          {worksTexts.description}
         </motion.p>
       </div>
 

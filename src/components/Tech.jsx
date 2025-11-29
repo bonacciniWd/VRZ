@@ -1,57 +1,76 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { styles } from "../styles";
-import { useEffect } from "react";
-import { Canvas } from "@react-three/fiber";
-import { OrbitControls, Sphere, MeshDistortMaterial } from "@react-three/drei";
-
+import { useLanguage } from "../app/LanguageContext";
+import { translations } from "../app/translations";
 import BannerHeroDesktop from "../assets/back-hero-bn.png"; // Imagem para desktop
 import './main.css';
 
 const Main = () => {
+  const { language } = useLanguage();
+  const techTexts = translations[language]?.tech || translations["pt"].tech;
 
   
 
   useEffect(() => {
-    const phrases = ["Bem vindos à VRZ Studio...","...", "Criamos aplicações web e mobile","...", "Trazemos seu projeto à vida!"];
+    const phrases = [
+      techTexts.title,
+      techTexts.description,
+      "Visione Rifatta Studio",
+      language === "pt" ? "Criamos aplicações web e mobile" :
+      language === "en" ? "We create web and mobile apps" :
+      language === "es" ? "Creamos aplicaciones web y móviles" :
+      language === "it" ? "Creiamo applicazioni web e mobile" :
+      language === "fr" ? "Nous créons des applications web et mobiles" :
+      "",
+      language === "pt" ? "Trazemos seu projeto à vida!" :
+      language === "en" ? "We bring your project to life!" :
+      language === "es" ? "¡Damos vida a tu proyecto!" :
+      language === "it" ? "Diamo vita al tuo progetto!" :
+      language === "fr" ? "Nous donnons vie à votre projet!" :
+      ""
+    ];
     let phraseIndex = 0;
     let charIndex = 0;
     let isDeleting = false;
     const textElement = document.getElementById("animated-text");
-  
+    let timeoutId;
+
     function typeText() {
       const currentPhrase = phrases[phraseIndex];
       const currentText = currentPhrase.substring(0, charIndex + 1);
-      textElement.textContent = currentText;
-  
+      if (textElement) textElement.textContent = currentText;
+
       if (!isDeleting) {
         charIndex++;
       } else {
         charIndex--;
       }
-  
+
       if (isDeleting && charIndex === -1) {
         isDeleting = false;
-  
-        // Aguarde 3 segundos antes de iniciar a próxima frase
-        setTimeout(() => {
+        timeoutId = setTimeout(() => {
           phraseIndex = (phraseIndex + 1) % phrases.length;
           charIndex = 0;
           typeText();
         }, 200);
         return;
       }
-  
+
       if (!isDeleting && charIndex === currentPhrase.length) {
         isDeleting = true;
       }
-  
-      const speed = isDeleting ? 30 : 60; // Ajuste a velocidade de digitação e exclusão conforme necessário
-  
-      setTimeout(typeText, speed);
+
+      const speed = isDeleting ? 30 : 60;
+      timeoutId = setTimeout(typeText, speed);
     }
-  
+
     typeText();
-  }, []);
+
+    return () => {
+      if (timeoutId) clearTimeout(timeoutId);
+      if (textElement) textElement.textContent = "";
+    };
+  }, [language]);
   
 
   return (
@@ -64,24 +83,17 @@ const Main = () => {
 
         <div>
           <h1 className={`${styles.heroHeadText} text-white uppercase`}>
-            O que você  <span className='uppercase' style={{ margin: '0 10px' }}>quer criar?</span>
+            {techTexts.title} <span className='uppercase' style={{ margin: '0 10px' }}></span>
           </h1>
-          
           <div className="console mt-4 shadow-white-100 shadow-inner">
             <pre>
               <code id="animated-text"></code>
             </pre>
           </div>
-
           <div>
-            
             <img className="banner-hero" src={BannerHeroDesktop} alt="Imagem para desktop" />
-           </div>
-           
+          </div>
         </div>
-
-        
-
       </div>
     </section>
   );

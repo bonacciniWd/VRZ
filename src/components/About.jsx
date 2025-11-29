@@ -2,6 +2,8 @@ import React from "react";
 import Tilt from "react-tilt";
 import { motion } from "framer-motion";
 import { StarsCanvas } from "./canvas";
+import { useLanguage } from "../app/LanguageContext";
+import { translations } from "../app/translations";
 
 import { styles } from "../styles";
 import { services } from "../constants";
@@ -37,19 +39,25 @@ const ServiceCard = ({ index, title, icon }) => (
 );
 
 const About = () => {
+  const { language } = useLanguage();
+  const aboutTexts = translations[language]?.about || translations["pt"].about;
   return (
     <>
-    
       <motion.div variants={textVariant()}>
-        <p className={styles.sectionSubText}>Introdução</p>
-        <h2 className={styles.sectionHeadText}>Mais sobre a VRZ</h2>
+        <p className={styles.sectionSubText}>{aboutTexts.title}</p>
+        <h2 className={styles.sectionHeadText}>{aboutTexts.description}</h2>
       </motion.div>
 
       <motion.p
         variants={fadeIn("", "", 0.1, 1)}
         className='mt-4  text-secondary text-[17px] max-w-3xl leading-[30px]'
       >
-       Somos uma software house especializada em soluções tecnológicas sob medida, com expertise em TypeScript, JavaScript e frameworks como React, Node.js e Three.js. Trabalhamos de forma colaborativa com nossos clientes, criando sistemas eficientes, escaláveis e intuitivos que resolvem desafios reais. Vamos transformar suas ideias em soluções inovadoras.
+        {/* Texto principal pode ser expandido para traduções completas */}
+        {language === "pt" && "Somos uma software house especializada em soluções tecnológicas sob medida, com expertise em TypeScript, JavaScript e frameworks como React, Node.js e Three.js. Trabalhamos de forma colaborativa com nossos clientes, criando sistemas eficientes, escaláveis e intuitivos que resolvem desafios reais. Vamos transformar suas ideias em soluções inovadoras."}
+        {language === "en" && "We are a software house specialized in custom tech solutions, with expertise in TypeScript, JavaScript and frameworks like React, Node.js and Three.js. We work collaboratively with our clients, creating efficient, scalable and intuitive systems that solve real challenges. Let's turn your ideas into innovative solutions."}
+        {language === "es" && "Somos una software house especializada en soluciones tecnológicas a medida, con experiencia en TypeScript, JavaScript y frameworks como React, Node.js y Three.js. Trabajamos de forma colaborativa con nuestros clientes, creando sistemas eficientes, escalables e intuitivos que resuelven desafíos reales. ¡Vamos a transformar tus ideas en soluciones innovadoras!"}
+        {language === "it" && "Siamo una software house specializzata in soluzioni tecnologiche su misura, con esperienza in TypeScript, JavaScript e framework come React, Node.js e Three.js. Collaboriamo con i nostri clienti per creare sistemi efficienti, scalabili e intuitivi che risolvono sfide reali. Trasformiamo le tue idee in soluzioni innovative."}
+        {language === "fr" && "Nous sommes une société de développement spécialisée dans les solutions technologiques sur mesure, avec une expertise en TypeScript, JavaScript et des frameworks comme React, Node.js et Three.js. Nous travaillons en collaboration avec nos clients, créant des systèmes efficaces, évolutifs et intuitifs qui relèvent de vrais défis. Transformons vos idées en solutions innovantes."}
       </motion.p>
 
       <StarsCanvas />
