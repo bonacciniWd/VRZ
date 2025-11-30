@@ -1,7 +1,7 @@
 
 import React from "react";
 import Lottie from "lottie-react";
-import errorAnimation from "/error.json";
+import errorAnimation from "/src/assets/error.json";
 import { useLanguage } from "../app/LanguageContext";
 import { translations } from "../app/translations";
 
