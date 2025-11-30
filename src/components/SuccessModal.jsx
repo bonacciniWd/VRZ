@@ -1,7 +1,7 @@
 
 import React from "react";
 import Lottie from "lottie-react";
-import successAnimation from "../../public/success.json";
+import successAnimation from "/success.json";
 import { useLanguage } from "../app/LanguageContext";
 import { translations } from "../app/translations";
 

@@ -1,7 +1,7 @@
 export const translations = {
   pt: {
     tech: {
-      title: "Tecnologias",
+      title: "Bem-vindo ao Futuro",
       description: "Principais tecnologias utilizadas."
     },
     about: {
@@ -34,7 +34,7 @@ export const translations = {
   },
   en: {
     tech: {
-      title: "Technologies",
+      title: "Welcome to the Future",
       description: "Main technologies used."
     },
     about: {
@@ -68,7 +68,7 @@ export const translations = {
   },
   es: {
     tech: {
-      title: "Tecnologías",
+      title: "Bienvenido al Futuro",
       description: "Principales tecnologías utilizadas."
     },
     about: {
@@ -102,7 +102,7 @@ export const translations = {
   },
   it: {
     tech: {
-      title: "Tecnologie",
+      title: "Benvenuto nel Futuro",
       description: "Principali tecnologie utilizzate."
     },
     about: {
@@ -136,7 +136,7 @@ export const translations = {
   },
   fr: {
     tech: {
-      title: "Technologies",
+      title: "Bienvenue dans le futur",
       description: "Principales technologies utilisées."
     },
     about: {
