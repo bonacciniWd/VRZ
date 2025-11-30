@@ -1,4 +1,6 @@
 import React, { useRef, useState } from "react";
+import SuccessModal from "./SuccessModal";
+import ErrorModal from "./ErrorModal";
 import { motion } from "framer-motion";
 import emailjs from "@emailjs/browser";
 import { useLanguage } from "../app/LanguageContext";
@@ -23,6 +25,8 @@ const Contact = () => {
   });
 
   const [loading, setLoading] = useState(false);
+  const [showSuccess, setShowSuccess] = useState(false);
+  const [showError, setShowError] = useState(false);
 
   const handleChange = (e) => {
     const { target } = e;
@@ -54,8 +58,7 @@ const Contact = () => {
       .then(
         () => {
           setLoading(false);
-          alert("Obrigado pelo contato, Entraremos em contato em breve...");
-
+          setShowSuccess(true);
           setForm({
             name: "",
             email: "",
@@ -64,9 +67,8 @@ const Contact = () => {
         },
         (error) => {
           setLoading(false);
+          setShowError(true);
           console.error(error);
-
-          alert("Ahh, algo não saiu bem... tente novamente mais tarde");
         }
       );
   };
@@ -75,6 +77,8 @@ const Contact = () => {
   const contactTexts = translations[language]?.contact || translations["pt"].contact;
   return (
     <>
+      {showSuccess && <SuccessModal onClose={() => setShowSuccess(false)} />}
+      {showError && <ErrorModal onClose={() => setShowError(false)} />}
       <div
         className={`xl:mt-12 mb-10 flex xl:flex-row flex-col-reverse gap-10 overflow-hidden`}
       >
