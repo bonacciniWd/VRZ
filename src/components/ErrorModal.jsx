@@ -5,8 +5,7 @@ import errorAnimation from "../../public/error.json";
 import { useLanguage } from "../app/LanguageContext";
 import { translations } from "../app/translations";
 
-const ErrorModal = ({ onClose }) => {
-  const { language } = useLanguage();
+const ErrorModal = ({ onClose, language }) => {
   const modalTexts = translations[language]?.modals || translations["pt"].modals;
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-60">

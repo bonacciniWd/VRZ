@@ -96,8 +96,8 @@ const Contact = () => {
   const contactTexts = translations[language]?.contact || translations["pt"].contact;
   return (
     <>
-      {showSuccess && <SuccessModal onClose={() => setShowSuccess(false)} />}
-      {showError && <ErrorModal onClose={() => setShowError(false)} />}
+      {showSuccess && <SuccessModal onClose={() => setShowSuccess(false)} language={language} />}
+      {showError && <ErrorModal onClose={() => setShowError(false)} language={language} />}
       <div
         className={`xl:mt-12 mb-10 flex xl:flex-row flex-col-reverse gap-10 overflow-hidden`}
       >
