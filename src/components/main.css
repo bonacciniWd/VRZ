@@ -76,7 +76,7 @@ animation: animate 3s infinite ease alternate;
     width: 300px;
 }
 img.banner-hero {
-  max-width: 100%;
+  max-width: 90%;
   justify-content: center;
   align-items: center;
   display: block;
