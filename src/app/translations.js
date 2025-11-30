@@ -54,12 +54,12 @@ export const translations = {
     },
     footer: {
       text: "All rights reserved."
-    }
-      modals: {
-        success: "Mensagem enviada com sucesso!",
-        error: "Falha ao enviar mensagem!",
-        close: "Fechar"
-      },
+    },
+    modals: {
+      success: "Message sent successfully!",
+      error: "Failed to send message!",
+      close: "Close"
+    },
   },
   es: {
     tech: {
