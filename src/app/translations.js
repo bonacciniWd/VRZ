@@ -22,7 +22,6 @@ export const translations = {
     },
     contact: {
       title: "Contato",
-      description: "Fale conosco."
     },
     footer: {
       text: "Todos os direitos reservados."
@@ -56,6 +55,11 @@ export const translations = {
     footer: {
       text: "All rights reserved."
     }
+      modals: {
+        success: "Mensagem enviada com sucesso!",
+        error: "Falha ao enviar mensagem!",
+        close: "Fechar"
+      },
   },
   es: {
     tech: {
@@ -88,14 +92,34 @@ export const translations = {
   },
   it: {
     tech: {
+      modals: {
+        success: "Message sent successfully!",
+        error: "Failed to send message!",
+        close: "Close"
+      }
       title: "Tecnologie",
       description: "Principali tecnologie utilizzate."
+      modals: {
+        success: "¡Mensaje enviado con éxito!",
+        error: "¡Error al enviar el mensaje!",
+        close: "Cerrar"
+      },
     },
     about: {
       title: "Chi siamo",
+      modals: {
+        success: "Messaggio inviato con successo!",
+        error: "Invio del messaggio fallito!",
+        close: "Chiudi"
+      },
       description: "Scopri di più su di noi."
     },
     jobs: {
+      modals: {
+        success: "Message envoyé avec succès !",
+        error: "Échec de l'envoi du message !",
+        close: "Fermer"
+      },
       title: "Alcuni servizi",
       description: "Applicazioni su cui abbiamo lavorato."
     },
