@@ -6,7 +6,7 @@ import { useLanguage } from "../app/LanguageContext";
 import { translations } from "../app/translations";
 
 const SuccessModal = ({ onClose, language }) => {
-  const modalTexts = translations[language]?.modals || translations["pt"].modals;
+  const modalTexts = (translations[language] && translations[language].modals) ? translations[language].modals : translations["pt"].modals;
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-60">
       <div className="bg-slate-900/95 mx-auto px-4 rounded-2xl p-8 flex flex-col items-center shadow-inner shadow-verde-vr">

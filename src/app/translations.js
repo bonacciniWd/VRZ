@@ -25,6 +25,11 @@ export const translations = {
     },
     footer: {
       text: "Todos os direitos reservados."
+    },
+    modals: {
+      success: "Mensagem enviada com sucesso!",
+      error: "Falha ao enviar mensagem!",
+      close: "Fechar"
     }
   },
   en: {
@@ -88,6 +93,11 @@ export const translations = {
     },
     footer: {
       text: "Todos los derechos reservados."
+    },
+    modals: {
+      success: "¡Mensaje enviado con éxito!",
+      error: "¡Error al enviar el mensaje!",
+      close: "Cerrar"
     }
   },
   it: {
@@ -151,6 +161,11 @@ export const translations = {
     },
     footer: {
       text: "Tous droits réservés."
+    },
+    modals: {
+      success: "Message envoyé avec succès !",
+      error: "Échec de l'envoi du message !",
+      close: "Fermer"
     }
   }
 };
