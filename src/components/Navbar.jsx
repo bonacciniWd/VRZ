@@ -1,15 +1,19 @@
 import React, { useEffect, useState } from "react";
 import { useLanguage } from "../app/LanguageContext";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import { styles } from "../styles";
 import { logo, brazilFlag, italyFlag, franceFlag, spainFlag, usaFlag } from "../assets";
+
+import { useAuth } from "../app/AuthContext.jsx";
 
 const Navbar = () => {
   const [active, setActive] = useState("");
   const [toggle, setToggle] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const { language, setLanguage } = useLanguage();
+  const { session, signOut, profile } = useAuth();
+  const navigate = useNavigate();
   // Flags associadas aos idiomas
   const flagMap = {
     pt: brazilFlag,
@@ -56,13 +60,13 @@ const Navbar = () => {
           <img
             src={logo}
             alt='logo'
-            className={`w-28 h-10 object-contain ${active === "logo" ? "border-2 border-azul-vr rounded-full" : ""}`}
+            className={`w-32 h-16 object-contain ${active === "logo" ? "border-2 border-azul-vr rounded-full" : ""}`}
             style={{ padding: "1px", opacity: "1" }}
           />
           
         </Link>
 
-        <ul className='list-none hidden sm:flex flex-row gap-10'>
+        <ul className='list-none hidden sm:flex flex-row gap-6 items-center'>
           {Object.entries(flagMap).map(([code, flag]) => (
             <li
               key={code}
@@ -73,6 +77,29 @@ const Navbar = () => {
               <img src={flag} alt={`${code} Flag`} className='w-10 h-10' />
             </li>
           ))}
+          {session && (
+            <li>
+              <button onClick={() => navigate('/dashboard')} className='text-xs md:text-sm text-slate-300 hover:text-verde-vr' aria-label='Painel'>Painel</button>
+            </li>
+          )}
+          {session && profile?.role === 'admin' && (
+            <li>
+              <button onClick={() => navigate('/admin')} className='text-xs md:text-sm text-verde-vr hover:underline' aria-label='Admin'>Admin</button>
+            </li>
+          )}
+          <li>
+            {session ? (
+              <button
+                onClick={() => { signOut(); }}
+                className='px-4 py-1.5 text-xs md:text-sm font-medium rounded-full border bg-slate-800/60 text-slate-200 border-white/20 hover:border-verde-vr hover:text-white transition-colors backdrop-blur-sm'
+              >Sair</button>
+            ) : (
+              <button
+                onClick={() => navigate('/login')}
+                className='px-4 py-1.5 text-xs md:text-sm font-medium rounded-full border bg-verde-vr/90 text-black border-verde-vr hover:bg-verde-vr transition-colors backdrop-blur-sm'
+              >Entrar</button>
+            )}
+          </li>
         </ul>
 
         <div className='sm:hidden flex flex-1 justify-end items-center'>
@@ -102,6 +129,29 @@ const Navbar = () => {
                   </span>
                 </li>
               ))}
+              {session && (
+                <li>
+                  <button onClick={() => { navigate('/dashboard'); setToggle(false); }} className='text-sm text-slate-300 hover:text-verde-vr' aria-label='Painel'>Painel</button>
+                </li>
+              )}
+              {session && profile?.role === 'admin' && (
+                <li>
+                  <button onClick={() => { navigate('/admin'); setToggle(false); }} className='text-sm text-verde-vr hover:underline' aria-label='Admin'>Admin</button>
+                </li>
+              )}
+              <li>
+                {session ? (
+                  <button
+                    onClick={() => { signOut(); setToggle(false); }}
+                    className='w-full px-4 py-1.5 text-sm rounded-full border bg-slate-800/60 text-slate-200 border-white/20 hover:border-verde-vr hover:text-white font-medium transition-colors backdrop-blur-sm'
+                  >Sair</button>
+                ) : (
+                  <button
+                    onClick={() => { navigate('/login'); setToggle(false); }}
+                    className='w-full px-4 py-1.5 text-sm rounded-full border bg-verde-vr/90 text-black border-verde-vr hover:bg-verde-vr font-medium transition-colors backdrop-blur-sm'
+                  >Entrar</button>
+                )}
+              </li>
             </ul>
           </div>
         </div>

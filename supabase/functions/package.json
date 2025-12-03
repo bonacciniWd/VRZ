@@ -1,0 +1,18 @@
+{
+  "name": "vrz-edge-functions",
+  "version": "1.0.0",
+  "description": "Supabase Edge Functions for VRZ platform - NuPay Business integration",
+  "scripts": {
+    "deploy": "supabase functions deploy",
+    "deploy:nupay-payment": "supabase functions deploy create-nupay-payment",
+    "deploy:webhook": "supabase functions deploy nupay-webhook",
+    "deploy:check-status": "supabase functions deploy check-nupay-status",
+    "logs": "supabase functions logs --follow",
+    "logs:nupay-payment": "supabase functions logs create-nupay-payment --follow",
+    "logs:webhook": "supabase functions logs nupay-webhook --follow",
+    "logs:check-status": "supabase functions logs check-nupay-status --follow",
+    "serve:local": "supabase functions serve",
+    "link": "supabase link",
+    "login": "supabase login"
+  }
+}
