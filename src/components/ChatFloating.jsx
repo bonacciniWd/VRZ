@@ -69,18 +69,7 @@ const ChatFloating = React.memo(() => {
             </div>
           )}
           
-          {/* Tooltip */}
-          <div className="absolute right-24 md:mr-3 bottom-0 -mr-2 bg-slate-900 text-white px-3 py-2 rounded-lg text-sm whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none shadow-lg border border-white/10">
-          
-           <Lottie
-            animationData={DevAnimation}
-            loop={true}
-            autoplay={true}
-            className="w-full h-40 bg-[url('/src/assets/fundodev.jpg')] bg-cover animate-bounce rounded-lg"
-          />
-            <p className="py-2 px-4 underline">💬 Precisa de ajuda?</p>
-            <div className="absolute right-0 top-3/4 -translate-y-1/2 translate-x-full border-8 border-transparent border-l-verde-vr"></div>
-          </div>
+    
         </button>
       )}
     </div>
