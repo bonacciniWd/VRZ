@@ -5,8 +5,10 @@ import { supabase } from '../../lib/supabase.js';
 import Button from '../../components/ui/button.jsx';
 import { Input } from '../../components/ui/input.jsx';
 import { QUICK_REPLIES } from '../../utils/quickReplies.js';
+import { useLanguage } from '../../app/LanguageContext.jsx';
 
 const AdminChats = () => {
+  const { language } = useLanguage();
   const { session } = useAuth();
   const userId = session?.user?.id;
   const [input, setInput] = useState('');
@@ -235,7 +237,7 @@ const AdminChats = () => {
         <div className="border border-white/10 rounded-lg p-4 bg-slate-900/60">
           <h2 className="text-sm font-semibold mb-3">Respostas Rápidas</h2>
           <div className="flex flex-wrap gap-2">
-            {QUICK_REPLIES.map((qr) => (
+            {(QUICK_REPLIES[language] || QUICK_REPLIES.pt).map((qr) => (
               <Button key={qr.label} variant="outline" className="text-xs h-auto px-3 py-1" onClick={()=>sendMessage(qr.text)}>{qr.label}</Button>
             ))}
           </div>

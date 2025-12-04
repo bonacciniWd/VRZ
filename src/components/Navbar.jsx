@@ -6,6 +6,7 @@ import { styles } from "../styles";
 import { logo, brazilFlag, italyFlag, franceFlag, spainFlag, usaFlag } from "../assets";
 
 import { useAuth } from "../app/AuthContext.jsx";
+import { LucideUser } from "lucide-react";
 
 const Navbar = () => {
   const [active, setActive] = useState("");
@@ -96,8 +97,8 @@ const Navbar = () => {
             ) : (
               <button
                 onClick={() => navigate('/login')}
-                className='px-4 py-1.5 text-xs md:text-sm font-medium rounded-full border bg-verde-vr/90 text-black border-verde-vr hover:bg-verde-vr transition-colors backdrop-blur-sm'
-              >Entrar</button>
+                className='px-2 py-1.5 text-xs md:text-sm font-medium rounded-full border bg-verde-vr/90 text-gray-50 border-verde-vr hover:bg-azul-vr/30 transition-colors backdrop-blur-sm'
+              ><LucideUser /></button>
             )}
           </li>
         </ul>
@@ -148,7 +149,7 @@ const Navbar = () => {
                 ) : (
                   <button
                     onClick={() => { navigate('/login'); setToggle(false); }}
-                    className='w-full px-4 py-1.5 text-sm rounded-full border bg-verde-vr/90 text-black border-verde-vr hover:bg-verde-vr font-medium transition-colors backdrop-blur-sm'
+                    className='w-full px-4 py-1.5 text-sm rounded-full border bg-verde-vr/90 text-gray-50 border-verde-vr hover:bg-azul-vr/30 font-medium transition-colors backdrop-blur-sm'
                   >Entrar</button>
                 )}
               </li>

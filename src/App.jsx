@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
-import { About, Contact, Experience, Feedbacks, Navbar, Tech, Works, StarsCanvas } from "./components";
+import { About, Contact, Experience, Navbar, Tech, StarsCanvas } from "./components";
 import Footer from "./components/Footer.jsx";
 import Jobs from "./components/Jobs.jsx";
 import SectionSeparator from "./components/SectionSeparator.jsx";
@@ -34,7 +34,7 @@ const App = () => {
         <Jobs />
         <Experience />
         <SectionSeparator />
-        <Works />
+       
         <Contact />
         <Footer />
       <Analytics />

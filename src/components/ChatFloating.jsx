@@ -1,8 +1,11 @@
 import React, { useEffect, useState, useMemo } from 'react';
+import Lottie from 'lottie-react';
 import ChatWindow from './ChatWindow.jsx';
 import { logo } from '../assets';
 import { useAuth } from '../app/AuthContext.jsx';
-import { MessageCircle, X } from 'lucide-react';
+import { X } from 'lucide-react';
+import chatAnimation from '/src/assets/chat.json';
+import DevAnimation from '/src/assets/dev.json';
 
 // Isola estado do chat para evitar re-render do resto da aplicação ao abrir/fechar
 const ChatFloating = React.memo(() => {
@@ -47,15 +50,19 @@ const ChatFloating = React.memo(() => {
           onClick={() => toggleOpen(true)}
           aria-label='Abrir chat'
           style={{ position: 'fixed', pointerEvents: 'auto' }}
-          className='bottom-6 right-6 w-16 h-16 rounded-full bg-gradient-to-br from-verde-vr via-green-500 to-verde-vr hover:from-green-500 hover:via-verde-vr hover:to-green-500 flex items-center justify-center shadow-2xl hover:shadow-verde-vr/50 transition-all duration-300 hover:scale-110 z-50 group'
+          className='bottom-8 right-6 w-20 h-20 md:w-28 md:h-28 rounded-full bg-transparent hover:from-green-500 hover:via-verde-vr hover:to-green-500 flex items-center justify-center shadow-2xl hover:shadow-azul-vr/50 transition-all duration-300 hover:scale-110 z-50 group'
         >
           {/* Pulse ring animation */}
-          <div className="absolute inset-0 rounded-full bg-verde-vr animate-ping opacity-20"></div>
+          <div className="absolute inset-0 rounded-full bg-verde-vr animate-ping opacity-10 overflow-hidden"></div>
           
-          {/* Icon */}
-          <MessageCircle className="w-8 h-8 text-white relative z-10" />
-          
-          {/* Notification badge */}
+          {/* Lottie Animation */}
+          <Lottie
+            animationData={chatAnimation}
+            loop={true}
+            autoplay={true}
+            className="w-full h-full"
+            style={{ filter: 'drop-shadow(0 0 8px rgba(34, 197, 94, 0.5))', }}
+          />
           {hasNewMessage && (
             <div className="absolute -top-1 -right-1 w-5 h-5 bg-red-500 rounded-full border-2 border-slate-900 flex items-center justify-center">
               <span className="text-[10px] text-white font-bold">!</span>
@@ -63,9 +70,16 @@ const ChatFloating = React.memo(() => {
           )}
           
           {/* Tooltip */}
-          <div className="absolute right-full mr-3 bg-slate-900 text-white px-3 py-2 rounded-lg text-sm whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none shadow-lg border border-white/10">
-            💬 Precisa de ajuda?
-            <div className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-full border-8 border-transparent border-l-slate-900"></div>
+          <div className="absolute right-24 md:mr-3 bottom-0 -mr-2 bg-slate-900 text-white px-3 py-2 rounded-lg text-sm whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none shadow-lg border border-white/10">
+          
+           <Lottie
+            animationData={DevAnimation}
+            loop={true}
+            autoplay={true}
+            className="w-full h-40 bg-[url('/src/assets/fundodev.jpg')] bg-cover animate-bounce rounded-lg"
+          />
+            <p className="py-2 px-4 underline">💬 Precisa de ajuda?</p>
+            <div className="absolute right-0 top-3/4 -translate-y-1/2 translate-x-full border-8 border-transparent border-l-verde-vr"></div>
           </div>
         </button>
       )}
