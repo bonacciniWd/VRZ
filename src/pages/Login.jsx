@@ -67,7 +67,7 @@ const Login = () => {
             {/* Moving Content */}
             <Tilt className="w-full h-full flex items-center justify-center relative z-10" options={{ max: 45, scale: 1.2, speed: 400, perspective: 500 }}>
               <div style={{ transformStyle: 'preserve-3d' }} className="flex justify-center items-center relative w-full h-full">
-                 <img src="/src/assets/logo.svg" alt="Logo VR" className="w-32 relative z-20 drop-shadow-2xl" style={{ transform: 'translateZ(50px)' }} />
+                 <img src="/src/assets/logo.png" alt="Logo VR" className="w-32 relative z-20 drop-shadow-2xl" style={{ transform: 'translateZ(50px)' }} />
               </div>
             </Tilt>
           </div>
