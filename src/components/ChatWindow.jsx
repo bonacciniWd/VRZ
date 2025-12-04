@@ -76,6 +76,7 @@ const ChatWindow = ({ userId, roomType = 'global', roomId = null, onClose }) => 
   // Monitor inactivity and reset chat after 30 minutes
   useEffect(() => {
     if (!chatSession?.last_activity_at) return;
+    const CHAT_TIMEOUT_MS = 30 * 60 * 1000; // 30 minutes
 
     const checkInactivity = () => {
       const lastActivity = new Date(chatSession.last_activity_at).getTime();

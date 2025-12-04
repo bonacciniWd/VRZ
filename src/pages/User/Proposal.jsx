@@ -8,20 +8,23 @@ import { Badge } from '../../components/ui/badge.jsx';
 import Button from '../../components/ui/button.jsx';
 import { Input } from '../../components/ui/input.jsx';
 
+import { FileText, Download } from 'lucide-react';
+
 const ProposalPage = () => {
   const { id } = useParams();
   const { proposal, loading, error, refresh } = useProposal(id);
   const { payments, createPayment, loading: loadingPayments } = usePayments({ proposalId: id });
-  const [amount, setAmount] = useState('');
   const [currency, setCurrency] = useState('BRL');
   const [creatingPay, setCreatingPay] = useState(false);
+  const [selectedInstallments, setSelectedInstallments] = useState(1);
 
   async function handleCreatePayment() {
-    if (!amount || isNaN(parseFloat(amount)) || parseFloat(amount) <= 0) return;
+    if (!proposal || !proposal.amount) return;
     setCreatingPay(true);
     try {
-      await createPayment({ proposal_id: id, amount: parseFloat(amount), currency });
-      setAmount('');
+      // Divide o valor total pelo número de parcelas selecionado
+      const parcela = Number(proposal.amount) / selectedInstallments;
+      await createPayment({ proposal_id: id, amount: parcela, currency, installments: selectedInstallments });
     } catch (e) { console.error(e); } finally { setCreatingPay(false); }
   }
 
@@ -59,7 +62,9 @@ const ProposalPage = () => {
                   <p className="text-xs mb-2 opacity-70">Imagens:</p>
                   <div className="flex gap-3 overflow-x-auto py-1">
                     {proposal.images.map(img => (
-                      <img key={img} src={img} alt="img" className="h-32 w-32 object-cover rounded" />
+                      <a key={img} href={img} target="_blank" rel="noreferrer">
+                        <img src={img} alt="img" className="h-32 w-32 object-cover rounded border border-white/10 hover:border-verde-vr transition-colors" />
+                      </a>
                     ))}
                   </div>
                 </div>
@@ -67,13 +72,29 @@ const ProposalPage = () => {
               {proposal.documents && proposal.documents.length > 0 && (
                 <div>
                   <p className="text-xs mb-2 opacity-70">Documentos PDF:</p>
-                  <ul className="space-y-1">
-                    {proposal.documents.map(doc => (
-                      <li key={doc}>
-                        <a href={doc} target="_blank" rel="noreferrer" className="text-[11px] underline text-verde-vr break-all">{doc}</a>
-                      </li>
-                    ))}
-                  </ul>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                    {proposal.documents.map((doc, idx) => {
+                      const fileName = doc.split('/').pop().split('?')[0].split('-').slice(2).join('-') || `Documento ${idx + 1}`;
+                      return (
+                        <a 
+                          key={idx} 
+                          href={doc} 
+                          target="_blank" 
+                          rel="noreferrer" 
+                          className="flex items-center gap-3 p-2 rounded-md bg-slate-800/50 border border-white/5 hover:bg-slate-800 hover:border-verde-vr/50 transition-all group"
+                        >
+                          <div className="p-2 rounded bg-slate-900 text-verde-vr">
+                            <FileText className="w-4 h-4" />
+                          </div>
+                          <div className="flex-1 min-w-0">
+                            <p className="text-xs font-medium text-slate-300 truncate group-hover:text-white">{fileName}</p>
+                            <p className="text-[10px] text-slate-500">PDF</p>
+                          </div>
+                          <Download className="w-3 h-3 text-slate-500 opacity-0 group-hover:opacity-100 transition-opacity" />
+                        </a>
+                      );
+                    })}
+                  </div>
                 </div>
               )}
               <div className="border-t border-white/10 pt-4">
@@ -88,15 +109,22 @@ const ProposalPage = () => {
                     </li>
                   ))}
                 </ul>
-                <div className="flex flex-col sm:flex-row items-end gap-3 max-w-md">
-                  <div className="flex-1">
-                    <Input type="number" step="0.01" min="0" placeholder={`Valor (${currency})`} value={amount} onChange={e=>setAmount(e.target.value)} />
+                {proposal && proposal.installments && (
+                  <div className="flex flex-col sm:flex-row items-end gap-3 max-w-md">
+                    <div className="flex-1">
+                      <label className="text-xs mb-1 block">Parcelamento</label>
+                      <select value={selectedInstallments} onChange={e=>setSelectedInstallments(Number(e.target.value))} className="bg-slate-800 border border-white/20 rounded px-2 py-2 text-xs w-full">
+                        {Array.from({length: Number(proposal.installments)}, (_, i) => i + 1).map(n => (
+                          <option key={n} value={n}>{n}x de {formatCurrency(Number(proposal.amount)/n, currency)}</option>
+                        ))}
+                      </select>
+                    </div>
+                    <select value={currency} onChange={e=>setCurrency(e.target.value)} className="bg-slate-800 border border-white/20 rounded px-2 py-2 text-xs">
+                      {SUPPORTED_CURRENCIES.map(c => <option key={c} value={c}>{c}</option>)}
+                    </select>
+                    <Button type="button" variant="outline" disabled={creatingPay} onClick={handleCreatePayment} className="text-xs h-auto px-3 py-2">{creatingPay ? 'Criando...' : 'Gerar Pagamento'}</Button>
                   </div>
-                  <select value={currency} onChange={e=>setCurrency(e.target.value)} className="bg-slate-800 border border-white/20 rounded px-2 py-2 text-xs">
-                    {SUPPORTED_CURRENCIES.map(c => <option key={c} value={c}>{c}</option>)}
-                  </select>
-                  <Button type="button" variant="outline" disabled={creatingPay || !amount || parseFloat(amount)<=0} onClick={handleCreatePayment} className="text-xs h-auto px-3 py-2">{creatingPay ? 'Criando...' : 'Gerar'}</Button>
-                </div>
+                )}
               </div>
             </div>
           )}

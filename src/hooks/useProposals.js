@@ -60,7 +60,7 @@ export function useProposals({ autoSubscribe = true } = {}) {
       title,
       description,
       amount_cents: currencyToCents(amount),
-      status: mapProposalStatus.toDB('draft'), // Map to 'rascunho'
+      status: mapProposalStatus.toDB('sent'), // Map to 'enviada'
     };
     
     const { data, error: err } = await supabase.from('proposals').insert(insert).select().single();
@@ -77,17 +77,29 @@ export function useProposals({ autoSubscribe = true } = {}) {
   }, [session]);
 
   // Criação avançada com assets e convite
-  const createProposalWithAssets = useCallback(async ({ title, description, amount = 0, techTags = [], imageFiles = [], pdfFiles = [], inviteEmail }) => {
+  const createProposalWithAssets = useCallback(async ({ title, description, amount = 0, techTags = [], imageFiles = [], pdfFiles = [], inviteEmail, installments }) => {
     if (!session) throw new Error('Not authenticated');
+    
+    // 0. Tenta encontrar usuário existente pelo email para vincular imediatamente
+    let invitedUserId = null;
+    if (inviteEmail) {
+      const { data: profiles } = await supabase.from('profiles').select('id').eq('email', inviteEmail).limit(1);
+      if (profiles && profiles.length > 0) {
+        invitedUserId = profiles[0].id;
+      }
+    }
+
     // 1. Insere proposta inicial
     const baseInsert = {
       user_id: session.user.id,
       title,
       description,
       amount_cents: currencyToCents(amount),
-      status: mapProposalStatus.toDB('draft'),
+      status: mapProposalStatus.toDB('sent'),
       tech_tags: techTags,
       invited_email: inviteEmail || null,
+      invited_user: invitedUserId, // Vincula usuário se encontrado
+      installments: installments || null,
     };
     const { data: created, error: createErr } = await supabase.from('proposals').insert(baseInsert).select().single();
     if (createErr) throw new Error(createErr.message);
@@ -95,23 +107,39 @@ export function useProposals({ autoSubscribe = true } = {}) {
     const uploadedImages = [];
     const uploadedDocs = [];
     // 2. Upload assets (imagens)
+    console.log('Iniciando upload de imagens:', imageFiles.length);
     for (const file of imageFiles) {
       const path = `proposals/${id}/images/${Date.now()}-${Math.random().toString(36).slice(2)}-${file.name}`;
+      console.log('Upload imagem:', path);
       const { error: upErr } = await supabase.storage.from('data').upload(path, file, { upsert: false });
-      if (!upErr) {
+      if (upErr) {
+        console.error('Erro upload imagem:', upErr);
+        // Opcional: lançar erro ou continuar
+        // throw new Error(`Falha no upload de imagem: ${upErr.message}`);
+      } else {
         const { data: pub } = supabase.storage.from('data').getPublicUrl(path);
+        console.log('Imagem URL:', pub.publicUrl);
         uploadedImages.push(pub.publicUrl);
       }
     }
     // 3. Upload documentos PDF
+    console.log('Iniciando upload de docs:', pdfFiles.length);
     for (const file of pdfFiles) {
       const path = `proposals/${id}/documents/${Date.now()}-${Math.random().toString(36).slice(2)}-${file.name}`;
+      console.log('Upload doc:', path);
       const { error: upErr } = await supabase.storage.from('data').upload(path, file, { upsert: false });
-      if (!upErr) {
+      if (upErr) {
+        console.error('Erro upload documento:', upErr);
+        throw new Error(`Falha no upload de documento: ${upErr.message}`);
+      } else {
         const { data: pub } = supabase.storage.from('data').getPublicUrl(path);
+        console.log('Doc URL:', pub.publicUrl);
         uploadedDocs.push(pub.publicUrl);
       }
     }
+    
+    console.log('Atualizando proposta com:', { images: uploadedImages, documents: uploadedDocs });
+    
     // 4. Atualiza proposta com arrays
     const { data: updated, error: updErr } = await supabase
       .from('proposals')
@@ -119,7 +147,12 @@ export function useProposals({ autoSubscribe = true } = {}) {
       .eq('id', id)
       .select()
       .single();
-    if (updErr) throw new Error(updErr.message);
+    
+    if (updErr) {
+        console.error('Erro update proposta:', updErr);
+        throw new Error(updErr.message);
+    }
+    console.log('Proposta atualizada:', updated);
     
     // Map back to code format
     const mappedProposal = {
@@ -128,25 +161,20 @@ export function useProposals({ autoSubscribe = true } = {}) {
     };
 
     // 5. Convite / magic link (se email fornecido e usuário não existir)
-    if (inviteEmail) {
-      // Verifica existência de profile (ajustar conforme schema real de profiles)
-      const { data: existingProfiles } = await supabase.from('profiles').select('id').eq('email', inviteEmail).limit(1);
-      const exists = existingProfiles && existingProfiles.length > 0;
-      if (!exists) {
-        // Chama edge function para gerar magic link (precisa ser criada no backend)
-        try {
-          await fetch('/functions/v1/invite-user', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ email: inviteEmail, proposalId: id })
-          });
-        } catch (e) {
-          console.warn('Falha ao chamar invite-user:', e.message);
-        }
-      } else {
-        // TODO: opcional inserir notification para o usuário existente
-        // await supabase.from('notifications').insert({ user_id: existingProfiles[0].id, type: 'proposal_invite', proposal_id: id });
+    if (inviteEmail && !invitedUserId) {
+      // Chama edge function para gerar magic link (precisa ser criada no backend)
+      try {
+        await fetch('/functions/v1/invite-user', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email: inviteEmail, proposalId: id })
+        });
+      } catch (e) {
+        console.warn('Falha ao chamar invite-user:', e.message);
       }
+    } else if (invitedUserId) {
+        // TODO: opcional inserir notification para o usuário existente
+        // await supabase.from('notifications').insert({ user_id: invitedUserId, type: 'proposal_invite', proposal_id: id });
     }
 
     setProposals(p => [mappedProposal, ...p]);
@@ -162,15 +190,14 @@ export function useProposals({ autoSubscribe = true } = {}) {
       .update({ status: dbStatus })
       .eq('id', id)
       .select()
-      .single();
+      .maybeSingle();
     if (err) throw new Error(err.message);
-    
+    if (!data) throw new Error('Proposta não encontrada ou sem permissão para atualizar.');
     // Map back to code format
     const mappedProposal = {
       ...mapObjectFromDB(data, { status: mapProposalStatus }),
       amount: centsToCurrency(data.amount_cents),
     };
-    
     setProposals(p => p.map(item => item.id === id ? mappedProposal : item));
     return mappedProposal;
   }, []);

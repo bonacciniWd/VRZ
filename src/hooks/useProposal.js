@@ -1,6 +1,8 @@
 import { useEffect, useState, useCallback } from 'react';
 import { supabase } from '../lib/supabase.js';
 import { useAuth } from '../app/AuthContext.jsx';
+import { mapProposalStatus, mapObjectFromDB } from '../utils/enumMapping.js';
+import { centsToCurrency } from '../utils/currency.js';
 
 // Hook para carregar e acompanhar uma única proposta por id
 export function useProposal(id) {
@@ -18,7 +20,16 @@ export function useProposal(id) {
       .eq('id', id)
       .single();
     if (err) setError(err.message);
-    setProposal(data || null);
+    
+    if (data) {
+      const mapped = {
+        ...mapObjectFromDB(data, { status: mapProposalStatus }),
+        amount: centsToCurrency(data.amount_cents),
+      };
+      setProposal(mapped);
+    } else {
+      setProposal(null);
+    }
     setLoading(false);
   }, [session, id]);
 
@@ -29,11 +40,19 @@ export function useProposal(id) {
     const channel = supabase.channel(`proposal-${id}`);
     channel.on('postgres_changes', { event: '*', schema: 'public', table: 'proposals', filter: `id=eq.${id}` }, payload => {
       if (payload.eventType === 'UPDATE') {
-        setProposal(payload.new);
+        const mapped = {
+          ...mapObjectFromDB(payload.new, { status: mapProposalStatus }),
+          amount: centsToCurrency(payload.new.amount_cents),
+        };
+        setProposal(mapped);
       } else if (payload.eventType === 'DELETE') {
         setProposal(null);
       } else if (payload.eventType === 'INSERT' && payload.new.id === id) {
-        setProposal(payload.new);
+        const mapped = {
+          ...mapObjectFromDB(payload.new, { status: mapProposalStatus }),
+          amount: centsToCurrency(payload.new.amount_cents),
+        };
+        setProposal(mapped);
       }
     });
     channel.subscribe();

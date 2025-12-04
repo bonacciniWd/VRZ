@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import DashboardLayout from '../../components/dashboard/Layout.jsx';
 import { useProposals } from '../../hooks/useProposals.js';
+import { useAuth } from '../../app/AuthContext.jsx';
 import { TECH_TAGS } from '../../utils/techTags.js';
 import { Card, CardHeader, CardTitle, CardContent, CardFooter } from '../../components/ui/card.jsx';
 import Button from '../../components/ui/button.jsx';
@@ -11,9 +12,24 @@ import { Dialog, DialogTrigger, DialogContent, DialogHeader, DialogTitle, Dialog
 import { Skeleton } from '../../components/ui/skeleton.jsx';
 
 const AdminProposals = () => {
-  const { proposals, loading, error, createProposalWithAssets, updateStatus, updateProposal } = useProposals();
+  const { session, profile } = useAuth();
+  const { proposals, loading, error, createProposalWithAssets, updateStatus, updateProposal, refresh } = useProposals();
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
+  const [amount, setAmount] = useState('');
+  const [installments, setInstallments] = useState('1');
+
+  // Máscara para valor brasileiro
+  function handleAmountChange(e) {
+    let value = e.target.value.replace(/[^\d,]/g, '');
+    value = value.replace(/(\d)(,\d{3})+/, '$1');
+    // Remove múltiplas vírgulas
+    const parts = value.split(',');
+    if (parts.length > 2) value = parts[0] + ',' + parts.slice(1).join('');
+    // Formata para padrão brasileiro
+    value = value.replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.');
+    setAmount(value);
+  }
   const [inviteEmail, setInviteEmail] = useState('');
   const [selectedTags, setSelectedTags] = useState([]);
   const [imageFiles, setImageFiles] = useState([]);
@@ -36,9 +52,13 @@ const AdminProposals = () => {
     if (!title.trim()) return;
     setSaving(true);
     try {
+      // Converte valor para float (padrão brasileiro)
+      let cleanAmount = amount.replace(/\./g, '').replace(',', '.');
       await createProposalWithAssets({
         title,
         description,
+        amount: cleanAmount ? parseFloat(cleanAmount) : 0,
+        installments: `${installments}x`,
         techTags: selectedTags,
         imageFiles,
         pdfFiles,
@@ -46,6 +66,8 @@ const AdminProposals = () => {
       });
       setTitle('');
       setDescription('');
+      setAmount('');
+      setInstallments('');
       setInviteEmail('');
       setSelectedTags([]);
       setImageFiles([]);
@@ -98,23 +120,16 @@ const AdminProposals = () => {
 
   return (
     <DashboardLayout>
-    <div className="min-h-screen bg-slate-900 text-white p-6">
-      <h1 className="text-2xl font-semibold mb-4">Admin - Propostas</h1>
-      <div className="flex flex-col md:flex-row gap-4 mb-6 max-w-2xl">
-        <div className="flex-1 space-y-2">
-          <Input value={search} onChange={e=>setSearch(e.target.value)} placeholder="Buscar título ou descrição" />
-          <div className="flex gap-2 text-xs items-center">
-            <select value={statusFilter} onChange={e=>setStatusFilter(e.target.value)} className="bg-slate-800 border border-white/20 rounded px-2 py-2 text-xs">
-              <option value=''>Status (todos)</option>
-              <option value='draft'>draft</option>
-              <option value='sent'>sent</option>
-              <option value='approved'>approved</option>
-              <option value='rejected'>rejected</option>
-            </select>
-            {statusFilter && <Button variant='outline' className='h-auto px-2 py-1 text-xs' onClick={()=>setStatusFilter('')}>Limpar</Button>}
-          </div>
-        </div>
+      <div className="mb-4 p-2 bg-slate-800/50 rounded border border-white/10 text-xs font-mono">
+        <p>User ID: {session?.user?.id}</p>
+        <p>Role: {profile?.role || 'undefined'}</p>
+        <p>Proposals Count: {proposals.length}</p>
+        <p>Loading: {loading ? 'true' : 'false'}</p>
+        {error && <p className="text-red-400">Error: {error}</p>}
+        <Button variant="outline" size="sm" onClick={refresh} className="mt-2 h-6 text-xs">Force Refresh</Button>
       </div>
+    <div className="min-h-screen bg-slate-900 text-white p-6">
+     
       <Card className="mb-6 max-w-2xl">
         <CardHeader>
           <CardTitle>Nova Proposta</CardTitle>
@@ -122,6 +137,22 @@ const AdminProposals = () => {
         <CardContent className="space-y-4">
           <Input value={title} onChange={(e)=>setTitle(e.target.value)} placeholder="Título" />
           <Textarea value={description} onChange={(e)=>setDescription(e.target.value)} placeholder="Descrição" rows={5} />
+          <div className="flex gap-4 items-center">
+            <Input 
+              value={amount}
+              onChange={handleAmountChange}
+              placeholder="Valor (R$)"
+              className="w-40"
+              inputMode="decimal"
+              maxLength={20}
+            />
+            <select value={installments} onChange={e=>setInstallments(e.target.value)} className="w-32 bg-slate-800 border border-white/20 rounded px-2 py-2 text-xs">
+              {Array.from({length:12},(_,i)=>(
+                <option key={i+1} value={i+1}>{i+1}x</option>
+              ))}
+            </select>
+            <span className="text-xs text-slate-400">Parcelas</span>
+          </div>
           <Input type="email" value={inviteEmail} onChange={(e)=>setInviteEmail(e.target.value)} placeholder="E-mail para convidar (opcional)" />
           <div>
             <p className="text-xs mb-2 opacity-70">Tecnologias (clique para selecionar):</p>
@@ -144,10 +175,12 @@ const AdminProposals = () => {
             <div>
               <label className="text-xs opacity-70" htmlFor="proposal-images">Imagens (PNG/JPG)</label>
               <Input id="proposal-images" type="file" multiple accept="image/*" onChange={(e)=>setImageFiles([...e.target.files])} className="file:mr-2 file:py-1 file:px-2 file:border file:border-white/20 file:text-xs file:bg-slate-700 file:text-white" />
+              {imageFiles.length > 0 && <p className="text-[10px] text-green-400 mt-1">{imageFiles.length} imagem(ns) selecionada(s)</p>}
             </div>
             <div>
               <label className="text-xs opacity-70" htmlFor="proposal-pdfs">Documentos PDF</label>
               <Input id="proposal-pdfs" type="file" multiple accept="application/pdf" onChange={(e)=>setPdfFiles([...e.target.files])} className="file:mr-2 file:py-1 file:px-2 file:border file:border-white/20 file:text-xs file:bg-slate-700 file:text-white" />
+              {pdfFiles.length > 0 && <p className="text-[10px] text-green-400 mt-1">{pdfFiles.length} documento(s) selecionado(s)</p>}
             </div>
           </div>
         </CardContent>
@@ -165,6 +198,25 @@ const AdminProposals = () => {
       )}
       {!loading && (
       <ul className="space-y-3">
+         <h1 className="text-2xl font-semibold mb-4">Admin - Propostas</h1>
+      <div className="flex flex-col md:flex-row gap-4 mb-6 max-w-2xl">
+        <div className="flex-1 space-y-2">
+          <Input value={search} onChange={e=>setSearch(e.target.value)} placeholder="Buscar título ou descrição" />
+          <div className="flex gap-2 text-xs items-center">
+            <select value={statusFilter} onChange={e=>setStatusFilter(e.target.value)} className="bg-slate-800 border border-white/20 rounded px-2 py-2 text-xs">
+              <option value=''>Status (todos)</option>
+              <option value='draft'>draft</option>
+              <option value='sent'>sent</option>
+              <option value='approved'>approved</option>
+              <option value='rejected'>rejected</option>
+            </select>
+            {statusFilter && <Button variant='outline' className='h-auto px-2 py-1 text-xs' onClick={()=>setStatusFilter('')}>Limpar</Button>}
+          </div>
+          <p className="text-[10px] text-slate-500">
+            Total: {proposals.length} | Filtrados: {filteredProposals.length}
+          </p>
+        </div>
+      </div>
         {filteredProposals.map(p => (
           <li key={p.id}>
             <Card className="flex flex-col">
@@ -174,11 +226,15 @@ const AdminProposals = () => {
               </CardHeader>
               <CardContent>
                 {p.description && <p className="text-xs opacity-80 leading-relaxed">{p.description}</p>}
-                {p.tech_tags && p.tech_tags.length > 0 && (
-                  <div className="flex flex-wrap gap-1 mt-1">
-                    {p.tech_tags.map(t => <Badge key={t} variant="outline" className="text-[10px]">{t}</Badge>)}
-                  </div>
-                )}
+                <div className="flex flex-wrap gap-2 mt-1">
+                  {p.amount !== undefined && (
+                    <Badge variant="secondary" className="text-[10px] bg-slate-800 text-slate-300 border-slate-700">Valor: R$ {Number(p.amount).toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</Badge>
+                  )}
+                  {p.installments && (
+                    <Badge variant="secondary" className="text-[10px] bg-slate-800 text-slate-300 border-slate-700">Parcelamento: {p.installments}</Badge>
+                  )}
+                  {p.tech_tags && p.tech_tags.length > 0 && p.tech_tags.map(t => <Badge key={t} variant="outline" className="text-[10px]">{t}</Badge>)}
+                </div>
                 {(p.images && p.images.length > 0) && (
                   <div className="flex gap-2 overflow-x-auto py-1">
                     {p.images.slice(0,4).map(img => (
